@@ -10,8 +10,8 @@ public class Cancion {
     private String Album;
     private String Ano;
     private String Letra;
-    private Cancion Sig;
-    private Cancion Ant;
+    public Cancion Sig;
+    public Cancion Ant;
     private String Direccion;
     public String getGen() {
         return Gen;
