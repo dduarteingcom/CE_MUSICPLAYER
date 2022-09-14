@@ -38,7 +38,7 @@ public class Controlador implements Initializable{
 
     @FXML
     private ChoiceBox<String> prov_lista;
-    private String[] provincias = {"San Jose","Cartago","Alajuela","Puntarenas",
+    private String[] provincias = {"San Jose","Car","Alajuela","Puntarenas",
     "Heredia","Guanacaste"};
 
     @Override
