@@ -1,6 +1,7 @@
 package com.example.ce_musicplayer;
 
 public class Cancion {
+
     private String Gen;
 
 
@@ -70,4 +71,5 @@ public class Cancion {
         this.Ant = null;
         this.Direccion = direccion;
     }
+
 }
