@@ -11,14 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
-public class Controlador implements Initializable{
+public class Controlador_inicio implements Initializable{
 
     @FXML
     private Button boton_iniciar;
@@ -56,13 +56,28 @@ public class Controlador implements Initializable{
     }
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    Usuario mauro = new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26");
+
     public void boton_iniciar(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Ventana_biblioteca.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.show();
+        Usuario usuario = new Usuario(nom_entry.getText(), correo_entry.getText(), prov_lista.getValue(), pass_entry.getText());
+
+        if (usuario.getNombre().equals(mauro.getNombre()) & usuario.getCorreo().equals(mauro.getCorreo()) & usuario.getProvincia().equals(mauro.getProvincia())
+        & usuario.getContrasena().equals(mauro.getContrasena())){
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Ventana_biblioteca1.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        }
+        else {
+            System.out.println("Usuario Incorrecto");
+        }
     }
+    public void leer_usuario(){
+
+    }
+
+
 
 }

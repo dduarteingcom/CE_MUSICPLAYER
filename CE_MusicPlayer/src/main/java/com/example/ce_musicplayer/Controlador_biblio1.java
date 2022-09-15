@@ -8,7 +8,7 @@ import javafx.scene.control.MenuBar;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controlador_biblio implements Initializable {
+public class Controlador_biblio1 implements Initializable {
 
     @FXML
     private MenuBar barra_menu;
