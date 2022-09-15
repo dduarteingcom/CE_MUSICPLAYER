@@ -15,6 +15,15 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+        Biblioteca b1= new Biblioteca("A");
+        Cancion cancion1 = new Cancion("a","b","c","d","e","f",null,null,"g");
+        Cancion cancion2 = new Cancion("h","i","j","k","l","m",null,null,"n");
+        Cancion cancion3 = new Cancion("o","p","q","r","s","t",null,null,"u");
+        b1.ingresar(cancion1);
+        b1.ingresar(cancion2);
+        b1.ingresar(cancion3);
+        b1.Guardar();
+
         
     }
 
