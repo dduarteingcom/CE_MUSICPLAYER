@@ -3,9 +3,7 @@ package com.example.ce_musicplayer;
 public class Cancion {
 
     private String Gen;
-
-
-
+    public String Nombre;
     private String Artista;
     private String Album;
     private String Ano;
@@ -61,7 +59,16 @@ public class Cancion {
         Direccion = direccion;
     }
 
-    public Cancion(String gen, String artista, String album, String ano, String letra, Cancion sig, Cancion ant, String direccion) {
+    public String getNombre() {
+        return Nombre;
+    }
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+
+
+    public Cancion(String nombre,String gen, String artista, String album, String ano, String letra, Cancion sig, Cancion ant, String direccion) {
+        this.Nombre= nombre;
         this.Gen = gen;
         this.Artista = artista;
         this.Album = album;
