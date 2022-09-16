@@ -145,6 +145,7 @@ public class Biblioteca {
             // Creo el Result, indicado que fichero se va a crear
             Result result = new StreamResult(new File("Bibliotecas.xml"));
 
+
             // Creo un transformer, se crea el fichero XML
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(source, result);

@@ -28,6 +28,16 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+       // Usuario mauro = new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26");
+       // Usuario daniel = new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55");
+
+        Lista_usuarios lista_usuarios = new Lista_usuarios();
+
+        lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
+        lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
+
+        System.out.println(lista_usuarios.head.next.getData().getContrasena());
+
         launch();
     }
 }
