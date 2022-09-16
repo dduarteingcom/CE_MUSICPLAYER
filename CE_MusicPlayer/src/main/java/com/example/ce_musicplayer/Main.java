@@ -2,19 +2,17 @@ package com.example.ce_musicplayer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Ventana_sesion.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+
         Biblioteca b1= new Biblioteca("A");
         Cancion cancion1 = new Cancion("a","b","c","d","e","f",null,null,"g");
         Cancion cancion2 = new Cancion("h","i","j","k","l","m",null,null,"n");
@@ -22,7 +20,9 @@ public class Main extends Application {
         b1.ingresar(cancion1);
         b1.ingresar(cancion2);
         b1.ingresar(cancion3);
-        b1.Guardar();
+
+
+        b1.eliminarBiblio();
 
         
     }
