@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -36,10 +33,12 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable{
     private Label nom_label;
 
     @FXML
-    private TextField pass_entry;
-
+    private PasswordField pass_entry;
     @FXML
     private Label pass_label;
+
+    @FXML
+    private Label error_inicio;
 
     @FXML
     private Label prov_label;
@@ -59,8 +58,9 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable{
 
 
     public void boton_iniciar(ActionEvent event) throws IOException {
+
         Usuario usuario = new Usuario(nom_entry.getText(), correo_entry.getText(), prov_lista.getValue(), pass_entry.getText());
-        Nodo_usuarios actual = this.head;
+        Nodo_usuarios actual = Lista_usuarios.lista_usuarios.head;
         boolean encontrado = false;
         while (actual != null){
             if (actual.getData().getNombre().equals(usuario.getNombre()) & actual.getData().getCorreo().equals(usuario.getCorreo()) &
@@ -71,19 +71,16 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable{
                 scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
                 stage.show();
-                break;
             }
             else {
                 actual = actual.next;
             }
+        }
         if (encontrado == false){
-            System.out.println("Usuario no encontrado");
+            error_inicio.setText("Usuario No Encontrado");
         }
-        }
-    }
 
-    public void revisarDatos() throws IOException {
-        }
+    }
 
 
 
