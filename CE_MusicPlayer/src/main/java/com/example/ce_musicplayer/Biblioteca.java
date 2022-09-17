@@ -7,7 +7,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -17,7 +16,9 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -42,7 +43,7 @@ public class Biblioteca {
     }
 
 
-    public void ingresar(Cancion x) {
+    public void InsertarCan(Cancion x) {
         //Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");
         if (Primero == null) {
             Primero = x;
@@ -58,7 +59,7 @@ public class Biblioteca {
         }
     }
 
-    public void eliminar(String x) {
+    public void eliminarCan(String x) {
         Cancion actual = new Cancion("", "", "", "", "", "", null, null, "");
         Cancion prev = new Cancion("", "", "", "", "", "", null, null, "");
         actual = Primero;
@@ -101,23 +102,19 @@ public class Biblioteca {
                 // server elements
                 Cancion Actual = new Cancion("", "", "", "", "", "", null, null, "");
                 Actual = Ultimo;
-                Element Bibliotecas = document.createElement("Bibliotecas");
                 Element Biblioteca = document.createElement("Biblioteca");
-                Bibliotecas.setAttribute("Nombre",Nombre);
-
+                Biblioteca.setAttribute("Nombre", Nombre);
 
 
                 if (Ultimo != null) {
                     do {
                         Element Cancion = document.createElement("Cancion");
-                        Element Nombre = document.createElement("Nombre");
                         Element Genero = document.createElement("Genero");
                         Element Artista = document.createElement("Artista");
                         Element Ano = document.createElement("Ano");
                         Element Letra = document.createElement("Letra");
                         Element Direccion = document.createElement("Direccion");
-                        Text textNombre = document.createTextNode(Actual.getNombre());
-                        Cancion.appendChild(textNombre);
+                        Cancion.setAttribute("Nombre", Actual.getNombre());
 
                         Text textGenero = document.createTextNode(Actual.getGen());
                         Genero.appendChild(textGenero);
@@ -144,24 +141,14 @@ public class Biblioteca {
                 } else {
                     System.out.println("La Biblioteca se encuentra vacia");
                 }
-
-                Bibliotecas.appendChild(Biblioteca);
-                root.appendChild(Bibliotecas);
+                root.appendChild(Biblioteca);
             }
-
             DOMSource source = new DOMSource(document);
-
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             StreamResult result = new StreamResult("Bibliotecas.xml");
             transformer.transform(source, result);
-        } catch (TransformerConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (TransformerException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
+        } catch (SAXException | TransformerException | ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
     }
@@ -173,12 +160,44 @@ public class Biblioteca {
 
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xpath = xpf.newXPath();
-            XPathExpression expression = xpath.compile("/Bibliotecas/Bibliotecas[contains(@Nombre,"+"'"+Nombre+"'"+")]");
+            XPathExpression expression = xpath.compile("/Bibliotecas/Biblioteca[contains(@Nombre," + "'" + Nombre + "'" + ")]");
             NodeList nodes = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
             if (nodes.getLength() > 0) {
                 for (int i = 0; i < nodes.getLength(); i++) {
                     Node node = nodes.item(i);
                     node.getParentNode().removeChild(node);
+                }
+                DOMSource source = new DOMSource(document);
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                StreamResult result = new StreamResult("Bibliotecas.xml");
+                transformer.transform(source, result);
+            }
+
+        } catch (SAXException | TransformerException | ParserConfigurationException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void EditarNombreBiblio(String nuevoN) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+
+                    if (Nombre.equals(id.trim())) {
+                        Biblioteca.getAttributes().getNamedItem("Nombre").setTextContent(nuevoN);
+                        System.out.println(Biblioteca.getAttributes().getNamedItem("Nombre"));
+
+
+                    }
                 }
             }
             DOMSource source = new DOMSource(document);
@@ -186,24 +205,229 @@ public class Biblioteca {
             Transformer transformer = transformerFactory.newTransformer();
             StreamResult result = new StreamResult("Bibliotecas.xml");
             transformer.transform(source, result);
-        } catch (TransformerConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (TransformerException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
+
+        } catch (SAXException | ParserConfigurationException | IOException | TransformerException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public void EditarGeneroC(String nuevoGen, String nomCancion) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-    public void EditarNombreBiblio(){
-        String archvo = "src/main/resources/staff-simple.xml";
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+                    if (Nombre.equals(id.trim())) {
+                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
+                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
+                            Node item = ListaBiblioteca.item(j);
+                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
+                            System.out.println(id2);
+                            if (item.getNodeType() == Node.ELEMENT_NODE && nomCancion.equals(id2.trim())) {
+                                NodeList childNodes2 = item.getChildNodes();
+                                for (int z = 0; z < childNodes2.getLength(); z++) {
+                                    Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getNodeName());
+                                    if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
+                                        item2.setTextContent(nuevoGen);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            DOMSource source = new DOMSource(document);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("Bibliotecas.xml");
+            transformer.transform(source, result);
+        } catch (SAXException | ParserConfigurationException | IOException | TransformerException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
+    public void EditarArtista(String nuevoArtista, String nomCancion) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+                    if (Nombre.equals(id.trim())) {
+                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
+                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
+                            Node item = ListaBiblioteca.item(j);
+                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
+                            System.out.println(id2);
+                            if (item.getNodeType() == Node.ELEMENT_NODE && nomCancion.equals(id2.trim())) {
+                                NodeList childNodes2 = item.getChildNodes();
+                                for (int z = 0; z < childNodes2.getLength(); z++) {
+                                    Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getNodeName());
+                                    if ("Artista".equalsIgnoreCase(item2.getNodeName())) {
+                                        item2.setTextContent(nuevoArtista);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            DOMSource source = new DOMSource(document);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("Bibliotecas.xml");
+            transformer.transform(source, result);
+        } catch (IOException | ParserConfigurationException | TransformerException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void EditarAlbum(String nuevoAlbum, String nomCancion) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+                    if (Nombre.equals(id.trim())) {
+                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
+                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
+                            Node item = ListaBiblioteca.item(j);
+                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
+                            System.out.println(id2);
+                            if (item.getNodeType() == Node.ELEMENT_NODE && nomCancion.equals(id2.trim())) {
+                                NodeList childNodes2 = item.getChildNodes();
+                                for (int z = 0; z < childNodes2.getLength(); z++) {
+                                    Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getNodeName());
+                                    if ("Album".equalsIgnoreCase(item2.getNodeName())) {
+                                        item2.setTextContent(nuevoAlbum);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            DOMSource source = new DOMSource(document);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("Bibliotecas.xml");
+            transformer.transform(source, result);
+        } catch (IOException | ParserConfigurationException | TransformerException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public void EditarAno(String nuevoAno, String nomCancion) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+                    if (Nombre.equals(id.trim())) {
+                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
+                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
+                            Node item = ListaBiblioteca.item(j);
+                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
+                            System.out.println(id2);
+                            if (item.getNodeType() == Node.ELEMENT_NODE && nomCancion.equals(id2.trim())) {
+                                NodeList childNodes2 = item.getChildNodes();
+                                for (int z = 0; z < childNodes2.getLength(); z++) {
+                                    Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getNodeName());
+                                    if ("Ano".equalsIgnoreCase(item2.getNodeName())) {
+                                        item2.setTextContent(nuevoAno);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            DOMSource source = new DOMSource(document);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("Bibliotecas.xml");
+            transformer.transform(source, result);
+        } catch (IOException | ParserConfigurationException | TransformerException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public void EditarLetra(String nuevoLetra, String nomCancion) {
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try (InputStream is = new FileInputStream(archivo)) {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(is);
+            NodeList ListaBibliotecas = document.getElementsByTagName("Biblioteca");
+            for (int i = 0; i < ListaBibliotecas.getLength(); i++) {
+                Node Biblioteca = ListaBibliotecas.item(i);
+
+                if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
+                    String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
+                    if (Nombre.equals(id.trim())) {
+                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
+                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
+                            Node item = ListaBiblioteca.item(j);
+                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
+                            System.out.println(id2);
+                            if (item.getNodeType() == Node.ELEMENT_NODE && nomCancion.equals(id2.trim())) {
+                                NodeList childNodes2 = item.getChildNodes();
+                                for (int z = 0; z < childNodes2.getLength(); z++) {
+                                    Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getNodeName());
+                                    if ("Letra".equalsIgnoreCase(item2.getNodeName())) {
+                                        item2.setTextContent(nuevoLetra);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            DOMSource source = new DOMSource(document);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("Bibliotecas.xml");
+            transformer.transform(source, result);
+        } catch (IOException | ParserConfigurationException | TransformerException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    
 }
+
+
 
 
 
