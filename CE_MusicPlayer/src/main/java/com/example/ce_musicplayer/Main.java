@@ -9,11 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    private static Stage stg;
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Ventana_sesion.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
+        stg = stage;
+        Parent root = FXMLLoader.load(getClass().getResource("Ventana_sesion.fxml"));
+        stage.setScene(new Scene(root));
         stage.show();
 
         Biblioteca b1 = new Biblioteca("Amapolas");
@@ -26,20 +28,18 @@ public class Main extends Application {
 
         //b1.GuardarBiblio();
         //b1.eliminarBiblio();
-        Biblioteca biblioteca2= new Biblioteca("prueba");
+        Biblioteca biblioteca2 = new Biblioteca("prueba");
         //biblioteca2.prueba(3);
-
-
-
     }
-    private static Stage stg;
+
     public void cambioEscena(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
 
-
     public static void main(String[] args) {
+        Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
+        Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
         launch();
     }
 }
