@@ -425,6 +425,21 @@ public class Biblioteca {
 
     }
 
+    /*
+    public void prueba(int a){
+        while(a<2){
+            Cancion cancion =new Cancion("a","a","a","a","a",
+                    "a",null,null,"a");
+            InsertarCan(cancion);
+
+
+
+
+        }
+    }
+    */
+     
+
 }
 
 
