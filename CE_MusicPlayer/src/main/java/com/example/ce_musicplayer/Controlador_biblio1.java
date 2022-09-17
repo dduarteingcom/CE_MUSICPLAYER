@@ -1,17 +1,24 @@
 package com.example.ce_musicplayer;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Controlador_biblio1 {
+public class Controlador_biblio1 implements Initializable {
+
+    @FXML
+    private Pane pane;
 
     @FXML
     private ProgressBar barraCancion;
@@ -43,6 +50,18 @@ public class Controlador_biblio1 {
     @FXML
     private Slider volumen;
 
+    private File directory;
+    private File[] archivos;
+
+    private ArrayList<File> canciones;
+
+    private Timer timer;
+    private TimerTask task;
+    private boolean running;
+
+    private Media media;
+    private MediaPlayer mediaPlayer;
+
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {
         Main m = new Main();
@@ -73,4 +92,17 @@ public class Controlador_biblio1 {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Hola");
+        canciones = new ArrayList<File>();
+        directory = new File("CE_MusicPlayer/src/main/Canciones");
+        archivos = directory.listFiles();
+        if (archivos != null){
+            for(File file : archivos){
+                canciones.add(file);
+                System.out.println(file);
+            }
+        }
+    }
 }

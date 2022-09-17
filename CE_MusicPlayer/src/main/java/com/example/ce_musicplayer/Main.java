@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stg = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("Ventana_sesion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Ventana_biblioteca1.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
 
@@ -34,7 +34,7 @@ public class Main extends Application {
 
     public void cambioEscena(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
+        stg.setScene(new Scene(pane));
     }
 
     public static void main(String[] args) {
