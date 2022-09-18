@@ -18,7 +18,6 @@ public class Arduino {
 
             if(serial_Port.openPort()){
                 serial_Port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
-                System.out.println("Puerto Abierto");
             }
             else {
                 System.out.println("Puerto No Encontrado");
