@@ -51,7 +51,7 @@ public class Main extends Application {
         new Thread(() -> launch()).start();
         new Thread(() -> {
             try {
-                Arduino.prueba();
+                Controlador_biblio1.prueba();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
