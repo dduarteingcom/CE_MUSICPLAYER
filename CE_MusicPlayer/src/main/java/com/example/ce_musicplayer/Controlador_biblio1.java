@@ -117,7 +117,6 @@ public class Controlador_biblio1 implements Initializable {
         media = new Media(new File("Canciones/Nothing_Else_Matters.mp3").toURI().toString());
 
         mediaPlayer = new MediaPlayer(media);
-
         songLabel.setText(songs.get(songNumber).getName());
     }
 }
