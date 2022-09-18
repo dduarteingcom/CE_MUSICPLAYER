@@ -1,5 +1,6 @@
 package com.example.ce_musicplayer;
 
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +11,12 @@ import java.io.IOException;
 
 public class Main extends Application {
     private static Stage stg;
+    static SerialPort serial_Port;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+
         stg = stage;
         Parent root = FXMLLoader.load(getClass().getResource("Ventana_biblioteca1.fxml"));
         stage.setScene(new Scene(root));
@@ -39,9 +43,18 @@ public class Main extends Application {
         stg.setScene(new Scene(pane));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
-        launch();
+
+        new Thread(() -> launch()).start();
+        new Thread(() -> {
+            try {
+                Arduino.prueba();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }
