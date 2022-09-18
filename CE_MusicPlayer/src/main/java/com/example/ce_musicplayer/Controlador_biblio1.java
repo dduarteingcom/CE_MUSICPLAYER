@@ -76,21 +76,60 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void nextCancion(ActionEvent event) {
+        if (songNumber < songs.size() - 1){
+            songNumber ++;
+            mediaPlayer.stop();
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(songs.get(songNumber).getName());
+            reproducir();
+
+        }
+        else {
+            songNumber = 0;
+            mediaPlayer.stop();
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(songs.get(songNumber).getName());
+
+            reproducir();
+
+
+        }
 
     }
 
     @FXML
     void pausar(ActionEvent event) {
+        mediaPlayer.pause();
 
     }
 
     @FXML
     void prevCancion(ActionEvent event) {
+        if (songNumber > 0) {
+            songNumber--;
+            mediaPlayer.stop();
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(songs.get(songNumber).getName());
+            reproducir();
 
+        } else {
+            songNumber = songs.size() -1;
+            mediaPlayer.stop();
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(songs.get(songNumber).getName());
+
+            reproducir();
+
+
+        }
     }
 
     @FXML
-    void reproducir(ActionEvent event) {
+    void reproducir() {
         mediaPlayer.play();
 
     }
@@ -98,11 +137,9 @@ public class Controlador_biblio1 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        System.out.println(System.getProperty("java.library.path"));
-
         songs = new ArrayList<File>();
 
-        directory = new File("Canciones");
+        directory = new File("CE_MusicPlayer/Canciones");
 
         files = directory.listFiles();
 
@@ -112,10 +149,8 @@ public class Controlador_biblio1 implements Initializable {
                 System.out.println(file);
             }
         }
-        System.out.println("hola");
-     //   media = new Media(songs.get(songNumber).toURI().toString());
-        media = new Media(new File("Canciones/Nothing_Else_Matters.mp3").toURI().toString());
 
+        media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(songs.get(songNumber).getName());
     }
