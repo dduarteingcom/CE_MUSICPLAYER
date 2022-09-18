@@ -67,6 +67,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                     actual.getData().getProvincia().equals(usuario.getProvincia()) & actual.getData().getContrasena().equals(usuario.getContrasena())) {
                 encontrado = true;
                 System.out.println("Usuario encontrado");
+
                 m.cambioEscena("Ventana_biblioteca1.fxml");
                 break;
             } else {

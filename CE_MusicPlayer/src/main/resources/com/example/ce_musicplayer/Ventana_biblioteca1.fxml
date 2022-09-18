@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_biblio1">
+<AnchorPane prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #919191;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_biblio1">
    <children>
       <MenuBar fx:id="barra_menu">
         <menus>
@@ -26,5 +31,17 @@
           </Menu>
         </menus>
       </MenuBar>
+      <ProgressBar fx:id="barraCancion" layoutY="484.0" prefHeight="8.0" prefWidth="600.0" progress="0.0" />
+      <Button fx:id="playButton" layoutY="493.0" mnemonicParsing="false" onAction="#reproducir" text="Play" />
+      <Button fx:id="pauseButton" layoutX="38.0" layoutY="493.0" mnemonicParsing="false" onAction="#pausar" text="Pausa" />
+      <Button fx:id="prevButton" layoutX="85.0" layoutY="493.0" mnemonicParsing="false" onAction="#prevCancion" text="Prev" />
+      <Button fx:id="nextButton" layoutX="124.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextCancion" text="Next" />
+      <Slider fx:id="volumen" layoutX="460.0" layoutY="499.0" max="200.0" value="100.0" />
+      <Label fx:id="songLabel" layoutX="322.0" layoutY="498.0" text="Canción" textFill="#a42896">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button fx:id="modoButton" layoutX="165.0" layoutY="493.0" mnemonicParsing="false" onAction="#modoContinuo" text="Modo continuo" />
    </children>
 </AnchorPane>
