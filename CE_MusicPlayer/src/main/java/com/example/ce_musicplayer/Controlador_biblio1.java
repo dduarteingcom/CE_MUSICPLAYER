@@ -1,4 +1,5 @@
 package com.example.ce_musicplayer;
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -136,6 +138,7 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       // prueba_arduino();
 
         songs = new ArrayList<File>();
 
@@ -153,5 +156,29 @@ public class Controlador_biblio1 implements Initializable {
         media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(songs.get(songNumber).getName());
+
     }
+    static SerialPort serial_Port;
+
+    private void prueba_arduino()throws IOException {
+
+        SerialPort[] get_port = SerialPort.getCommPorts();
+        for(SerialPort port : get_port){
+
+            System.out.println(port.getSystemPortName());
+            serial_Port = SerialPort.getCommPort(port.getSystemPortName());
+
+            serial_Port.openPort();
+            serial_Port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
+        }
+        serial_Port.setBaudRate(9600);
+        InputStream inputStream = serial_Port.getInputStream();
+
+        while (true){
+            char msg = (char) inputStream.read();
+            System.out.println(msg);
+        }
+    }
+
+
 }
