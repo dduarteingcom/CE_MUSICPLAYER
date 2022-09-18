@@ -37,7 +37,7 @@
       <Button fx:id="prevButton" layoutX="85.0" layoutY="493.0" mnemonicParsing="false" onAction="#prevCancion" text="Prev" />
       <Button fx:id="nextButton" layoutX="124.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextCancion" text="Next" />
       <Slider fx:id="volumen" layoutX="460.0" layoutY="499.0" max="200.0" value="100.0" />
-      <Label fx:id="songLabel" layoutX="344.0" layoutY="498.0" text="Canción" textFill="#a42896">
+      <Label fx:id="songLabel" layoutX="322.0" layoutY="498.0" text="Canción" textFill="#a42896">
          <font>
             <Font size="10.0" />
          </font>

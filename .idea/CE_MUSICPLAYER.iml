@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="jar_files" level="project" />
-    <orderEntry type="library" name="javafx-media-19" level="project" />
+    <orderEntry type="library" name="jar_files" level="project" />
   </component>
 </module>
