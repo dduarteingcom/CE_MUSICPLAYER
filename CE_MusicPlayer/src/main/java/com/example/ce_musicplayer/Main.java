@@ -32,8 +32,15 @@ public class Main extends Application {
 
         //b1.GuardarBiblio();
         //b1.eliminarBiblio();
-        Biblioteca biblioteca2 = new Biblioteca("prueba");
+        //Biblioteca biblioteca2 = new Biblioteca("prueba");
         //biblioteca2.prueba(3);
+        //b1.EditarNombreBiblio("Punk");
+        Bibliotecas BMauricio=new Bibliotecas();
+        Bibliotecas BDaniel=new Bibliotecas();
+        Bibliotecas BMbappe=new Bibliotecas();
+
+
+        BMauricio.LectorBM();
 
 
     }
