@@ -123,18 +123,13 @@ public class Controlador_biblio1 implements Initializable {
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             songLabel.setText(songs.get(songNumber).getName());
-
             reproducir();
-
-
         }
     }
 
     @FXML
 
     void reproducir() {
-
-    void reproducir(ActionEvent event) {
 
         mediaPlayer.play();
 
@@ -150,11 +145,6 @@ public class Controlador_biblio1 implements Initializable {
         directory = new File("CE_MusicPlayer/Canciones");
 
 
-        System.out.println(System.getProperty("java.library.path"));
-
-        songs = new ArrayList<File>();
-
-        directory = new File("Canciones");
 
 
         files = directory.listFiles();
@@ -170,10 +160,7 @@ public class Controlador_biblio1 implements Initializable {
         media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(songs.get(songNumber).getName());
-
-        System.out.println("hola");
-     //   media = new Media(songs.get(songNumber).toURI().toString());
-        media = new Media(new File("Canciones/Nothing_Else_Matters.mp3").toURI().toString());
+        media = new Media(songs.get(songNumber).toURI().toString());
 
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(songs.get(songNumber).getName());
@@ -181,7 +168,7 @@ public class Controlador_biblio1 implements Initializable {
     }
     static SerialPort serial_Port;
 
-    private void prueba_arduino()throws IOException {
+    public static void prueba()throws IOException {
 
         SerialPort[] get_port = SerialPort.getCommPorts();
         for(SerialPort port : get_port){
