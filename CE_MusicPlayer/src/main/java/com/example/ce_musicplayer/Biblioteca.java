@@ -29,7 +29,7 @@ public class Biblioteca {
     public String Nombre;
     public Biblioteca Sig;
     public Biblioteca Ant;
-    public int Tamaño;
+    public int Tamano;
     public String FechaC;
 
     public String getNombre() {
@@ -48,15 +48,21 @@ public class Biblioteca {
         FechaC = fecha;
     }
 
+    public int getTamano() {
+        return Tamano;
+    }
+
+
 
     public Biblioteca(String nombre) {
         this.Primero = null;
         this.Ultimo = null;
         this.Sig=null;
         this.Ant=null;
-        this.Tamaño=0;
+        this.Tamano=0;
         this.Nombre = nombre;
         this.FechaC="";
+
 
     }
 
@@ -67,14 +73,14 @@ public class Biblioteca {
             Ultimo = x;
             Primero.Sig = Primero;
             Ultimo.Ant = Ultimo;
-            this.Tamaño++;
+            this.Tamano++;
         } else {
             Ultimo.Sig = x;
             x.Sig = Primero;
             x.Ant = Ultimo;
             Ultimo = x;
             Primero.Ant = Ultimo;
-            this.Tamaño++;
+            this.Tamano++;
         }
     }
 
@@ -89,16 +95,16 @@ public class Biblioteca {
                     Primero = Primero.Sig;
                     Ultimo.Sig = Primero;
                     Primero.Ant = Ultimo;
-                    this.Tamaño--;
+                    this.Tamano--;
                 } else if (actual == Ultimo) {
                     Ultimo = prev;
                     Primero.Ant = Ultimo;
                     Ultimo.Sig = Primero;
-                    this.Tamaño--;
+                    this.Tamano--;
                 } else {
                     prev.Sig = actual.Sig;
                     actual.Sig.Ant = prev;
-                    this.Tamaño--;
+                    this.Tamano--;
                 }
             }
             prev = actual;
@@ -113,7 +119,7 @@ public class Biblioteca {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse("Bibliotecas.xml");
+            Document document = documentBuilder.parse("BibliotecasMauricio.xml");
             Element root = document.getDocumentElement();
 
             Collection<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
@@ -126,6 +132,8 @@ public class Biblioteca {
                 Actual = Ultimo;
                 Element Biblioteca = document.createElement("Biblioteca");
                 Biblioteca.setAttribute("Nombre", Nombre);
+                Text textFecha = document.createTextNode(Actual.getGen());
+                Biblioteca.appendChild(textFecha);
 
 
                 if (Ultimo != null) {
@@ -136,6 +144,7 @@ public class Biblioteca {
                         Element Ano = document.createElement("Ano");
                         Element Letra = document.createElement("Letra");
                         Element Direccion = document.createElement("Direccion");
+                        Element Tamano= document.createElement("Tamano");
                         Cancion.setAttribute("Nombre", Actual.getNombre());
 
                         Text textGenero = document.createTextNode(Actual.getGen());
@@ -155,6 +164,7 @@ public class Biblioteca {
                         Cancion.appendChild(Direccion);
 
 
+
                         Biblioteca.appendChild(Cancion);
 
                         Actual = Actual.Ant;
@@ -168,7 +178,7 @@ public class Biblioteca {
             DOMSource source = new DOMSource(document);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            StreamResult result = new StreamResult("Bibliotecas.xml");
+            StreamResult result = new StreamResult("BibliotecasMauricio.xml");
             transformer.transform(source, result);
         } catch (SAXException | TransformerException | ParserConfigurationException e) {
             throw new RuntimeException(e);
@@ -203,7 +213,7 @@ public class Biblioteca {
 
 
     public void EditarNombreBiblio(String nuevoN) {
-        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -225,7 +235,7 @@ public class Biblioteca {
             DOMSource source = new DOMSource(document);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            StreamResult result = new StreamResult("Bibliotecas.xml");
+            StreamResult result = new StreamResult("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml");
             transformer.transform(source, result);
 
         } catch (SAXException | ParserConfigurationException | IOException | TransformerException e) {
@@ -234,7 +244,7 @@ public class Biblioteca {
     }
 
     public void EditarGeneroC(String nuevoGen, String nomCancion) {
-        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
+        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try (InputStream is = new FileInputStream(archivo)) {
@@ -269,7 +279,7 @@ public class Biblioteca {
             DOMSource source = new DOMSource(document);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            StreamResult result = new StreamResult("Bibliotecas.xml");
+            StreamResult result = new StreamResult("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml");
             transformer.transform(source, result);
         } catch (SAXException | ParserConfigurationException | IOException | TransformerException e) {
             throw new RuntimeException(e);
