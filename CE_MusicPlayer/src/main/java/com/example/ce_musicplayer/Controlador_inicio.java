@@ -2,13 +2,9 @@ package com.example.ce_musicplayer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -74,7 +70,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                 actual = actual.next;
             }
         }
-        if (encontrado == false) {
+        if (!encontrado) {
             error_inicio.setText("Usuario No Encontrado");
         }
 

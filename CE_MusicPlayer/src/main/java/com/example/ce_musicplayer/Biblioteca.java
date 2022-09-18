@@ -27,6 +27,10 @@ public class Biblioteca {
 
     public Cancion Ultimo;
     public String Nombre;
+    public Biblioteca Sig;
+    public Biblioteca Ant;
+    public int Tamaño;
+    public String FechaC;
 
     public String getNombre() {
         return Nombre;
@@ -36,12 +40,25 @@ public class Biblioteca {
         Nombre = nombre;
     }
 
+    public String getFechaC() {
+        return FechaC;
+    }
+
+    public void setFechaC(String fecha) {
+        FechaC = fecha;
+    }
+
+
     public Biblioteca(String nombre) {
         this.Primero = null;
         this.Ultimo = null;
+        this.Sig=null;
+        this.Ant=null;
+        this.Tamaño=0;
         this.Nombre = nombre;
-    }
+        this.FechaC="";
 
+    }
 
     public void InsertarCan(Cancion x) {
         //Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");
@@ -50,12 +67,14 @@ public class Biblioteca {
             Ultimo = x;
             Primero.Sig = Primero;
             Ultimo.Ant = Ultimo;
+            this.Tamaño++;
         } else {
             Ultimo.Sig = x;
             x.Sig = Primero;
             x.Ant = Ultimo;
             Ultimo = x;
             Primero.Ant = Ultimo;
+            this.Tamaño++;
         }
     }
 
@@ -70,13 +89,16 @@ public class Biblioteca {
                     Primero = Primero.Sig;
                     Ultimo.Sig = Primero;
                     Primero.Ant = Ultimo;
+                    this.Tamaño--;
                 } else if (actual == Ultimo) {
                     Ultimo = prev;
                     Primero.Ant = Ultimo;
                     Ultimo.Sig = Primero;
+                    this.Tamaño--;
                 } else {
                     prev.Sig = actual.Sig;
                     actual.Sig.Ant = prev;
+                    this.Tamaño--;
                 }
             }
             prev = actual;
@@ -91,7 +113,7 @@ public class Biblioteca {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml");
+            Document document = documentBuilder.parse("Bibliotecas.xml");
             Element root = document.getDocumentElement();
 
             Collection<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
@@ -156,7 +178,7 @@ public class Biblioteca {
     public void eliminarBiblio() throws Exception {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            Document document = dbf.newDocumentBuilder().parse(new File("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml"));
+            Document document = dbf.newDocumentBuilder().parse(new File("CE_MusicPlayer/Bibliotecas.xml"));
 
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xpath = xpf.newXPath();
@@ -181,7 +203,7 @@ public class Biblioteca {
 
 
     public void EditarNombreBiblio(String nuevoN) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -212,7 +234,7 @@ public class Biblioteca {
     }
 
     public void EditarGeneroC(String nuevoGen, String nomCancion) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try (InputStream is = new FileInputStream(archivo)) {
@@ -256,7 +278,7 @@ public class Biblioteca {
 
     }
     public void EditarArtista(String nuevoArtista, String nomCancion) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -297,7 +319,7 @@ public class Biblioteca {
         }
     }
     public void EditarAlbum(String nuevoAlbum, String nomCancion) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -339,7 +361,7 @@ public class Biblioteca {
 
     }
     public void EditarAno(String nuevoAno, String nomCancion) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -382,7 +404,7 @@ public class Biblioteca {
 
     }
     public void EditarLetra(String nuevoLetra, String nomCancion) {
-        String archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Bibliotecas.xml";
+        String archivo = "CE_MusicPlayer/Bibliotecas.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -425,20 +447,8 @@ public class Biblioteca {
 
     }
 
-    /*
-    public void prueba(int a){
-        while(a<2){
-            Cancion cancion =new Cancion("a","a","a","a","a",
-                    "a",null,null,"a");
-            InsertarCan(cancion);
 
 
-
-
-        }
-    }
-    */
-     
 
 }
 

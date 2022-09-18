@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Bibliotecas>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Bibliotecas>
 
-    
+
+    <Biblioteca Nombre="Amapolas">
+        <Cancion Nombre="o">
+            <Genero>p</Genero>
+            <Artista>q</Artista>
+            <Ano>s</Ano>
+            <Letra>t</Letra>
+            <Direccion>u</Direccion>
+        </Cancion>
+        <Cancion Nombre="h">
+            <Genero>i</Genero>
+            <Artista>j</Artista>
+            <Ano>l</Ano>
+            <Letra>m</Letra>
+            <Direccion>n</Direccion>
+        </Cancion>
+        <Cancion Nombre="a">
+            <Genero>b</Genero>
+            <Artista>c</Artista>
+            <Ano>e</Ano>
+            <Letra>f</Letra>
+            <Direccion>g</Direccion>
+        </Cancion>
+    </Biblioteca>
 </Bibliotecas>
