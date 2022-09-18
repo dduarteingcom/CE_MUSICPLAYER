@@ -5,6 +5,7 @@ public class Usuario {
     private String Correo;
     private String Provincia;
 
+
     public String getNombre() {
         return Nombre;
     }
