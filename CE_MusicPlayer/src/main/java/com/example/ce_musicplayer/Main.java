@@ -30,6 +30,8 @@ public class Main extends Application {
         //b1.eliminarBiblio();
         Biblioteca biblioteca2 = new Biblioteca("prueba");
         //biblioteca2.prueba(3);
+
+
     }
 
     public void cambioEscena(String fxml) throws IOException {

@@ -50,17 +50,19 @@ public class Controlador_biblio1 implements Initializable {
     @FXML
     private Slider volumen;
 
-    private File directory;
-    private File[] archivos;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
-    private ArrayList<File> canciones;
+    private File directory;
+    private File[] files;
+
+    private ArrayList<File> songs;
 
     private Timer timer;
     private TimerTask task;
     private boolean running;
+    private int songNumber;
 
-    private Media media;
-    private MediaPlayer mediaPlayer;
 
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {
@@ -89,20 +91,33 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void reproducir(ActionEvent event) {
+        mediaPlayer.play();
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Hola");
-        canciones = new ArrayList<File>();
-        directory = new File("CE_MusicPlayer/src/main/Canciones");
-        archivos = directory.listFiles();
-        if (archivos != null){
-            for(File file : archivos){
-                canciones.add(file);
+
+        System.out.println(System.getProperty("java.library.path"));
+
+        songs = new ArrayList<File>();
+
+        directory = new File("Canciones");
+
+        files = directory.listFiles();
+
+        if (files != null){
+            for(File file : files){
+                songs.add(file);
                 System.out.println(file);
             }
         }
+        System.out.println("hola");
+     //   media = new Media(songs.get(songNumber).toURI().toString());
+        media = new Media(new File("Canciones/Nothing_Else_Matters.mp3").toURI().toString());
+
+        mediaPlayer = new MediaPlayer(media);
+
+        songLabel.setText(songs.get(songNumber).getName());
     }
 }
