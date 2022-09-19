@@ -14,9 +14,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UserMauricio  {
+public class ListaMayor {
     public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
-    public void Guardar() {
+
+
+
+
+    public void Guardar(String nombre) {
+        if(nombre.equals("Mauricio")){
+            archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
+        }
+        else if(nombre.equals("Daniel")){
+            archivo = "CE_MusicPlayer/BibliotecasDaniel.xml";
+        }
+        else{
+            archivo = "CE_MusicPlayer/BibliotecasMbappe.xml";
+        }
         try {
             Biblioteca temporal = new Biblioteca("");
             temporal = listabibliotecas.Primero;
@@ -70,16 +83,25 @@ public class UserMauricio  {
                 temporal=temporal.Sig;
             }
             Source source = new DOMSource(documento);
-            Result result = new StreamResult(new File("CE_MusicPlayer/BibliotecasMauricio.xml"));
+            Result result = new StreamResult(new File(archivo));
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(source, result);
         } catch (ParserConfigurationException | TransformerException ex) {
             System.out.println(ex.getMessage());
         }
     }
+    public String archivo;
+    public void LectorBM(String nombre) {
+        if(nombre.equals("Mauricio")){
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+        }
+        else if(nombre.equals("Daniel")){
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+        }
+        else{
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
+        }
 
-    public void LectorBM() {
-        String archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -106,7 +128,6 @@ public class UserMauricio  {
     }
 
     public void LeerCanciones(Biblioteca x) {
-        String archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 
