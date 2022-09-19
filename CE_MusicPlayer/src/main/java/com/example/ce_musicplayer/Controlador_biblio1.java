@@ -157,8 +157,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        obtenerCanciones();
-        arduino();
+        //obtenerCanciones();
+        //arduino();
     }
 
 

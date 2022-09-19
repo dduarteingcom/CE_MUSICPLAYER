@@ -1,24 +1,11 @@
 package com.example.ce_musicplayer;
 
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
 
 public class Biblioteca {
     public Cancion Primero;
     public Cancion Ultimo;
     public String Nombre;
     public Biblioteca Sig;
-    public Biblioteca Ant;
     public int Tamano;
     public String FechaC;
 
@@ -43,7 +30,6 @@ public class Biblioteca {
         this.Primero = null;
         this.Ultimo = null;
         this.Sig=null;
-        this.Ant=null;
         this.Tamano=0;
         this.Nombre = nombre;
         this.FechaC="";
