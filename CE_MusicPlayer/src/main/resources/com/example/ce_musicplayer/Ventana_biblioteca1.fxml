@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -19,16 +18,21 @@
               <MenuItem fx:id="cerrar_sesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Seleccionar Biblioteca">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Edicion Biblfioteca">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="Crear biblioteca" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Canciones">
+               <items>
+                  <MenuItem fx:id="cerrar_sesion1" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
       <ProgressBar fx:id="barraCancion" layoutY="484.0" prefHeight="8.0" prefWidth="600.0" progress="0.0" />
@@ -36,7 +40,6 @@
       <Button fx:id="pauseButton" layoutX="38.0" layoutY="493.0" mnemonicParsing="false" onAction="#pausar" text="Pausa" />
       <Button fx:id="prevButton" layoutX="85.0" layoutY="493.0" mnemonicParsing="false" onAction="#prevCancion" text="Prev" />
       <Button fx:id="nextButton" layoutX="124.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextCancion" text="Next" />
-      <Slider fx:id="volumen" layoutX="460.0" layoutY="499.0" max="200.0" value="100.0" />
       <Label fx:id="songLabel" layoutX="322.0" layoutY="498.0" text="Canción" textFill="#a42896">
          <font>
             <Font size="10.0" />
