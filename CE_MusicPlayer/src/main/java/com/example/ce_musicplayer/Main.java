@@ -1,11 +1,13 @@
 package com.example.ce_musicplayer;
 
-import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
 
 import java.io.IOException;
 
@@ -29,22 +31,18 @@ public class Main extends Application {
         b1.InsertarCan(cancion1);
         b1.InsertarCan(cancion2);
         b1.InsertarCan(cancion3);
-        Biblioteca b2 = new Biblioteca("Amapolas2");
-        Cancion cancion4 = new Cancion("a", "b", "c", "d", "e", "f", null, null, "g");
-        Cancion cancion5 = new Cancion("h", "i", "j", "k", "l", "m", null, null, "n");
-        Cancion cancion6 = new Cancion("o", "p", "q", "r", "s", "t", null, null, "u");
-        b2.InsertarCan(cancion4);
-        b2.InsertarCan(cancion5);
-        b2.InsertarCan(cancion6);
-        UserDaniel prueba=new UserDaniel("Daniel","daduarte@estudiantec.cr","San José","yoyo");
-        prueba.bibliotecas.insertBiblio(b1);
-        prueba.bibliotecas.insertBiblio(b2);
-        prueba.LectorDM();
-        System.out.println(prueba.bibliotecas.Primero.getNombre());
-        System.out.println(prueba.bibliotecas.Primero.Sig.getNombre());
+
+        //b1.GuardarBiblio();
+        //b1.eliminarBiblio();
+        //Biblioteca biblioteca2 = new Biblioteca("prueba");
+        //biblioteca2.prueba(3);
+        //b1.EditarNombreBiblio("Punk");
+        Bibliotecas BMauricio=new Bibliotecas();
+        Bibliotecas BDaniel=new Bibliotecas();
+        Bibliotecas BMbappe=new Bibliotecas();
 
 
-
+       // BMauricio.LectorBM();
 
 
     }
@@ -54,15 +52,35 @@ public class Main extends Application {
         stg.setScene(new Scene(pane));
     }
 
+    public static void arduino(){
+        SerialPort port = new SerialPort("COM3");
+        try {
+            port.openPort();
+            port.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+
+            port.addEventListener((SerialPortEvent event)->{
+                if(event.isRXCHAR()){
+                    try {
+                        if (port.readString().equals("1")){
+                            System.out.println("Hola");
+                        }
+                    } catch (SerialPortException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+
+        } catch (SerialPortException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
+        launch();
+
 
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
-        launch();
 
     }
-
-
-
-
 }
