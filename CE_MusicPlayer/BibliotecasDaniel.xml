@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Bibliotecas>
-
-
-    <Biblioteca Nombre="Amapolas">
+    <Biblioteca Nombre="Amapolas2">
         <Cancion Nombre="o">
             <Genero>p</Genero>
             <Artista>q</Artista>
+            <Album>r</Album>
             <Ano>s</Ano>
             <Letra>t</Letra>
             <Direccion>u</Direccion>
@@ -13,6 +12,7 @@
         <Cancion Nombre="h">
             <Genero>i</Genero>
             <Artista>j</Artista>
+            <Album>k</Album>
             <Ano>l</Ano>
             <Letra>m</Letra>
             <Direccion>n</Direccion>
@@ -20,6 +20,33 @@
         <Cancion Nombre="a">
             <Genero>b</Genero>
             <Artista>c</Artista>
+            <Album>d</Album>
+            <Ano>e</Ano>
+            <Letra>f</Letra>
+            <Direccion>g</Direccion>
+        </Cancion>
+    </Biblioteca>
+    <Biblioteca Nombre="Amapolas">
+        <Cancion Nombre="o">
+            <Genero>p</Genero>
+            <Artista>q</Artista>
+            <Album>r</Album>
+            <Ano>s</Ano>
+            <Letra>t</Letra>
+            <Direccion>u</Direccion>
+        </Cancion>
+        <Cancion Nombre="h">
+            <Genero>i</Genero>
+            <Artista>j</Artista>
+            <Album>k</Album>
+            <Ano>l</Ano>
+            <Letra>m</Letra>
+            <Direccion>n</Direccion>
+        </Cancion>
+        <Cancion Nombre="a">
+            <Genero>b</Genero>
+            <Artista>c</Artista>
+            <Album>d</Album>
             <Ano>e</Ano>
             <Letra>f</Letra>
             <Direccion>g</Direccion>

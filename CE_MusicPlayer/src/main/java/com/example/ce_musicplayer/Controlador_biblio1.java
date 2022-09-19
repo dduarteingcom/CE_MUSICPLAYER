@@ -129,6 +129,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
 
+
+
     void reproducir() {
 
         mediaPlayer.play();
@@ -142,7 +144,7 @@ public class Controlador_biblio1 implements Initializable {
 
         songs = new ArrayList<File>();
 
-        directory = new File("CE_MusicPlayer/Canciones");
+        directory = new File("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Canciones");
 
 
 
@@ -159,10 +161,10 @@ public class Controlador_biblio1 implements Initializable {
 
         media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-        songLabel.setText(songs.get(songNumber).getName());
-        media = new Media(songs.get(songNumber).toURI().toString());
 
-        mediaPlayer = new MediaPlayer(media);
+
+
+
         songLabel.setText(songs.get(songNumber).getName());
 
     }
