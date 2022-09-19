@@ -1,9 +1,10 @@
 package com.example.ce_musicplayer;
 
 public class Usuario {
-    private String Nombre;
-    private String Correo;
-    private String Provincia;
+    public String Nombre;
+    public String Correo;
+    public String Provincia;
+
 
 
     public String getNombre() {
@@ -38,6 +39,7 @@ public class Usuario {
         Contrasena = contrasena;
     }
 
+
     private String Contrasena;
 
     public Usuario(String nombre, String correo, String provincia, String contrasena) {
@@ -45,5 +47,6 @@ public class Usuario {
         this.Correo = correo;
         this.Provincia = provincia;
         this.Contrasena = contrasena;
+
     }
 }
