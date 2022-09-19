@@ -1,5 +1,6 @@
 package com.example.ce_musicplayer;
-import com.fazecast.jSerialComm.SerialPort;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,15 +8,18 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class Controlador_biblio1 implements Initializable {
 
@@ -71,30 +75,40 @@ public class Controlador_biblio1 implements Initializable {
         Main m = new Main();
         m.cambioEscena("Ventana_sesion.fxml");
     }
+
     @FXML
     void modoContinuo(ActionEvent event) {
 
     }
 
     @FXML
-    void nextCancion(ActionEvent event) {
-        if (songNumber < songs.size() - 1){
-            songNumber ++;
+    void nextCancion() {
+        if (songNumber < songs.size() - 1) {
+            songNumber++;
             mediaPlayer.stop();
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            songLabel.setText(songs.get(songNumber).getName());
-            reproducir();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    songLabel.setText(songs.get(songNumber).getName());
+                }
+            });
+            mediaPlayer.play();
 
-        }
-        else {
+        } else {
             songNumber = 0;
             mediaPlayer.stop();
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            songLabel.setText(songs.get(songNumber).getName());
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    songLabel.setText(songs.get(songNumber).getName());
+                }
+            });
 
-            reproducir();
+            mediaPlayer.play();
 
 
         }
@@ -102,92 +116,107 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void pausar(ActionEvent event) {
+    void pausar() {
         mediaPlayer.pause();
 
     }
 
     @FXML
-    void prevCancion(ActionEvent event) {
+    void prevCancion() {
         if (songNumber > 0) {
             songNumber--;
             mediaPlayer.stop();
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            songLabel.setText(songs.get(songNumber).getName());
-            reproducir();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    songLabel.setText(songs.get(songNumber).getName());
+                }
+            });
+            mediaPlayer.play();
 
         } else {
-            songNumber = songs.size() -1;
+            songNumber = songs.size() - 1;
             mediaPlayer.stop();
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            songLabel.setText(songs.get(songNumber).getName());
-            reproducir();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    songLabel.setText(songs.get(songNumber).getName());
+                }
+            });
+            mediaPlayer.play();
         }
     }
 
     @FXML
-
-
-
     void reproducir() {
 
         mediaPlayer.play();
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        obtenerCanciones();
+        arduino();
+    }
 
-       // prueba_arduino();
 
+    public void arduino() {
+        SerialPort port = new SerialPort("COM3");
+        try {
+            port.openPort();
+            port.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+
+            port.addEventListener((SerialPortEvent event) -> {
+                if (event.isRXCHAR()) {
+                    try {
+                        String msg = port.readString();
+                        if (msg.equals("1")) {
+                            reproducir();
+                        }
+                        if (msg.equals("2")) {
+                            pausar();
+                        }
+                        if (msg.equals("3")) {
+                            nextCancion();
+
+
+                        }
+                        if (msg.equals("4")) {
+                            prevCancion();
+                        }
+
+                    } catch (SerialPortException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+
+        } catch (SerialPortException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void obtenerCanciones() {
         songs = new ArrayList<File>();
 
-        directory = new File("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\Canciones");
-
-
-
+        directory = new File("CE_MusicPlayer/Canciones");
 
         files = directory.listFiles();
 
-        if (files != null){
-            for(File file : files){
+        if (files != null) {
+            for (File file : files) {
                 songs.add(file);
                 System.out.println(file);
             }
         }
-
-
         media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-
-
-
-
         songLabel.setText(songs.get(songNumber).getName());
 
-    }
-    static SerialPort serial_Port;
-
-    public static void prueba()throws IOException {
-
-        SerialPort[] get_port = SerialPort.getCommPorts();
-        for(SerialPort port : get_port){
-
-            System.out.println(port.getSystemPortName());
-            serial_Port = SerialPort.getCommPort(port.getSystemPortName());
-
-            serial_Port.openPort();
-            serial_Port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
-        }
-        serial_Port.setBaudRate(9600);
-        InputStream inputStream = serial_Port.getInputStream();
-
-        while (true){
-            char msg = (char) inputStream.read();
-            System.out.println(msg);
-        }
     }
 
 
