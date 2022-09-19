@@ -4,7 +4,6 @@ module com.example.ce_musicplayer {
     requires java.xml;
     requires javafx.media;
     requires java.logging;
-    requires PanamaHitek.Arduino;
     requires java.desktop;
     requires jssc;
 

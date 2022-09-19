@@ -14,11 +14,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UserMbappe extends Usuario {
+public class UserMbappe{
     public Bibliotecas bibliotecas=new Bibliotecas();
-    public UserMbappe(String nombre, String correo, String provincia, String contrasena) {
-        super(nombre, correo, provincia, contrasena);
-    }
+
+
     public void Guardar() {
         try {
             Biblioteca temporal = new Biblioteca("");

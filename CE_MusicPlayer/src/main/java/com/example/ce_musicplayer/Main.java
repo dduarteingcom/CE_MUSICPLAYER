@@ -80,11 +80,11 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws IOException {
-        launch();
+
 
 
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
-
+        launch();
     }
 }
