@@ -1,6 +1,5 @@
 package com.example.ce_musicplayer;
 
-import com.panamahitek.PanamaHitek_Arduino;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -164,7 +163,6 @@ public class Controlador_biblio1 implements Initializable {
         arduino();
     }
 
-    PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino();
 
     public void arduino() {
         SerialPort port = new SerialPort("COM3");
