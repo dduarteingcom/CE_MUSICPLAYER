@@ -14,19 +14,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UserDaniel extends Usuario {
-    public Bibliotecas bibliotecas=new Bibliotecas();
+public class UserDaniel {
+    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
 
-    public UserDaniel(String nombre, String correo, String provincia, String contrasena) {
-        super(nombre, correo, provincia, contrasena);
-
-    }
 
 
     public void Guardar() {
         try {
             Biblioteca temporal = new Biblioteca("");
-            temporal = bibliotecas.Primero;
+            temporal = listabibliotecas.Primero;
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
@@ -99,7 +95,7 @@ public class UserDaniel extends Usuario {
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     Biblioteca bibliotecatmp = new Biblioteca(id);
                     this.LeerCanciones(bibliotecatmp);
-                    bibliotecas.insertBiblio(bibliotecatmp);
+                    listabibliotecas.insertBiblio(bibliotecatmp);
 
 
                 }

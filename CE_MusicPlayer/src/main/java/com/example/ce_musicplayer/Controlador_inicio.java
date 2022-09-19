@@ -57,10 +57,25 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
         Main m = new Main();
         Usuario usuario = new Usuario(nom_entry.getText(), correo_entry.getText(), prov_lista.getValue(), pass_entry.getText());
         Nodo_usuarios actual = Lista_usuarios.lista_usuarios.head;
+
         boolean encontrado = false;
         while (actual != null) {
             if (actual.getData().getNombre().equals(usuario.getNombre()) & actual.getData().getCorreo().equals(usuario.getCorreo()) &
                     actual.getData().getProvincia().equals(usuario.getProvincia()) & actual.getData().getContrasena().equals(usuario.getContrasena())) {
+
+                if (usuario.getNombre().equals("Mauricio")){
+                    UserMauricio user = new UserMauricio();
+                    user.LectorBM();
+                }
+                if (usuario.getNombre().equals("Daniel")){
+                    UserDaniel user = new UserDaniel();
+                    user.LectorDM();
+
+                }
+                if (usuario.getNombre().equals("Mbappe")){
+                    UserMbappe user = new UserMbappe();
+                    user.LectorBMB();
+                }
                 encontrado = true;
                 System.out.println("Usuario encontrado");
 
