@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.ce_musicplayer.Controlador_inicio.CurrentLista;
+
 
 public class Controlador_biblio1 implements Initializable {
 
@@ -161,6 +163,7 @@ public class Controlador_biblio1 implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //obtenerCanciones();
         //arduino();
+        insertBiblios();
     }
 
 
@@ -233,6 +236,16 @@ public class Controlador_biblio1 implements Initializable {
         songLabel.setText(songs.get(songNumber).getName());
 
     }
+   public void insertBiblios(){
+        Biblioteca actual= new Biblioteca("");
+        actual= CurrentLista.listabibliotecas.Primero;
+        while(actual!=null){
+            System.out.println(actual.getNombre());
+            actual=actual.Sig;
+        }
+
+
+   }
 
 
 }
