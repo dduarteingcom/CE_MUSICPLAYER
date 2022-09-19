@@ -14,14 +14,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UserMbappe{
-    public Bibliotecas bibliotecas=new Bibliotecas();
-
-
+public class UserMbappe  {
+    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
     public void Guardar() {
         try {
             Biblioteca temporal = new Biblioteca("");
-            temporal = bibliotecas.Primero;
+            temporal = listabibliotecas.Primero;
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
@@ -94,7 +92,7 @@ public class UserMbappe{
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     Biblioteca bibliotecatmp = new Biblioteca(id);
                     this.LeerCanciones(bibliotecatmp);
-                    bibliotecas.insertBiblio(bibliotecatmp);
+                    listabibliotecas.insertBiblio(bibliotecatmp);
 
 
                 }

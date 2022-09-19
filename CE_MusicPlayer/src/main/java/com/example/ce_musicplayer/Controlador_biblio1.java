@@ -111,13 +111,14 @@ public class Controlador_biblio1 implements Initializable {
             mediaPlayer.play();
         }
     }
+
     @FXML
     void pausar() {
         mediaPlayer.pause();
 
     }
 
-    void volumen(int volumen){
+    void volumen(int volumen) {
         mediaPlayer.setVolume(volumen * 0.01);
     }
 
@@ -150,6 +151,7 @@ public class Controlador_biblio1 implements Initializable {
             mediaPlayer.play();
         }
     }
+
     @FXML
     void reproducir() {
         mediaPlayer.play();
@@ -188,16 +190,16 @@ public class Controlador_biblio1 implements Initializable {
                             volumen(0);
                         }
                         if (msg.equals("6")) {
-                            volumen(20);
+                            volumen(5);
                         }
                         if (msg.equals("7")) {
-                            volumen(40);
+                            volumen(20);
                         }
                         if (msg.equals("8")) {
-                            volumen(60);
+                            volumen(50);
                         }
                         if (msg.equals("9")) {
-                            volumen(80);
+                            volumen(75);
                         }
                         if (msg.equals("+")) {
                             volumen(100);

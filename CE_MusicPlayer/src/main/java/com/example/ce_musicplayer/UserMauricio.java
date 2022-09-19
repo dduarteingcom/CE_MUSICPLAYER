@@ -14,15 +14,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UserMauricio extends Usuario {
-    public Bibliotecas bibliotecas=new Bibliotecas();
-    public UserMauricio(String nombre, String correo, String provincia, String contrasena) {
-        super(nombre, correo, provincia, contrasena);
-    }
+public class UserMauricio  {
+    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
     public void Guardar() {
         try {
             Biblioteca temporal = new Biblioteca("");
-            temporal = bibliotecas.Primero;
+            temporal = listabibliotecas.Primero;
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
@@ -73,7 +70,7 @@ public class UserMauricio extends Usuario {
                 temporal=temporal.Sig;
             }
             Source source = new DOMSource(documento);
-            Result result = new StreamResult(new File("BibliotecasMauricio.xml"));
+            Result result = new StreamResult(new File("CE_MusicPlayer/BibliotecasMauricio.xml"));
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(source, result);
         } catch (ParserConfigurationException | TransformerException ex) {
@@ -82,7 +79,7 @@ public class UserMauricio extends Usuario {
     }
 
     public void LectorBM() {
-        String archivo = "BibliotecasMauricio.xml";
+        String archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try (InputStream is = new FileInputStream(archivo)) {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -95,13 +92,12 @@ public class UserMauricio extends Usuario {
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     Biblioteca bibliotecatmp = new Biblioteca(id);
                     this.LeerCanciones(bibliotecatmp);
-                    bibliotecas.insertBiblio(bibliotecatmp);
+                    listabibliotecas.insertBiblio(bibliotecatmp);
 
 
                 }
 
             }
-
 
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new RuntimeException(e);
@@ -110,7 +106,7 @@ public class UserMauricio extends Usuario {
     }
 
     public void LeerCanciones(Biblioteca x) {
-        String archivo = "BibliotecasMauricio.xml";
+        String archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 
@@ -154,7 +150,6 @@ public class UserMauricio extends Usuario {
                     }
                 }
             }
-
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new RuntimeException(e);
         }

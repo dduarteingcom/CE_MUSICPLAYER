@@ -3,10 +3,10 @@ package com.example.ce_musicplayer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Bibliotecas {
+public class Lista_bibliotecas {
     public Biblioteca Primero;
 
-    public Bibliotecas(){
+    public Lista_bibliotecas(){
         this.Primero=null;
 
     }
