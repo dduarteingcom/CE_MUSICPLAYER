@@ -13,26 +13,18 @@
    <children>
       <MenuBar fx:id="barra_menu">
         <menus>
-          <Menu mnemonicParsing="false" text="Cuenta">
+          <Menu fx:id="menuCuenta" mnemonicParsing="false" text="Cuenta">
             <items>
               <MenuItem fx:id="cerrar_sesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Seleccionar Biblioteca">
+          <Menu fx:id="menuSelec" mnemonicParsing="false" text="Seleccionar Biblioteca" />
+          <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edicion Biblioteca">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="itemCrearBiblio" mnemonicParsing="false" text="Crear biblioteca" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edicion Biblfioteca">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Crear biblioteca" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Canciones">
-               <items>
-                  <MenuItem fx:id="cerrar_sesion1" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión" />
-               </items>
-            </Menu>
+            <Menu fx:id="menuCancion" mnemonicParsing="false" text="Canciones" />
         </menus>
       </MenuBar>
       <ProgressBar fx:id="barraCancion" layoutY="484.0" prefHeight="8.0" prefWidth="600.0" progress="0.0" />

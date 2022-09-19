@@ -2,6 +2,7 @@ package com.example.ce_musicplayer;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -58,6 +59,22 @@ public class Controlador_biblio1 implements Initializable {
     @FXML
     private Slider volumen;
 
+    @FXML
+    private MenuItem itemCrearBiblio;
+
+    @FXML
+    private Menu menuCancion;
+
+    @FXML
+    private Menu menuCuenta;
+
+    @FXML
+    private Menu menuEdit;
+
+    @FXML
+    private Menu menuSelec;
+
+
     private Media media;
     private MediaPlayer mediaPlayer;
 
@@ -70,6 +87,8 @@ public class Controlador_biblio1 implements Initializable {
     private TimerTask task;
     private boolean running;
     private int songNumber;
+
+    private Biblioteca biblio_seleccionada;
 
 
     @FXML
@@ -161,8 +180,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //obtenerCanciones();
-        //arduino();
+        obtenerCanciones();
+        arduino();
         insertBiblios();
     }
 
@@ -240,12 +259,46 @@ public class Controlador_biblio1 implements Initializable {
         Biblioteca actual= new Biblioteca("");
         actual= CurrentLista.listabibliotecas.Primero;
         while(actual!=null){
-            System.out.println(actual.getNombre());
+            MenuItem biblio = new Menu(actual.getNombre());
+            Biblioteca finalActual = actual;
+            biblio.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    verBiblio(finalActual.getNombre());
+                }
+            });
+            menuSelec.getItems().add(biblio);
             actual=actual.Sig;
         }
+   }
 
+   public void verBiblio(String x){
+       Biblioteca actual= new Biblioteca("");
+       actual= CurrentLista.listabibliotecas.Primero;
+       while(actual!=null){
+           if (actual.getNombre().equals(x)){
+               System.out.println("Biblioteca seleccionada:"+ actual.getNombre());
+               biblio_seleccionada = actual;
+               verCanciones();
+               break;
+           }
+           actual=actual.Sig;
+       }
 
    }
+   public void verCanciones(){
+        Cancion actual = new Cancion("","","","","","",null, null, "");
+        actual = biblio_seleccionada.Primero;
+        do {
+            System.out.println(actual.getNombre());
+            MenuItem cancion = new Menu(actual.getNombre());
+            menuCancion.getItems().add(cancion);
+
+            actual = actual.Sig;
+        }while (actual != biblio_seleccionada.Primero);
+
+   }
+
 
 
 }
