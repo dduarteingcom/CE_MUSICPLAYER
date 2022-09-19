@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Main extends Application {
     private static Stage stg;
     static SerialPort serial_Port;
@@ -47,12 +48,14 @@ public class Main extends Application {
 
 
 
+
     }
 
     public void cambioEscena(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.setScene(new Scene(pane));
     }
+
 
     public static void main(String[] args) throws IOException {
 
