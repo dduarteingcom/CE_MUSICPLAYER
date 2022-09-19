@@ -5,16 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jssc.SerialPort;
-import jssc.SerialPortEvent;
-import jssc.SerialPortException;
 
 import java.io.IOException;
 
 
 public class Main extends Application {
     private static Stage stg;
-    static SerialPort serial_Port;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -55,28 +51,6 @@ public class Main extends Application {
     }
 
 
-    public static void arduino(){
-        SerialPort port = new SerialPort("COM3");
-        try {
-            port.openPort();
-            port.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-
-            port.addEventListener((SerialPortEvent event)->{
-                if(event.isRXCHAR()){
-                    try {
-                        if (port.readString().equals("1")){
-                            System.out.println("Hola");
-                        }
-                    } catch (SerialPortException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            });
-
-        } catch (SerialPortException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
     public static void main(String[] args) throws IOException {
