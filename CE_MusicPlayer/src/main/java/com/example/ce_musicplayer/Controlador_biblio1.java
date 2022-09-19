@@ -109,16 +109,16 @@ public class Controlador_biblio1 implements Initializable {
             });
 
             mediaPlayer.play();
-
-
         }
-
     }
-
     @FXML
     void pausar() {
         mediaPlayer.pause();
 
+    }
+
+    void volumen(int volumen){
+        mediaPlayer.setVolume(volumen * 0.01);
     }
 
     @FXML
@@ -150,10 +150,8 @@ public class Controlador_biblio1 implements Initializable {
             mediaPlayer.play();
         }
     }
-
     @FXML
     void reproducir() {
-
         mediaPlayer.play();
     }
 
@@ -182,11 +180,27 @@ public class Controlador_biblio1 implements Initializable {
                         }
                         if (msg.equals("3")) {
                             nextCancion();
-
-
                         }
                         if (msg.equals("4")) {
                             prevCancion();
+                        }
+                        if (msg.equals("5")) {
+                            volumen(0);
+                        }
+                        if (msg.equals("6")) {
+                            volumen(20);
+                        }
+                        if (msg.equals("7")) {
+                            volumen(40);
+                        }
+                        if (msg.equals("8")) {
+                            volumen(60);
+                        }
+                        if (msg.equals("9")) {
+                            volumen(80);
+                        }
+                        if (msg.equals("+")) {
+                            volumen(100);
                         }
 
                     } catch (SerialPortException e) {
@@ -194,7 +208,6 @@ public class Controlador_biblio1 implements Initializable {
                     }
                 }
             });
-
         } catch (SerialPortException e) {
             throw new RuntimeException(e);
         }
