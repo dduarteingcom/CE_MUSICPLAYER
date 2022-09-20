@@ -23,6 +23,15 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
     private Label correo_label;
 
     @FXML
+    private TextField biblioEntry;
+
+    @FXML
+    private Button insertButton;
+
+    @FXML
+    private Label errorLabel;
+
+    @FXML
     private TextField nom_entry;
 
     @FXML
@@ -95,6 +104,8 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
         }
 
     }
+
+
 
 
 
