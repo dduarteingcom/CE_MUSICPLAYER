@@ -93,13 +93,13 @@ public class ListaMayor {
     public String archivo;
     public void LectorBM(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
+            archivo = "BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "CE_MusicPlayer/BibliotecasDaniel.xml";
+            archivo = "BibliotecasDaniel.xml";
         }
         else{
-            archivo = "CE_MusicPlayer/BibliotecasMbappe.xml";
+            archivo = "BibliotecasMbappe.xml";
         }
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -141,15 +141,19 @@ public class ListaMayor {
                 if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     if (x.getNombre().equals(id.trim())) {
-                        NodeList ListaBiblioteca = document.getElementsByTagName("Cancion");
-                        for (int j = 0; j < ListaBiblioteca.getLength(); j++) {
-                            Node item = ListaBiblioteca.item(j);
-                            String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
-                            if (item.getNodeType() == Node.ELEMENT_NODE) {
+                        NodeList childBibliotecas = Biblioteca.getChildNodes();
+                        System.out.println(childBibliotecas);
+                        for (int j = 0; j < childBibliotecas.getLength(); j++) {
+                            Node item = childBibliotecas.item(j);
+
+
+                            if (item.getNodeType() == Node.ELEMENT_NODE&&x.getNombre().equals(id.trim())) {
+                                String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
                                 Cancion cancion = new Cancion(id2, "", "", "", "", "", null, null, "");
                                 NodeList childNodes2 = item.getChildNodes();
                                 for (int z = 0; z < childNodes2.getLength(); z++) {
                                     Node item2 = childNodes2.item(z);
+                                    System.out.println(item2.getTextContent());
 
                                     if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setGen(item2.getTextContent());
@@ -165,8 +169,10 @@ public class ListaMayor {
                                         cancion.setDireccion(item2.getTextContent());
                                     }
                                 }
+
                                 x.InsertarCan(cancion);
                             }
+
                         }
                     }
                 }
