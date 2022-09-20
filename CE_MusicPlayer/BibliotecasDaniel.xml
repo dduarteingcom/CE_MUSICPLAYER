@@ -27,7 +27,7 @@
         </Cancion>
     </Biblioteca>
     <Biblioteca Nombre="Amapolas">
-        <Cancion Nombre="o">
+        <Cancion Nombre="2">
             <Genero>p</Genero>
             <Artista>q</Artista>
             <Album>r</Album>
@@ -35,7 +35,7 @@
             <Letra>t</Letra>
             <Direccion>u</Direccion>
         </Cancion>
-        <Cancion Nombre="h">
+        <Cancion Nombre="3">
             <Genero>i</Genero>
             <Artista>j</Artista>
             <Album>k</Album>
@@ -43,7 +43,7 @@
             <Letra>m</Letra>
             <Direccion>n</Direccion>
         </Cancion>
-        <Cancion Nombre="a">
+        <Cancion Nombre="4">
             <Genero>b</Genero>
             <Artista>c</Artista>
             <Album>d</Album>

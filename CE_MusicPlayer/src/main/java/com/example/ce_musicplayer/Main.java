@@ -22,13 +22,18 @@ public class Main extends Application {
         stage.setScene(new Scene(root));
         stage.show();
 
-        Biblioteca b1 = new Biblioteca("Amapolas");
-        Cancion cancion1 = new Cancion("a", "b", "c", "d", "e", "f", null, null, "g");
-        Cancion cancion2 = new Cancion("h", "i", "j", "k", "l", "m", null, null, "n");
-        Cancion cancion3 = new Cancion("o", "p", "q", "r", "s", "t", null, null, "u");
-        b1.InsertarCan(cancion1);
-        b1.InsertarCan(cancion2);
-        b1.InsertarCan(cancion3);
+        ListaMayor list = new ListaMayor();
+        list.LectorBM("Mauricio");
+        System.out.println(list.listabibliotecas.Primero.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Primero.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Primero.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Primero.Sig.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Primero.Sig.Sig.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Sig.Primero.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.Sig.getNombre());
+        System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.Sig.Sig.getNombre());
 
 
     }
