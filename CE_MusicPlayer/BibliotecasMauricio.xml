@@ -26,7 +26,7 @@
         </Cancion>
     </Biblioteca>
     <Biblioteca Nombre="Amapolas">p
-        <Cancion Nombre="o">
+        <Cancion Nombre="hola">
             <Genero>p</Genero>
             <Artista>q</Artista>
             <Ano>s</Ano>
