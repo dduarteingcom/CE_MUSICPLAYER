@@ -93,13 +93,13 @@ public class ListaMayor {
     public String archivo;
     public void LectorBM(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "BibliotecasMauricio.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "BibliotecasDaniel.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "BibliotecasMbappe.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
