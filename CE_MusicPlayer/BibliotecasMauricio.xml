@@ -66,7 +66,7 @@
                 There goes my mind
                 'Cause there's magic in my bones
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
         </Cancion>
         <Cancion Nombre="Eye Of The Tiger">
             <Genero>Hard Rock</Genero>
@@ -112,7 +112,7 @@
                 The eye of the tiger
                 The eye of the tiger
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
         </Cancion>
         <Cancion Nombre="Livin On A Prayer">
             <Genero>Glam metal</Genero>
@@ -162,57 +162,7 @@
                 Take my hand, we'll make it I swear
                 Woah, livin' on a prayer
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
-        </Cancion>
-        <Cancion Nombre="Livin On A Prayer">
-            <Genero>Glam metal</Genero>
-            <Artista>Bon Jovi</Artista>
-            <Album>Slippery When Wet</Album>
-            <Ano>1986</Ano>
-            <Letra>Once upon a time not so long ago
-                Tommy used to work on the docks, union's been on strike
-                He's down on his luck, it's tough, so tough
-                Gina works the diner all day working for her man
-                She brings home her pay, for love, for love
-                She says, we've got to hold on to what we've got
-                It doesn't make a difference if we make it or not
-                We've got each other and that's a lot for love
-                We'll give it a shot
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Tommy's got his six-string in hock
-                Now he's holding in what he used to make it talk
-                So tough, it's tough
-                Gina dreams of running away
-                When she cries in the night, Tommy whispers
-                Baby, it's okay, someday
-                We've got to hold on to what we've got
-                It doesn't make a difference if we make it or not
-                We've got each other and that's a lot for love
-                We'll give it a shot
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Livin' on a prayer
-                Oh, we've got to hold on, ready or not
-                You live for the fight when it's all that you've got
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-            </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
         </Cancion>
     </Biblioteca>
     <Biblioteca Nombre="Amapolas">p
@@ -254,7 +204,7 @@
                 Tú lo que ere' e' una abusadora
                 Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion>
         </Cancion>
         <Cancion Nombre="Nothing Else Matters">
             <Genero>Heavy Metal</Genero>
@@ -301,7 +251,7 @@
                 Forever trusting who we are
                 No, nothing else matters
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion>
         </Cancion>
         <Cancion Nombre="Enemy">
             <Genero>Pop Rock</Genero>
@@ -366,7 +316,7 @@
                 Pray it away, I swear, I never be a saint
                 Look out for yourself
             </Letra>
-            <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones/Enemy.mp3</Direccion>
+            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Enemy.mp3</Direccion>
         </Cancion>
     </Biblioteca>
 </Bibliotecas>
