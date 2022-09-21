@@ -25,7 +25,7 @@ public class ListaMayor {
             archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "CE_MusicPlayer/BibliotecasDaniel.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
             archivo = "CE_MusicPlayer/BibliotecasMbappe.xml";
@@ -43,17 +43,24 @@ public class ListaMayor {
                 Actual = temporal.Ultimo;
                 Element Biblioteca = documento.createElement("Biblioteca");
                 Biblioteca.setAttribute("Nombre", temporal.Nombre);
+                Element Fecha=documento.createElement("Fecha");;
+                Text textFecha=documento.createTextNode(temporal.getFechaC());
+                Fecha.appendChild(textFecha);
+                Biblioteca.appendChild(Fecha);
                 if (temporal.Ultimo != null) {
                     do {
                         Element Cancion = documento.createElement("Cancion");
+                        Element Nombre =documento.createElement("Nombre");
                         Element Genero = documento.createElement("Genero");
                         Element Artista = documento.createElement("Artista");
                         Element Album= documento.createElement("Album");
                         Element Ano = documento.createElement("Ano");
                         Element Letra = documento.createElement("Letra");
                         Element Direccion = documento.createElement("Direccion");
-                        Cancion.setAttribute("Nombre", Actual.getNombre());
-                        Biblioteca.appendChild(Cancion);
+                        Element Favorita= documento.createElement("Favorita");
+                        Text textNombre = documento.createTextNode(Actual.getNombre());
+                        Nombre.appendChild(textNombre);
+                        Cancion.appendChild(Nombre);
                         Text textGenero = documento.createTextNode(Actual.getGen());
                         Genero.appendChild(textGenero);
                         Cancion.appendChild(Genero);
@@ -72,6 +79,9 @@ public class ListaMayor {
                         Text textDireccion = documento.createTextNode(Actual.getDireccion());
                         Direccion.appendChild(textDireccion);
                         Cancion.appendChild(Direccion);
+                        Text textFavorita = documento.createTextNode(String.valueOf(Actual.isFavorita()));
+                        Favorita.appendChild(textFavorita);
+                        Cancion.appendChild(Favorita);
                         Biblioteca.appendChild(Cancion);
                         Actual = Actual.Ant;
 
@@ -93,13 +103,13 @@ public class ListaMayor {
     public String archivo;
     public void LectorBM(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -113,6 +123,7 @@ public class ListaMayor {
                 if (Biblioteca.getNodeType() == Node.ELEMENT_NODE) {
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     Biblioteca bibliotecatmp = new Biblioteca(id);
+
                     this.LeerCanciones(bibliotecatmp);
                     listabibliotecas.insertBiblio(bibliotecatmp);
 
@@ -142,20 +153,25 @@ public class ListaMayor {
                     String id = Biblioteca.getAttributes().getNamedItem("Nombre").getTextContent();
                     if (x.getNombre().equals(id.trim())) {
                         NodeList childBibliotecas = Biblioteca.getChildNodes();
-                        System.out.println(childBibliotecas);
+
                         for (int j = 0; j < childBibliotecas.getLength(); j++) {
                             Node item = childBibliotecas.item(j);
+                            if (item.getNodeName().equals("Fecha")){
+                                x.setFechaC(item.getTextContent());
+                            }
 
 
-                            if (item.getNodeType() == Node.ELEMENT_NODE&&x.getNombre().equals(id.trim())) {
-                                String id2 = item.getAttributes().getNamedItem("Nombre").getTextContent();
-                                Cancion cancion = new Cancion(id2, "", "", "", "", "", null, null, "");
+                            if (item.getNodeType() == Node.ELEMENT_NODE) {
+
+                                Cancion cancion = new Cancion("", "", "", "", "", "", null, null, "");
                                 NodeList childNodes2 = item.getChildNodes();
                                 for (int z = 0; z < childNodes2.getLength(); z++) {
                                     Node item2 = childNodes2.item(z);
-                                    System.out.println(item2.getTextContent());
 
-                                    if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
+                                    if("Nombre".equalsIgnoreCase(item2.getNodeName())){
+                                        cancion.setNombre(item2.getTextContent());
+                                    }
+                                    else if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setGen(item2.getTextContent());
                                     } else if ("Artista".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setArtista(item2.getTextContent());
@@ -168,9 +184,13 @@ public class ListaMayor {
                                     } else if ("Direccion".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setDireccion(item2.getTextContent());
                                     }
+                                    else if ("Favorita".equalsIgnoreCase(item2.getNodeName())) {
+                                        cancion.setFavorita(Boolean.valueOf(item2.getTextContent()));
+                                    }
                                 }
 
                                 x.InsertarCan(cancion);
+                                x.Tamano++;
                             }
 
                         }
@@ -181,6 +201,9 @@ public class ListaMayor {
             throw new RuntimeException(e);
         }
 
+
+    }
+    public void eliminarBiblio(Biblioteca x){
 
     }
 }

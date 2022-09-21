@@ -21,10 +21,8 @@ import jssc.SerialPortException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -197,8 +195,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        obtenerCanciones();
-        arduino();
+        //obtenerCanciones();
+        //arduino();
         insertBiblios();
     }
 
@@ -335,6 +333,10 @@ public class Controlador_biblio1 implements Initializable {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
+    }
+    public String obtFecha(){
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+        return timeStamp;
     }
 
 }

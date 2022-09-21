@@ -11,6 +11,7 @@ public class Cancion {
     public Cancion Sig;
     public Cancion Ant;
     private String Direccion;
+    public boolean Favorita;
     public String getGen() {
         return Gen;
     }
@@ -66,8 +67,15 @@ public class Cancion {
         Nombre = nombre;
     }
 
+    public boolean isFavorita() {
+        return Favorita;
+    }
 
-    public Cancion(String nombre,String gen, String artista, String album, String ano, String letra, Cancion sig, Cancion ant, String direccion) {
+    public void setFavorita(boolean favorita) {
+        Favorita = favorita;
+    }
+
+    public Cancion(String nombre, String gen, String artista, String album, String ano, String letra, Cancion sig, Cancion ant, String direccion) {
         this.Nombre= nombre;
         this.Gen = gen;
         this.Artista = artista;
@@ -77,6 +85,7 @@ public class Cancion {
         this.Sig = null;
         this.Ant = null;
         this.Direccion = direccion;
+        this.Favorita= false;
     }
 
 }
