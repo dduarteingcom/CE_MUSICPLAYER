@@ -1,14 +1,19 @@
 package com.example.ce_musicplayer;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
@@ -20,6 +25,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.example.ce_musicplayer.Controlador_inicio.CurrentLista;
 
@@ -37,6 +44,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     private MenuItem cerrar_sesion;
+    @FXML
+    private ListView<String> Lista_canciones;
 
     @FXML
     private Button modoButton;
@@ -88,6 +97,8 @@ public class Controlador_biblio1 implements Initializable {
     private boolean running;
     private int songNumber;
 
+    String[] canciones;
+
     private Biblioteca biblio_seleccionada;
 
 
@@ -135,12 +146,17 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void pausar() {
+        cancelTimer();
         mediaPlayer.pause();
-
     }
 
     void volumen(int volumen) {
+        if (this.mediaPlayer == null){
+            return;
+        }
+        else {
         mediaPlayer.setVolume(volumen * 0.01);
+        }
     }
 
     @FXML
@@ -175,6 +191,7 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void reproducir() {
+        beginTimer();
         mediaPlayer.play();
     }
 
@@ -183,6 +200,28 @@ public class Controlador_biblio1 implements Initializable {
         //obtenerCanciones();
         //arduino();
         insertBiblios();
+    }
+
+    public void beginTimer(){
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                running = true;
+                double current = mediaPlayer.getCurrentTime().toSeconds();
+                double end = media.getDuration().toSeconds();
+                barraCancion.setProgress(current/end);
+                if(current/end == 1){
+                    cancelTimer();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 1000, 1000);
+    }
+
+    public void cancelTimer(){
+        running = false;
+        timer.cancel();
     }
 
 
@@ -196,6 +235,7 @@ public class Controlador_biblio1 implements Initializable {
                 if (event.isRXCHAR()) {
                     try {
                         String msg = port.readString();
+                        System.out.println(msg);
                         if (msg.equals("1")) {
                             reproducir();
                         }
@@ -238,6 +278,8 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     public void obtenerCanciones() {
+        /*
+
         songs = new ArrayList<File>();
 
         directory = new File("CE_MusicPlayer/Canciones");
@@ -254,6 +296,7 @@ public class Controlador_biblio1 implements Initializable {
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(songs.get(songNumber).getName());
 
+         */
     }
    public void insertBiblios(){
         Biblioteca actual= new Biblioteca("");
@@ -273,7 +316,7 @@ public class Controlador_biblio1 implements Initializable {
    }
 
    public void verBiblio(String x){
-       Biblioteca actual= new Biblioteca("");
+       Biblioteca actual= new Biblioteca(x);
        actual= CurrentLista.listabibliotecas.Primero;
        while(actual!=null){
            if (actual.getNombre().equals(x)){
@@ -287,18 +330,39 @@ public class Controlador_biblio1 implements Initializable {
 
    }
    public void verCanciones(){
+       songs = new ArrayList<File>();
+
+       ObservableList<String> list = FXCollections.observableArrayList();
         Cancion actual = new Cancion("","","","","","",null, null, "");
         actual = biblio_seleccionada.Primero;
         do {
             System.out.println(actual.getNombre());
-            MenuItem cancion = new Menu(actual.getNombre());
-            menuCancion.getItems().add(cancion);
+            list.add("Nombre: "+actual.getNombre()+"       "+"Genero: "+actual.getGen()+"       "+"Artista: "+actual.getArtista()+"       "+"Album: " +actual.getAlbum()+"       "+"Año: "+actual.getAno());
+            Lista_canciones.setItems(list);
+            File file = new File("CE_MusicPlayer/Canciones/Bones.mp3");
+            songs.add(file);
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(songs.get(songNumber).getName());
 
             actual = actual.Sig;
         }while (actual != biblio_seleccionada.Primero);
 
    }
 
-
+    public void crearBiblioteca(ActionEvent actionEvent) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Nueva_biblio.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("New Window");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
 
 }
