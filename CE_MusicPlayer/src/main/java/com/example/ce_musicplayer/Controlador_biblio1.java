@@ -98,6 +98,11 @@ public class Controlador_biblio1 implements Initializable {
     String[] canciones;
 
     private Biblioteca biblio_seleccionada;
+    private Cancion cancion_actual;
+
+    private int x = 0;
+
+    private boolean modo_activado = false;
 
 
     @FXML
@@ -108,11 +113,30 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void modoContinuo(ActionEvent event) {
+        if (modo_activado == true){
+            modo_activado = false;
+            System.out.println("Modo continuo desactivado");
+        }
+        else {
+            modo_activado = true;
+            System.out.println("Modo continuo activado");
+        }
 
     }
 
     @FXML
     void nextCancion() {
+        cancion_actual = cancion_actual.Sig;
+        mediaPlayer.stop();
+        beginTimer();
+        File file = new File(cancion_actual.getDireccion());
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        songLabel.setText(file.getName());
+        mediaPlayer.play();
+
+
+        /*
         if (songNumber < songs.size() - 1) {
             songNumber++;
             mediaPlayer.stop();
@@ -140,6 +164,8 @@ public class Controlador_biblio1 implements Initializable {
 
             mediaPlayer.play();
         }
+
+         */
     }
 
     @FXML
@@ -159,6 +185,16 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void prevCancion() {
+        cancion_actual = cancion_actual.Ant;
+        mediaPlayer.stop();
+        beginTimer();
+        File file = new File(cancion_actual.getDireccion());
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        songLabel.setText(file.getName());
+        mediaPlayer.play();
+
+        /*
         if (songNumber > 0) {
             songNumber--;
             mediaPlayer.stop();
@@ -185,12 +221,32 @@ public class Controlador_biblio1 implements Initializable {
             });
             mediaPlayer.play();
         }
+
+         */
     }
 
     @FXML
-    void reproducir() {
-        beginTimer();
+    void reproducir() throws SerialPortException {
+        if (x == 0){
+            beginTimer();
+            File file = new File(cancion_actual.getDireccion());
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(file.getName());
+            mediaPlayer.play();
+            x++;
+        }
+        else {
+            beginTimer();
+            mediaPlayer.play();
+        }
+
+        /*
+        System.out.println(songs.get(songNumber).getName());
         mediaPlayer.play();
+
+         */
+
     }
 
     @Override
@@ -210,7 +266,12 @@ public class Controlador_biblio1 implements Initializable {
                 double end = media.getDuration().toSeconds();
                 barraCancion.setProgress(current/end);
                 if(current/end == 1){
-                    cancelTimer();
+                    if (modo_activado == true){
+                        nextCancion();
+                    }
+                    else {
+                        cancelTimer();
+                    }
                 }
             }
         };
@@ -222,9 +283,9 @@ public class Controlador_biblio1 implements Initializable {
         timer.cancel();
     }
 
+    SerialPort port = new SerialPort("COM4");
 
     public void arduino() {
-        SerialPort port = new SerialPort("COM3");
         try {
             port.openPort();
 
@@ -235,6 +296,37 @@ public class Controlador_biblio1 implements Initializable {
                     try {
                         String msg = port.readString();
                         System.out.println(msg);
+                        if (msg.equals("1")) {
+                            reproducir();
+                        }
+                        if (msg.equals("2")) {
+                            pausar();
+                        }
+                        if (msg.equals("3")) {
+                            nextCancion();
+                        }
+                        if (msg.equals("4")) {
+                            prevCancion();
+                        }
+                        if (msg.equals("5")) {
+                            volumen(0);
+                        }
+                        if (msg.equals("6")) {
+                            volumen(5);
+                        }
+                        if (msg.equals("7")) {
+                            volumen(15);
+                        }
+                        if (msg.equals("8")) {
+                            volumen(40);
+                        }
+                        if (msg.equals("9")) {
+                            volumen(75);
+                        }
+                        if (msg.equals("+")) {
+                            volumen(100);
+                        }
+
                     } catch (SerialPortException e) {
                         throw new RuntimeException(e);
                     }
@@ -309,14 +401,18 @@ public class Controlador_biblio1 implements Initializable {
             list.add("Nombre: "+actual.getNombre()+"       "+"Genero: "+actual.getGen()+"       "+"Artista: "+actual.getArtista()+"       "+"Album: " +actual.getAlbum()+"       "+"Año: "+actual.getAno());
             Lista_canciones.setItems(list);
             System.out.println(actual.getDireccion());
+            /*
             File file = new File(actual.getDireccion());
             songs.add(file);
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             songLabel.setText(songs.get(songNumber).getName());
+
+             */
             actual = actual.Sig;
 
         }while (actual != biblio_seleccionada.Primero);
+        cancion_actual = biblio_seleccionada.Primero;
 
    }
 
@@ -338,5 +434,6 @@ public class Controlador_biblio1 implements Initializable {
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
         return timeStamp;
     }
+
 
 }
