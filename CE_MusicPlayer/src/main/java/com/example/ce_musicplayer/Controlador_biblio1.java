@@ -197,8 +197,8 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //obtenerCanciones();
-        //arduino();
+        obtenerCanciones();
+        arduino();
         insertBiblios();
     }
 
@@ -229,6 +229,7 @@ public class Controlador_biblio1 implements Initializable {
         SerialPort port = new SerialPort("COM3");
         try {
             port.openPort();
+
             port.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
             port.addEventListener((SerialPortEvent event) -> {
@@ -236,37 +237,6 @@ public class Controlador_biblio1 implements Initializable {
                     try {
                         String msg = port.readString();
                         System.out.println(msg);
-                        if (msg.equals("1")) {
-                            reproducir();
-                        }
-                        if (msg.equals("2")) {
-                            pausar();
-                        }
-                        if (msg.equals("3")) {
-                            nextCancion();
-                        }
-                        if (msg.equals("4")) {
-                            prevCancion();
-                        }
-                        if (msg.equals("5")) {
-                            volumen(0);
-                        }
-                        if (msg.equals("6")) {
-                            volumen(5);
-                        }
-                        if (msg.equals("7")) {
-                            volumen(20);
-                        }
-                        if (msg.equals("8")) {
-                            volumen(50);
-                        }
-                        if (msg.equals("9")) {
-                            volumen(75);
-                        }
-                        if (msg.equals("+")) {
-                            volumen(100);
-                        }
-
                     } catch (SerialPortException e) {
                         throw new RuntimeException(e);
                     }
@@ -327,7 +297,7 @@ public class Controlador_biblio1 implements Initializable {
                verCanciones();
                break;
            }
-           else{actual=actual.Sig;}
+           actual=actual.Sig;
        }
 
    }
