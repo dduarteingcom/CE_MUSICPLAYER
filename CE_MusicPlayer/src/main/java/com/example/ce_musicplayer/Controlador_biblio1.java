@@ -100,6 +100,11 @@ public class Controlador_biblio1 implements Initializable {
     String[] canciones;
 
     private Biblioteca biblio_seleccionada;
+    private Cancion cancion_actual;
+
+    private int x = 0;
+
+    private boolean modo_activado = false;
 
 
     @FXML
@@ -110,11 +115,30 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void modoContinuo(ActionEvent event) {
+        if (modo_activado == true){
+            modo_activado = false;
+            System.out.println("Modo continuo desactivado");
+        }
+        else {
+            modo_activado = true;
+            System.out.println("Modo continuo activado");
+        }
 
     }
 
     @FXML
     void nextCancion() {
+        cancion_actual = cancion_actual.Sig;
+        mediaPlayer.stop();
+        beginTimer();
+        File file = new File(cancion_actual.getDireccion());
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        songLabel.setText(file.getName());
+        mediaPlayer.play();
+
+
+        /*
         if (songNumber < songs.size() - 1) {
             songNumber++;
             mediaPlayer.stop();
@@ -142,6 +166,8 @@ public class Controlador_biblio1 implements Initializable {
 
             mediaPlayer.play();
         }
+
+         */
     }
 
     @FXML
@@ -161,6 +187,16 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void prevCancion() {
+        cancion_actual = cancion_actual.Ant;
+        mediaPlayer.stop();
+        beginTimer();
+        File file = new File(cancion_actual.getDireccion());
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        songLabel.setText(file.getName());
+        mediaPlayer.play();
+
+        /*
         if (songNumber > 0) {
             songNumber--;
             mediaPlayer.stop();
@@ -187,14 +223,32 @@ public class Controlador_biblio1 implements Initializable {
             });
             mediaPlayer.play();
         }
+
+         */
     }
 
     @FXML
     void reproducir() throws SerialPortException {
-        beginTimer();
+        if (x == 0){
+            beginTimer();
+            File file = new File(cancion_actual.getDireccion());
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            songLabel.setText(file.getName());
+            mediaPlayer.play();
+            x++;
+        }
+        else {
+            beginTimer();
+            mediaPlayer.play();
+        }
+
+        /*
         System.out.println(songs.get(songNumber).getName());
-        port.writeString(songs.get(songNumber).getName());
         mediaPlayer.play();
+
+         */
+
     }
 
     @Override
@@ -214,7 +268,12 @@ public class Controlador_biblio1 implements Initializable {
                 double end = media.getDuration().toSeconds();
                 barraCancion.setProgress(current/end);
                 if(current/end == 1){
-                    cancelTimer();
+                    if (modo_activado == true){
+                        nextCancion();
+                    }
+                    else {
+                        cancelTimer();
+                    }
                 }
             }
         };
@@ -344,14 +403,18 @@ public class Controlador_biblio1 implements Initializable {
             list.add("Nombre: "+actual.getNombre()+"       "+"Genero: "+actual.getGen()+"       "+"Artista: "+actual.getArtista()+"       "+"Album: " +actual.getAlbum()+"       "+"Año: "+actual.getAno());
             Lista_canciones.setItems(list);
             System.out.println(actual.getDireccion());
+            /*
             File file = new File(actual.getDireccion());
             songs.add(file);
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             songLabel.setText(songs.get(songNumber).getName());
+
+             */
             actual = actual.Sig;
 
         }while (actual != biblio_seleccionada.Primero);
+        cancion_actual = biblio_seleccionada.Primero;
 
    }
 
@@ -369,5 +432,6 @@ public class Controlador_biblio1 implements Initializable {
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
+
 
 }
