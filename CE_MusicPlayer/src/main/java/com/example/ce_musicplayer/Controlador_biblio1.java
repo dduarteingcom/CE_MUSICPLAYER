@@ -278,8 +278,8 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     public void obtenerCanciones() {
-        /*
 
+        /*
         songs = new ArrayList<File>();
 
         directory = new File("CE_MusicPlayer/Canciones");
@@ -297,6 +297,8 @@ public class Controlador_biblio1 implements Initializable {
         songLabel.setText(songs.get(songNumber).getName());
 
          */
+
+
     }
    public void insertBiblios(){
         Biblioteca actual= new Biblioteca("");
@@ -331,7 +333,6 @@ public class Controlador_biblio1 implements Initializable {
    }
    public void verCanciones(){
        songs = new ArrayList<File>();
-
        ObservableList<String> list = FXCollections.observableArrayList();
         Cancion actual = new Cancion("","","","","","",null, null, "");
         actual = biblio_seleccionada.Primero;
@@ -339,13 +340,14 @@ public class Controlador_biblio1 implements Initializable {
             System.out.println(actual.getNombre());
             list.add("Nombre: "+actual.getNombre()+"       "+"Genero: "+actual.getGen()+"       "+"Artista: "+actual.getArtista()+"       "+"Album: " +actual.getAlbum()+"       "+"Año: "+actual.getAno());
             Lista_canciones.setItems(list);
-            File file = new File("CE_MusicPlayer/Canciones/Bones.mp3");
+            System.out.println(actual.getDireccion());
+            File file = new File(actual.getDireccion());
             songs.add(file);
             media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             songLabel.setText(songs.get(songNumber).getName());
-
             actual = actual.Sig;
+
         }while (actual != biblio_seleccionada.Primero);
 
    }

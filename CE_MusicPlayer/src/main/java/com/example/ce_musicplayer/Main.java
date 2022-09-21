@@ -34,8 +34,6 @@ public class Main extends Application {
         System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.getNombre());
         System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.Sig.getNombre());
         System.out.println(list.listabibliotecas.Primero.Sig.Primero.Sig.Sig.Sig.getNombre());
-
-
     }
 
     public void cambioEscena(String fxml) throws IOException {
@@ -43,9 +41,6 @@ public class Main extends Application {
         stg.setScene(new Scene(pane));
         stg.show();
     }
-
-
-
 
 
     public static void main(String[] args) throws IOException {
