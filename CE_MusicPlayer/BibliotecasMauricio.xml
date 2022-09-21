@@ -66,7 +66,11 @@
                 There goes my mind
                 'Cause there's magic in my bones
             </Letra>
+
+            <Direccion>C:\Users\Alvaro Duarte\Documents\GitHub\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
+
             <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
+
         </Cancion>
         <Cancion Nombre="Eye Of The Tiger">
             <Genero>Hard Rock</Genero>
@@ -112,7 +116,11 @@
                 The eye of the tiger
                 The eye of the tiger
             </Letra>
+
+            <Direccion>C:\Users\Alvaro Duarte\Documents\GitHub\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
+
             <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
+
         </Cancion>
         <Cancion Nombre="Livin On A Prayer">
             <Genero>Glam metal</Genero>
@@ -162,7 +170,10 @@
                 Take my hand, we'll make it I swear
                 Woah, livin' on a prayer
             </Letra>
-            <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
+
+            <Direccion>C:\Users\Alvaro Duarte\Documents\GitHub\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
+
+
         </Cancion>
     </Biblioteca>
     <Biblioteca Nombre="Amapolas">p
@@ -204,7 +215,11 @@
                 Tú lo que ere' e' una abusadora
                 Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
             </Letra>
+
+            <Direccion>Canciones/Neverita.mp3</Direccion>
+
             <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion>
+
         </Cancion>
         <Cancion Nombre="Nothing Else Matters">
             <Genero>Heavy Metal</Genero>
@@ -251,7 +266,11 @@
                 Forever trusting who we are
                 No, nothing else matters
             </Letra>
+
+            <Direccion>Canciones/Nothing_Else_Matters.mp3</Direccion>
+
             <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion>
+
         </Cancion>
         <Cancion Nombre="Enemy">
             <Genero>Pop Rock</Genero>
@@ -316,7 +335,11 @@
                 Pray it away, I swear, I never be a saint
                 Look out for yourself
             </Letra>
+
+            <Direccion>Canciones/Enemy.mp3</Direccion>
+
             <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Enemy.mp3</Direccion>
+
         </Cancion>
     </Biblioteca>
 </Bibliotecas>
