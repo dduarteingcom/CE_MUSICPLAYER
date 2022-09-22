@@ -75,9 +75,11 @@ public class Biblioteca {
                     Node Cancion = ListaCanciones.item(i);
                     if (Cancion.getNodeType() == Node.ELEMENT_NODE) {
                         String id = Cancion.getAttributes().getNamedItem("Nombre").getTextContent();
-                        cancionN.setNombre(id);
+
+
                         if (x.equals(id.trim())) {
                             NodeList childNodes = Cancion.getChildNodes();
+                            cancionN.setNombre(id);
                             for (int j = 0; j < childNodes.getLength(); j++) {
                                 Node item = childNodes.item(j);
 
@@ -114,7 +116,7 @@ public class Biblioteca {
             this.Tamano++;
         }
         else{
-            try (InputStream is = new FileInputStream("CE_MusicPlayer/MetadataOriginal.xml")) {
+            try (InputStream is = new FileInputStream("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(is);
                 NodeList ListaCanciones = document.getElementsByTagName("Cancion");
@@ -122,9 +124,10 @@ public class Biblioteca {
                     Node Cancion = ListaCanciones.item(i);
                     if (Cancion.getNodeType() == Node.ELEMENT_NODE) {
                         String id = Cancion.getAttributes().getNamedItem("Nombre").getTextContent();
-                        cancionN.setNombre(id);
+
                         if (x.equals(id.trim())) {
                             NodeList childNodes = Cancion.getChildNodes();
+                            cancionN.setNombre(id);
                             for (int j = 0; j < childNodes.getLength(); j++) {
                                 Node item = childNodes.item(j);
 

@@ -7,12 +7,14 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="520.0" prefWidth="586.0" style="-fx-background-color: #919191;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_biblio1">
    <children>
-      <MenuBar fx:id="barra_menu" prefHeight="25.0" prefWidth="387.0">
+      <MenuBar fx:id="barra_menu" layoutY="2.0" prefHeight="25.0" prefWidth="472.0">
         <menus>
           <Menu fx:id="menuCuenta" mnemonicParsing="false" text="Cuenta">
             <items>
@@ -25,7 +27,59 @@
               <MenuItem fx:id="itemCrearBiblio" mnemonicParsing="false" onAction="#crearBiblioteca" text="Crear biblioteca" />
             </items>
           </Menu>
-            <Menu fx:id="menuCancion" mnemonicParsing="false" text="Canciones" />
+            <Menu fx:id="menuCancion" mnemonicParsing="false" text="Canciones Disponibles">
+               <items>
+                  <MenuItem fx:id="LBohemian" mnemonicParsing="false" text="Bohemian Rhapsody">
+                     <graphic>
+                        <Button fx:id="BBohemian" mnemonicParsing="false" onAction="#AgBohemian" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LBones" mnemonicParsing="false" text="Bones">
+                     <graphic>
+                        <Button fx:id="BBones" mnemonicParsing="false" onAction="#AgBones" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LEnemy" mnemonicParsing="false" text="Enemy">
+                     <graphic>
+                        <Button fx:id="BEnemy" mnemonicParsing="false" onAction="#AgEnemy" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LEye" mnemonicParsing="false" text="Eye Of The Tiger">
+                     <graphic>
+                        <Button fx:id="BEye" mnemonicParsing="false" onAction="#AgEye" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LLivin" mnemonicParsing="false" text="Livin On A Prayer">
+                     <graphic>
+                        <Button fx:id="BLivin" mnemonicParsing="false" onAction="#AgLivin" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LNeverita" mnemonicParsing="false" text="Neverita">
+                     <graphic>
+                        <Button fx:id="BNeverita" mnemonicParsing="false" onAction="#AgNeverita" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LNothing" mnemonicParsing="false" text="Nothing Else Matters">
+                     <graphic>
+                        <Button fx:id="BNothing" mnemonicParsing="false" onAction="#AgNothing" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LStolen" mnemonicParsing="false" text="Stolen Dance">
+                     <graphic>
+                        <Button fx:id="BStolen" mnemonicParsing="false" onAction="#AgStolen" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LTacones" mnemonicParsing="false" text="Tacones Rojos">
+                     <graphic>
+                        <Button fx:id="BTacones" mnemonicParsing="false" onAction="#AgTacones" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="LTom" mnemonicParsing="false" text="Tom's Dinner">
+                     <graphic>
+                        <Button fx:id="BTom" mnemonicParsing="false" onAction="#AgTom" text="Añadir a la biblioteca" />
+                     </graphic>
+                  </MenuItem>
+               </items></Menu>
         </menus>
       </MenuBar>
       <ProgressBar fx:id="barraCancion" layoutY="481.0" prefHeight="12.0" prefWidth="600.0" progress="0.0" />
@@ -39,6 +93,17 @@
          </font>
       </Label>
       <Button fx:id="modoButton" layoutX="165.0" layoutY="493.0" mnemonicParsing="false" onAction="#modoContinuo" text="Modo continuo" />
-      <ListView fx:id="Lista_canciones" layoutX="-6.0" layoutY="25.0" prefHeight="457.0" prefWidth="393.0" />
+      <ListView fx:id="Lista_canciones" layoutY="27.0" prefHeight="457.0" prefWidth="472.0" />
+      <TitledPane fx:id="VenCBiblioteca" animated="false" layoutX="473.0" prefHeight="151.0" prefWidth="129.0" text="Crear Biblioteca">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="144.0">
+               <children>
+                  <TextField fx:id="EntryNomBi" layoutX="6.0" layoutY="38.0" prefHeight="25.0" prefWidth="116.0" />
+                  <Button fx:id="BotCrearBi" layoutX="40.0" layoutY="70.0" mnemonicParsing="false" onAction="#CrearNBiblioteca" text="Crear " />
+                  <Label layoutX="93.0" layoutY="6.0" text=" " />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>
