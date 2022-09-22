@@ -22,7 +22,7 @@ public class ListaMayor {
 
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "CE_MusicPlayer/BibliotecasMauricio.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
             archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
@@ -103,7 +103,7 @@ public class ListaMayor {
     public String archivo;
     public void LectorBM(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
             archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";

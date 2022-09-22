@@ -45,13 +45,17 @@ public class Main extends Application {
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mauricio", "mauluna52@gmail.com", "Cartago", "Valeria26"));
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Daniel", "dduarte@gmail.com", "San Jose", "Dduarte55"));
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mbappe", "mfrappe@gmail.com", "Alajuela", "Mfrappe88"));
-        /*
-        Cancion cancion1= new Cancion("a","a","a","a","a","a",null,null,"a");
-        Cancion cancion2= new Cancion("a","a","a","a","a","a",null,null,"a");
-        Cancion cancion3= new Cancion("a","a","a","a","a","a",null,null,"a");
+
+        //Cancion cancion1= new Cancion("a","a","a","a","a","a",null,null,"a");
+        //Cancion cancion2= new Cancion("a","a","a","a","a","a",null,null,"a");
+        //Cancion cancion3= new Cancion("a","a","a","a","a","a",null,null,"a");
         Biblioteca b1= new Biblioteca("Mfrappe");
         b1.setFechaC("Hoy");
-        b1.InsertarCan(cancion1);
+        b1.InsertnewSong("Livin On A Prayer");
+        System.out.println(b1.Primero.getNombre());
+        System.out.println(b1.Primero.getGen());
+        System.out.println(b1.Primero.getAlbum());
+        /*
         b1.InsertarCan(cancion2);
         b1.InsertarCan(cancion3);
         ListaMayor listaMayor = new ListaMayor();
@@ -59,8 +63,10 @@ public class Main extends Application {
         listaMayor.Guardar("Daniel");
         listaMayor.LectorBM("Daniel");
         System.out.println(listaMayor.listabibliotecas.Primero.getFechaC());
-        
+
          */
+
+
         launch();
 
 

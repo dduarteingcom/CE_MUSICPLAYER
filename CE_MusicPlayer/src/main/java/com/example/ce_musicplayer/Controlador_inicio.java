@@ -48,9 +48,11 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
     @FXML
     private Label prov_label;
 
+
     @FXML
     private ChoiceBox<String> prov_lista;
     public static ListaMayor CurrentLista = new ListaMayor();
+    public static String UsuarioSelec;
     private String[] provincias = {"San Jose", "Cartago", "Alajuela", "Puntarenas",
             "Heredia", "Guanacaste"};
 
@@ -77,6 +79,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                     ListaMayor user = new ListaMayor();
                     user.LectorBM("Mauricio");
                     CurrentLista =user;
+                    UsuarioSelec="Mauricio";
 
 
                 }
@@ -84,11 +87,13 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                     ListaMayor user = new ListaMayor();
                     user.LectorBM("Daniel");
                     CurrentLista =user;
+                    UsuarioSelec="Daniel";
                 }
                 if (usuario.getNombre().equals("Mbappe")){
                     ListaMayor user = new ListaMayor();
                     user.LectorBM("Mbappe");
                     CurrentLista =user;
+                    UsuarioSelec="Mbappe";
                 }
                 encontrado = true;
                 System.out.println("Usuario encontrado");
