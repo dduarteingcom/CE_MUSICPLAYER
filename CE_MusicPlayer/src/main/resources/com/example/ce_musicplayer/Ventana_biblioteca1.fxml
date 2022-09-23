@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="586.0" style="-fx-background-color: #919191;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_biblio1">
    <children>
-      <MenuBar fx:id="barra_menu" layoutY="2.0" prefHeight="25.0" prefWidth="472.0">
+      <MenuBar fx:id="barra_menu" layoutX="129.0" layoutY="2.0" prefHeight="25.0" prefWidth="472.0">
         <menus>
           <Menu fx:id="menuCuenta" mnemonicParsing="false" text="Cuenta">
             <items>
@@ -24,7 +24,7 @@
           <Menu fx:id="menuSelec" mnemonicParsing="false" text="Seleccionar Biblioteca" />
           <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edicion Biblioteca">
             <items>
-              <MenuItem fx:id="itemCrearBiblio" mnemonicParsing="false" onAction="#crearBiblioteca" text="Crear biblioteca" />
+              <MenuItem fx:id="itemCrearBiblio" mnemonicParsing="false" text="Crear biblioteca" />
             </items>
           </Menu>
             <Menu fx:id="menuCancion" mnemonicParsing="false" text="Canciones Disponibles">
@@ -94,7 +94,7 @@
       </Label>
       <Button fx:id="modoButton" layoutX="165.0" layoutY="493.0" mnemonicParsing="false" onAction="#modoContinuo" text="Modo continuo" />
       <ListView fx:id="Lista_canciones" layoutY="27.0" prefHeight="457.0" prefWidth="472.0" />
-      <TitledPane fx:id="VenCBiblioteca" animated="false" layoutX="473.0" prefHeight="151.0" prefWidth="129.0" text="Crear Biblioteca">
+      <TitledPane fx:id="VenCBiblioteca" animated="false" layoutX="472.0" layoutY="27.0" prefHeight="151.0" prefWidth="129.0" text="Crear Biblioteca">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="144.0">
                <children>
@@ -103,6 +103,16 @@
                   <Label layoutX="93.0" layoutY="6.0" text=" " />
                </children>
             </AnchorPane>
+        </content>
+      </TitledPane>
+      <Label fx:id="label_usuario" layoutX="27.0" layoutY="4.0" text="Label" textFill="RED">
+         <font>
+            <Font name="Webdings" size="18.0" />
+         </font>
+      </Label>
+      <TitledPane animated="false" layoutX="472.0" layoutY="178.0" prefHeight="168.0" prefWidth="129.0" text="Editar Canción">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
       </TitledPane>
    </children>

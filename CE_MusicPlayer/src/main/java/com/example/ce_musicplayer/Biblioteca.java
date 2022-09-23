@@ -67,7 +67,7 @@ public class Biblioteca {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Cancion cancionN = new Cancion("", "", "", "", "", "", null, null, "");
         if (Primero == null) {
-            try (InputStream is = new FileInputStream("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
+            try (InputStream is = new FileInputStream("D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(is);
                 NodeList ListaCanciones = document.getElementsByTagName("Cancion");
@@ -116,7 +116,7 @@ public class Biblioteca {
             this.Tamano++;
         }
         else{
-            try (InputStream is = new FileInputStream("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
+            try (InputStream is = new FileInputStream("D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(is);
                 NodeList ListaCanciones = document.getElementsByTagName("Cancion");

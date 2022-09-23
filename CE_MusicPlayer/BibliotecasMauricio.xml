@@ -1,10 +1,121 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Bibliotecas>
-
+    <Biblioteca Nombre="Hola">
+        <Fecha>2022/09/22 15:57:10</Fecha>
+        <Cancion>
+            <Nombre>Bohemian Rhapsody</Nombre>
+            <Genero>Hard Rock</Genero>
+            <Artista>Queen</Artista>
+            <Album>A_Night_at_the_Opera</Album>
+            <Ano>1975</Ano>
+            <Letra>Is this the real life?
+                Is this just fantasy?
+                Caught in a landside,
+                No escape from reality
+                Open your eyes,
+                Look up to the skies and see,
+                I'm just a poor boy, I need no sympathy,
+                Because I'm easy come, easy go,
+                Little high, little low,
+                Any way the wind blows doesn't really matter to
+                Me, to me
+                Mamaaa,
+                Just killed a man,
+                Put a gun against his head, pulled my trigger,
+                Now he's dead
+                Mamaaa, life had just begun,
+                But now I've gone and thrown it all away
+                Mama, oooh,
+                Didn't mean to make you cry,
+                If I'm not back again this time tomorrow,
+                Carry on, carry on as if nothing really matters
+                Too late, my time has come,
+                Sends shivers down my spine, body's aching all
+                The time
+                Goodbye, everybody, I've got to go,
+                Gotta leave you all behind and face the truth
+                Mama, oooh
+                I don't want to die,
+                I sometimes wish I'd never been born at all.
+                I see a little silhouetto of a man,
+                Scaramouch, Scaramouch, will you do the Fandango!
+                Thunderbolts and lightning, very, very frightening me
+                Galileo, Galileo
+                Galileo, Galileo
+                Galileo, Figaro - magnificoo
+                I'm just a poor boy nobody loves me
+                He's just a poor boy from a poor family,
+                Spare him his life from this monstrosity
+                Easy come, easy go, will you let me go
+                Bismillah! No, we will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let me go) Will not let you go
+                (Let me go)(Never) Never let you go
+                (Let me go) (Never) let you go (Let me go) Ah
+                No, no, no, no, no, no, no
+                Oh mama mia, mama mia, mama mia, let me go
+                Beelzebub has a devil put aside for me, for me,
+                For meee
+                So you think you can stop me and spit in my eye
+                So you think you can love me and leave me to die
+                Oh, baby, can't do this to me, baby,
+                Just gotta get out, just gotta get right outta here
+                Nothing really matters, Anyone can see,
+                Nothing really matters,
+                Nothing really matters to me
+                Any way the wind blows...
+            </Letra>
+            <Direccion>Canciones\\Bohemian_Rhapsody.mp3</Direccion>
+            <Favorita>false</Favorita>
+        </Cancion>
+        <Cancion>
+            <Nombre>Neverita</Nombre>
+            <Genero>Urbano latino</Genero>
+            <Artista>Bad Bunny</Artista>
+            <Album>Un verano sin ti</Album>
+            <Ano>2022</Ano>
+            <Letra>Yo estoy puesto pa' ti y tú te me quita'
+                Diablo, qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Yo estoy puesto pa' ti y tú te me quita'
+                Diablo', qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Pero nunca sola, sola
+                Amores vienen y van, como las ola'
+                El DM explotao, tos le escriben: "hola"
+                Una fila'e cabrone' y yo quiero la cola, yeah, yeah, yeah
+                Déjame untarte el sunblock pa' que no te queme
+                Aquí hay mucha' nenas linda', pero tú la tiene'
+                Jugar conmigo, eso te entretiene
+                No sea' mala, me tienes de meme
+                Me siento como el sol, ey, cuando te pones sunblock
+                Baby, déjame entrar, dale, quítame el lock, ey
+                Yo me la pasaría contigo viendo TikTok, je
+                Déjame sorprenderte, ey
+                Déjame untarte el sunblock pa' que no te queme
+                Aquí hay muchas nenas linda', pero tú la tiene'
+                Jugar conmigo, eso te entretiene
+                No sea' mala', me tienes de meme
+                Yo estoy puesto pa ti y tú te me quita'
+                Diablo', qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Pero nunca sola, sola
+                Amores vienen y van, como las ola'
+                Tú lo que ere' e' una abusadora
+                Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
+            </Letra>
+            <Direccion>Canciones\\Neverita.mp3</Direccion>
+            <Favorita>false</Favorita>
+        </Cancion>
+    </Biblioteca>
     <Biblioteca Nombre="Amapolas">
         <Fecha/>
         <Cancion>
-            <Nombre/>
+            <Nombre>Enemy</Nombre>
             <Genero>Pop Rock</Genero>
             <Artista>Imagine Dragons</Artista>
             <Album>Arcane League of Legends</Album>
@@ -71,7 +182,7 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
-            <Nombre/>
+            <Nombre>Nothing else matters</Nombre>
             <Genero>Heavy Metal</Genero>
             <Artista>Metallica</Artista>
             <Album>Metallica</Album>
@@ -120,7 +231,9 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
-            <Nombre/>
+
+            <Nombre>Neverita</Nombre>
+
             <Genero>Urbano latino</Genero>
             <Artista>Bad Bunny</Artista>
             <Album>Un verano sin ti</Album>
@@ -165,7 +278,9 @@
     <Biblioteca Nombre="Punk">
         <Fecha/>
         <Cancion>
-            <Nombre/>
+
+            <Nombre>Enemy</Nombre>
+
             <Genero>Glam metal</Genero>
             <Artista>Bon Jovi</Artista>
             <Album>Slippery When Wet</Album>
@@ -219,7 +334,8 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
-            <Nombre/>
+            <Nombre>Livin on a prayer</Nombre>
+
             <Genero>Hard Rock</Genero>
             <Artista>Survivor</Artista>
             <Album>Eye Of the Tiger</Album>
@@ -269,7 +385,9 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
-            <Nombre/>
+
+            <Nombre>Bones</Nombre>
+
             <Genero>Pop Rock</Genero>
             <Artista>Imagine Dragons</Artista>
             <Album>Mercury – Act 2</Album>
@@ -334,6 +452,76 @@
             </Letra>
             <Direccion>C:\Users\Alvaro Duarte\Documents\GitHub\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3
             </Direccion>
+            <Favorita>false</Favorita>
+        </Cancion>
+    </Biblioteca>
+    <Biblioteca Nombre="Jamaica">
+        <Fecha>2022/09/22 15:51:58</Fecha>
+        <Cancion>
+            <Nombre>Bohemian Rhapsody</Nombre>
+            <Genero>Hard Rock</Genero>
+            <Artista>Queen</Artista>
+            <Album>A_Night_at_the_Opera</Album>
+            <Ano>1975</Ano>
+            <Letra>Is this the real life?
+                Is this just fantasy?
+                Caught in a landside,
+                No escape from reality
+                Open your eyes,
+                Look up to the skies and see,
+                I'm just a poor boy, I need no sympathy,
+                Because I'm easy come, easy go,
+                Little high, little low,
+                Any way the wind blows doesn't really matter to
+                Me, to me
+                Mamaaa,
+                Just killed a man,
+                Put a gun against his head, pulled my trigger,
+                Now he's dead
+                Mamaaa, life had just begun,
+                But now I've gone and thrown it all away
+                Mama, oooh,
+                Didn't mean to make you cry,
+                If I'm not back again this time tomorrow,
+                Carry on, carry on as if nothing really matters
+                Too late, my time has come,
+                Sends shivers down my spine, body's aching all
+                The time
+                Goodbye, everybody, I've got to go,
+                Gotta leave you all behind and face the truth
+                Mama, oooh
+                I don't want to die,
+                I sometimes wish I'd never been born at all.
+                I see a little silhouetto of a man,
+                Scaramouch, Scaramouch, will you do the Fandango!
+                Thunderbolts and lightning, very, very frightening me
+                Galileo, Galileo
+                Galileo, Galileo
+                Galileo, Figaro - magnificoo
+                I'm just a poor boy nobody loves me
+                He's just a poor boy from a poor family,
+                Spare him his life from this monstrosity
+                Easy come, easy go, will you let me go
+                Bismillah! No, we will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let me go) Will not let you go
+                (Let me go)(Never) Never let you go
+                (Let me go) (Never) let you go (Let me go) Ah
+                No, no, no, no, no, no, no
+                Oh mama mia, mama mia, mama mia, let me go
+                Beelzebub has a devil put aside for me, for me,
+                For meee
+                So you think you can stop me and spit in my eye
+                So you think you can love me and leave me to die
+                Oh, baby, can't do this to me, baby,
+                Just gotta get out, just gotta get right outta here
+                Nothing really matters, Anyone can see,
+                Nothing really matters,
+                Nothing really matters to me
+                Any way the wind blows...
+            </Letra>
+            <Direccion>Canciones\\Bohemian_Rhapsody.mp3</Direccion>
             <Favorita>false</Favorita>
         </Cancion>
     </Biblioteca>
