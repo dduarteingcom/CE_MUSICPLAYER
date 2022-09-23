@@ -19,12 +19,12 @@ public class Lista_bibliotecas {
     public void eliminarBiblio(Biblioteca x){
         Biblioteca actual= new Biblioteca("");
         actual= this.Primero;
+        Biblioteca anterior = null;
         while(actual!=null){
             if(x.getNombre().equals(this.Primero.getNombre())){
                 Primero=Primero.Sig;
             }
-            if (actual.getNombre().equals(x.getNombre()) && actual.Sig == null){
-                actual = null;
+            else if (actual.Sig == null){
                 break;
 
             }
@@ -35,6 +35,7 @@ public class Lista_bibliotecas {
             }
 
             else{
+                anterior = actual;
                 actual=actual.Sig;
             }
         }
