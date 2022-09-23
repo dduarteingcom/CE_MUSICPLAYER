@@ -166,6 +166,11 @@ public class Controlador_biblio1 implements Initializable {
     @FXML
     private ChoiceBox<String> cancion_a_borrar;
 
+    @FXML
+    private ChoiceBox<String> biblio_a_borrar;
+    @FXML
+    private Button borrar_biblioButton;
+
 
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -386,42 +391,24 @@ public class Controlador_biblio1 implements Initializable {
         }
     }
 
-    public void obtenerCanciones() {
 
-        /*
-        songs = new ArrayList<File>();
-
-        directory = new File("CE_MusicPlayer/Canciones");
-
-        files = directory.listFiles();
-
-        if (files != null) {
-            for (File file : files) {
-                songs.add(file);
-                System.out.println(file);
-            }
-        }
-        media = new Media(songs.get(songNumber).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        songLabel.setText(songs.get(songNumber).getName());
-
-         */
-
-
-    }
    public void insertBiblios(){
-        Biblioteca actual= new Biblioteca("");
+        menuSelec.getItems().clear();
+       ObservableList<String> lista_biblios = FXCollections.observableArrayList();
+
+       Biblioteca actual= new Biblioteca("");
         actual= CurrentLista.listabibliotecas.Primero;
         while(actual!=null){
-            MenuItem biblio = new Menu(actual.getNombre());
+            MenuItem biblio = new Menu(actual.getNombre()+"  "+actual.getFechaC());
             Biblioteca finalActual = actual;
-            Biblioteca finalActual1 = actual;
             biblio.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     verBiblio(finalActual.getNombre());
                 }
             });
+            lista_biblios.add(actual.getNombre());
+            biblio_a_borrar.setItems(lista_biblios);
             menuSelec.getItems().add(biblio);
             actual=actual.Sig;
         }
@@ -432,7 +419,6 @@ public class Controlador_biblio1 implements Initializable {
        actual= CurrentLista.listabibliotecas.Primero;
        while(actual!=null){
            if (actual.getNombre().equals(x)){
-               System.out.println("Biblioteca seleccionada:"+ actual.getNombre());
                biblio_seleccionada = actual;
                verCanciones();
                break;
@@ -481,6 +467,8 @@ public class Controlador_biblio1 implements Initializable {
         menuSelec.getItems().add(biblio);
         biblio_seleccionada=biblioteca;
         CurrentLista.Guardar(UsuarioSelec);
+        insertBiblios();
+
         biblio.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -628,6 +616,25 @@ public class Controlador_biblio1 implements Initializable {
         verCanciones();
         CurrentLista.Guardar(UsuarioSelec);
     }
+
+    @FXML
+    void borrarBiblioteca(ActionEvent event) {
+        Biblioteca actual= new Biblioteca("");
+        actual= CurrentLista.listabibliotecas.Primero;
+        while(actual!=null){
+            if (actual.getNombre().equals(biblio_a_borrar.getValue())){
+                CurrentLista.listabibliotecas.eliminarBiblio(actual);
+                CurrentLista.Guardar(UsuarioSelec);
+
+                insertBiblios();
+            }
+            else {
+                actual = actual.Sig;
+            }
+        }
+
+    }
+
 
 
 

@@ -23,10 +23,17 @@ public class Lista_bibliotecas {
             if(x.getNombre().equals(this.Primero.getNombre())){
                 Primero=Primero.Sig;
             }
+            if (actual.getNombre().equals(x.getNombre()) && actual.Sig == null){
+                actual = null;
+                break;
+
+            }
+
             else if(actual.Sig.getNombre().equals(x.getNombre())){
                 actual.Sig=actual.Sig.Sig;
                 break;
             }
+
             else{
                 actual=actual.Sig;
             }
