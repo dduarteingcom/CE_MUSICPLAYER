@@ -63,7 +63,7 @@
             Nothing really matters to me
             Any way the wind blows...
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bohemian_Rhapsody.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bohemian_Rhapsody.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Bones">
         <Genero>Pop Rock</Genero>
@@ -128,7 +128,7 @@
             There goes my mind
             'Cause there's magic in my bones
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Eye Of The Tiger">
         <Genero>Hard Rock</Genero>
@@ -174,7 +174,7 @@
             The eye of the tiger
             The eye of the tiger
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Livin On A Prayer">
         <Genero>Glam metal</Genero>
@@ -224,7 +224,7 @@
             Take my hand, we'll make it I swear
             Woah, livin' on a prayer
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Neverita">
         <Genero>Urbano latino</Genero>
@@ -264,7 +264,7 @@
             Tú lo que ere' e' una abusadora
             Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Nothing Else Matters">
         <Genero>Heavy Metal</Genero>
@@ -311,7 +311,7 @@
             Forever trusting who we are
             No, nothing else matters
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Enemy">
         <Genero>Pop Rock</Genero>
@@ -376,7 +376,7 @@
             Pray it away, I swear, I never be a saint
             Look out for yourself
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Enemy.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Enemy.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Stolen Dance">
         <Genero>Indie pop</Genero>
@@ -433,7 +433,7 @@
             Stoned in paradise, shouldn't talk about it
             Shouldn't talk about it
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Stolen Dance.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Stolen Dance.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Tacones Rojos">
         <Genero>Urbano Latino</Genero>
@@ -521,7 +521,7 @@
             Ah ah ah ah ah ah ah
             Ah ah ah ah
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Tacones_Rojos.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Tacones_Rojos.mp3</Direccion>
     </Cancion>
     <Cancion Nombre="Tom's Diner">
         <Genero>Rock</Genero>
@@ -632,6 +632,6 @@
             (Tata, tada, tata, tada)
             (Tata, tada, tata, tada)
         </Letra>
-        <Direccion>D:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Toms_Diner_Cover.mp3</Direccion>
+        <Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Toms_Diner_Cover.mp3</Direccion>
     </Cancion>
 </Bibliotecas>

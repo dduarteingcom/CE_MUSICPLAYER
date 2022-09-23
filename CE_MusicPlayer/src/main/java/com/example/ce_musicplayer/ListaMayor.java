@@ -22,13 +22,13 @@ public class ListaMayor {
 
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
         try {
             Biblioteca temporal = new Biblioteca("");
@@ -103,13 +103,13 @@ public class ListaMayor {
     public String archivo;
     public void LectorBM(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
+            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

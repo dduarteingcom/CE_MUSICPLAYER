@@ -206,7 +206,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void modoContinuo(ActionEvent event) {
+    void modoContinuo() {
         if (modo_activado){
             modo_activado = false;
             System.out.println("Modo continuo desactivado");
@@ -219,13 +219,20 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void nextCancion() {
+    void nextCancion() throws SerialPortException {
         cancion_actual = cancion_actual.Sig;
         mediaPlayer.stop();
         beginTimer();
         File file = new File(cancion_actual.getDireccion());
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
+        if (cancion_actual.isFavorita()){
+            port.writeBytes("F".getBytes());
+        }
+        else {
+            port.writeBytes("N".getBytes());
+        }
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -251,13 +258,20 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void prevCancion() {
+    void prevCancion() throws SerialPortException {
         cancion_actual = cancion_actual.Ant;
         mediaPlayer.stop();
         beginTimer();
         File file = new File(cancion_actual.getDireccion());
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
+        if (cancion_actual.isFavorita()){
+            port.writeBytes("F".getBytes());
+        }
+        else {
+            port.writeBytes("N".getBytes());
+        }
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -276,6 +290,12 @@ public class Controlador_biblio1 implements Initializable {
 
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
+            if (cancion_actual.isFavorita()){
+                port.writeBytes("F".getBytes());
+            }
+            else {
+                port.writeBytes("N".getBytes());
+            }
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -289,6 +309,13 @@ public class Controlador_biblio1 implements Initializable {
             x++;
         }
         else {
+            if (cancion_actual.isFavorita()){
+                port.writeBytes("F".getBytes());
+            }
+            else {
+                port.writeBytes("N".getBytes());
+            }
+
             mediaPlayer.play();
             beginTimer();
         }
@@ -321,8 +348,11 @@ public class Controlador_biblio1 implements Initializable {
                 barraCancion.setProgress(current/end);
                 if(current/end == 1){
                     if (modo_activado){
-                        nextCancion();
-                        songLabel.setText(file.getName());
+                        try {
+                            nextCancion();
+                        } catch (SerialPortException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                     else {
                         cancelTimer();
@@ -338,7 +368,7 @@ public class Controlador_biblio1 implements Initializable {
         timer.cancel();
     }
 
-    SerialPort port = new SerialPort("COM4");
+    SerialPort port = new SerialPort("COM3");
 
     public void arduino() {
         try {
@@ -350,7 +380,6 @@ public class Controlador_biblio1 implements Initializable {
                 if (event.isRXCHAR()) {
                     try {
                         String msg = port.readString();
-                        System.out.println(msg);
                         if (msg.equals("1")) {
                             reproducir();
                         }
@@ -362,6 +391,12 @@ public class Controlador_biblio1 implements Initializable {
                         }
                         if (msg.equals("4")) {
                             prevCancion();
+                        }
+                        if (msg.equals("M")){
+                            modoContinuo();
+                        }
+                        if (msg.equals("T")){
+                            marcarFavorita();
                         }
                         if (msg.equals("5")) {
                             volumen(0);
@@ -626,7 +661,6 @@ public class Controlador_biblio1 implements Initializable {
             if (actual.getNombre().equals(biblio_a_borrar.getValue())){
                 CurrentLista.listabibliotecas.eliminarBiblio(actual);
                 CurrentLista.Guardar(UsuarioSelec);
-
                 insertBiblios();
             }
             else {
@@ -635,6 +669,20 @@ public class Controlador_biblio1 implements Initializable {
         }
 
     }
+
+    private void marcarFavorita() throws SerialPortException {
+        if (cancion_actual.isFavorita()){
+            cancion_actual.setFavorita(false);
+            CurrentLista.Guardar(UsuarioSelec);
+            port.writeBytes("N".getBytes());
+        }
+        else {
+            cancion_actual.setFavorita(true);
+            CurrentLista.Guardar(UsuarioSelec);
+            port.writeBytes("F".getBytes());
+        }
+    }
+
 
 
 
