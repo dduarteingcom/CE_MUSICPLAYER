@@ -170,6 +170,8 @@ public class Controlador_biblio1 implements Initializable {
     private ChoiceBox<String> biblio_a_borrar;
     @FXML
     private Button borrar_biblioButton;
+    @FXML
+    private TextField letra_editar;
 
 
     private Media media;
@@ -642,7 +644,25 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void EditarCancion(ActionEvent event) {
+        String cancion = cancion_a_editar.getValue();
+        Cancion actual = new Cancion("","","","","","",null, null, "");
+        actual = biblio_seleccionada.Primero;
+        do {
+            if (actual.getNombre().equals(cancion)){
+                actual.setGen(genero_editar.getText());
+                actual.setArtista(artista_editar.getText());
+                actual.setAlbum(album_editar.getText());
+                actual.setAno(año_editar.getText());
+                actual.setLetra(letra_editar.getText());
+                CurrentLista.Guardar(UsuarioSelec);
+                verCanciones();
+                break;
+            }
+            else {
+                actual = actual.Sig;
+            }
 
+        }while (actual != biblio_seleccionada.Primero);
 
     }
 
