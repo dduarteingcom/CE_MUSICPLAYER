@@ -199,8 +199,9 @@ public class Controlador_biblio1 implements Initializable {
 
 
     @FXML
-    void cerrarSesion(ActionEvent event) throws IOException {
+    void cerrarSesion(ActionEvent event) throws IOException, SerialPortException {
         Main m = new Main();
+        port.closePort();
         m.cambioEscena("Ventana_sesion.fxml");
     }
 
