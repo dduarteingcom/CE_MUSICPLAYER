@@ -177,17 +177,10 @@ public class Controlador_biblio1 implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
 
-    private File directory;
-    private File[] files;
-
-    private ArrayList<File> songs;
-
     private Timer timer;
     private TimerTask task;
     private boolean running;
-    private int songNumber;
 
-    String[] canciones;
 
     private Biblioteca biblio_seleccionada;
     private Cancion cancion_actual;
@@ -201,14 +194,14 @@ public class Controlador_biblio1 implements Initializable {
 
 
     @FXML
-    void cerrarSesion(ActionEvent event) throws IOException, SerialPortException {
+    private void cerrarSesion(ActionEvent event) throws IOException, SerialPortException {
         Main m = new Main();
         port.closePort();
         m.cambioEscena("Ventana_sesion.fxml");
     }
 
     @FXML
-    void modoContinuo() {
+    private void modoContinuo() {
         if (modo_activado){
             modo_activado = false;
             System.out.println("Modo continuo desactivado");
@@ -221,7 +214,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void nextCancion() throws SerialPortException {
+    private void nextCancion() throws SerialPortException {
         cancion_actual = cancion_actual.Sig;
         mediaPlayer.stop();
         beginTimer();
@@ -245,12 +238,12 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void pausar() {
+    private void pausar() {
         cancelTimer();
         mediaPlayer.pause();
     }
 
-    void volumen(int volumen) {
+    private void volumen(int volumen) {
         if (this.mediaPlayer == null){
             return;
         }
@@ -260,7 +253,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void prevCancion() throws SerialPortException {
+    private void prevCancion() throws SerialPortException {
         cancion_actual = cancion_actual.Ant;
         mediaPlayer.stop();
         beginTimer();
@@ -284,7 +277,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void reproducir() throws SerialPortException {
+    private void reproducir() throws SerialPortException {
         if (x == 0){
             File file = new File(cancion_actual.getDireccion());
             System.out.println(cancion_actual.getNombre());
@@ -322,24 +315,17 @@ public class Controlador_biblio1 implements Initializable {
             beginTimer();
         }
 
-        /*
-        System.out.println(songs.get(songNumber).getName());
-        mediaPlayer.play();
-
-         */
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //obtenerCanciones();
         arduino();
         insertBiblios();
         label_usuario.setText(UsuarioSelec);
 
     }
 
-    public void beginTimer(){
+    private void beginTimer(){
         timer = new Timer();
         task = new TimerTask() {
             @Override
@@ -365,14 +351,14 @@ public class Controlador_biblio1 implements Initializable {
         timer.scheduleAtFixedRate(task, 1000, 1000);
     }
 
-    public void cancelTimer(){
+    private void cancelTimer(){
         running = false;
         timer.cancel();
     }
 
     SerialPort port = new SerialPort("COM3");
 
-    public void arduino() {
+    private void arduino() {
         try {
             port.openPort();
 
@@ -430,7 +416,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
 
-   public void insertBiblios(){
+    private void insertBiblios(){
         menuSelec.getItems().clear();
        ObservableList<String> lista_biblios = FXCollections.observableArrayList();
 
@@ -452,7 +438,7 @@ public class Controlador_biblio1 implements Initializable {
         }
    }
 
-   public void verBiblio(String x){
+    private void verBiblio(String x){
        Biblioteca actual= new Biblioteca(x);
        actual= CurrentLista.listabibliotecas.Primero;
        while(actual!=null){
@@ -465,7 +451,7 @@ public class Controlador_biblio1 implements Initializable {
        }
 
    }
-   public void verCanciones(){
+    private void verCanciones(){
         ObservableList<String> list = FXCollections.observableArrayList();
        ObservableList<String> lista_edicion = FXCollections.observableArrayList();
 
@@ -489,12 +475,12 @@ public class Controlador_biblio1 implements Initializable {
 
    }
 
-    public String obtFecha(){
+    private String obtFecha(){
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
         return timeStamp;
     }
     @FXML
-    void CrearNBiblioteca(ActionEvent event) {
+    private void CrearNBiblioteca(ActionEvent event) {
         Biblioteca biblioteca = new Biblioteca(EntryNomBi.getText());
         biblioteca.setFechaC(obtFecha());
 
@@ -515,7 +501,7 @@ public class Controlador_biblio1 implements Initializable {
         });
     }
     @FXML
-    void AgBohemian(ActionEvent event) {
+    private void AgBohemian(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Bohemian Rhapsody");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -526,7 +512,7 @@ public class Controlador_biblio1 implements Initializable {
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
-    void AgBones(ActionEvent event) {
+    private void AgBones(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Bones");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -538,7 +524,7 @@ public class Controlador_biblio1 implements Initializable {
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
-    void AgEnemy(ActionEvent event) {
+    private void AgEnemy(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Enemy");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -550,7 +536,7 @@ public class Controlador_biblio1 implements Initializable {
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
-    void AgEye(ActionEvent event) {
+    private void AgEye(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Eye Of The Tiger");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -563,7 +549,7 @@ public class Controlador_biblio1 implements Initializable {
 
     }
     @FXML
-    void AgLivin(ActionEvent event) {
+    private void AgLivin(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Livin On A Prayer");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -575,7 +561,7 @@ public class Controlador_biblio1 implements Initializable {
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
-    void AgNeverita(ActionEvent event) {
+    private void AgNeverita(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Neverita");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -587,7 +573,7 @@ public class Controlador_biblio1 implements Initializable {
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
-    void AgNothing(ActionEvent event) {
+    private void AgNothing(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Nothing Else Matters");
 
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
@@ -603,7 +589,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void AgStolen(ActionEvent event) {
+    private void AgStolen(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Stolen Dance");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -616,7 +602,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void AgTacones(ActionEvent event) {
+    private void AgTacones(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Tacones Rojos");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -629,7 +615,7 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void AgTom(ActionEvent event) {
+    private void AgTom(ActionEvent event) {
         biblio_seleccionada.InsertnewSong("Tom's Diner");
         list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
                 +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
@@ -643,7 +629,7 @@ public class Controlador_biblio1 implements Initializable {
 
 
     @FXML
-    void EditarCancion(ActionEvent event) {
+    private void EditarCancion(ActionEvent event) {
         String cancion = cancion_a_editar.getValue();
         Cancion actual = new Cancion("","","","","","",null, null, "");
         actual = biblio_seleccionada.Primero;
@@ -667,14 +653,14 @@ public class Controlador_biblio1 implements Initializable {
     }
 
     @FXML
-    void borrarCancion(ActionEvent event) {
+    private void borrarCancion(ActionEvent event) {
         biblio_seleccionada.eliminarCan(cancion_a_borrar.getValue());
         verCanciones();
         CurrentLista.Guardar(UsuarioSelec);
     }
 
     @FXML
-    void borrarBiblioteca(ActionEvent event) {
+    private void borrarBiblioteca(ActionEvent event) {
         Biblioteca actual= new Biblioteca("");
         actual= CurrentLista.listabibliotecas.Primero;
         while(actual!=null){
