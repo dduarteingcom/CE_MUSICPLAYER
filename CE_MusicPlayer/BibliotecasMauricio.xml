@@ -231,7 +231,9 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
+
             <Nombre>Neverita</Nombre>
+
             <Genero>Urbano latino</Genero>
             <Artista>Bad Bunny</Artista>
             <Album>Un verano sin ti</Album>
@@ -276,7 +278,9 @@
     <Biblioteca Nombre="Punk">
         <Fecha/>
         <Cancion>
+
             <Nombre>Enemy</Nombre>
+
             <Genero>Glam metal</Genero>
             <Artista>Bon Jovi</Artista>
             <Album>Slippery When Wet</Album>
@@ -331,6 +335,7 @@
         </Cancion>
         <Cancion>
             <Nombre>Livin on a prayer</Nombre>
+
             <Genero>Hard Rock</Genero>
             <Artista>Survivor</Artista>
             <Album>Eye Of the Tiger</Album>
@@ -380,7 +385,9 @@
             <Favorita>false</Favorita>
         </Cancion>
         <Cancion>
+
             <Nombre>Bones</Nombre>
+
             <Genero>Pop Rock</Genero>
             <Artista>Imagine Dragons</Artista>
             <Album>Mercury – Act 2</Album>

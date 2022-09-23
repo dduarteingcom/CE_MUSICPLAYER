@@ -161,15 +161,16 @@ public class ListaMayor {
                             }
 
 
-                            if (item.getNodeType() == Node.ELEMENT_NODE) {
-
-                                Cancion cancion = new Cancion("", "", "", "", "", "", null, null, "");
+                            if (item.getNodeType() == Node.ELEMENT_NODE&&x.getNombre().equals(id.trim())) {
                                 NodeList childNodes2 = item.getChildNodes();
+
+                                Cancion cancion = new Cancion("A", "B", "C", "D", "E", "F", null, null, "G");
                                 for (int z = 0; z < childNodes2.getLength(); z++) {
                                     Node item2 = childNodes2.item(z);
 
                                     if("Nombre".equalsIgnoreCase(item2.getNodeName())){
                                         cancion.setNombre(item2.getTextContent());
+                                        System.out.println(item2.getTextContent());
                                     }
                                     else if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setGen(item2.getTextContent());
@@ -187,10 +188,14 @@ public class ListaMayor {
                                     else if ("Favorita".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setFavorita(Boolean.valueOf(item2.getTextContent()));
                                     }
+
+                                }
+                                if(!cancion.getNombre().equals("A")){
+                                    x.InsertarCan(cancion);
+                                    x.Tamano++;
                                 }
 
-                                x.InsertarCan(cancion);
-                                x.Tamano++;
+
                             }
 
                         }
@@ -203,7 +208,5 @@ public class ListaMayor {
 
 
     }
-    public void eliminarBiblio(Biblioteca x){
 
-    }
 }
