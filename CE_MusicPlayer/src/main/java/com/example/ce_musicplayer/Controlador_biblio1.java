@@ -25,8 +25,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.example.ce_musicplayer.Controlador_inicio.CurrentLista;
-import static com.example.ce_musicplayer.Controlador_inicio.UsuarioSelec;
+import static com.example.ce_musicplayer.Controlador_inicio.*;
 
 
 public class Controlador_biblio1 implements Initializable {
@@ -144,6 +143,9 @@ public class Controlador_biblio1 implements Initializable {
     @FXML
     private MenuItem LTom;
 
+    @FXML
+    private Label label_usuario;
+
 
 
     private Media media;
@@ -180,7 +182,7 @@ public class Controlador_biblio1 implements Initializable {
 
     @FXML
     void modoContinuo(ActionEvent event) {
-        if (modo_activado == true){
+        if (modo_activado){
             modo_activado = false;
             System.out.println("Modo continuo desactivado");
         }
@@ -201,38 +203,6 @@ public class Controlador_biblio1 implements Initializable {
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(file.getName());
         mediaPlayer.play();
-
-
-        /*
-        if (songNumber < songs.size() - 1) {
-            songNumber++;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    songLabel.setText(songs.get(songNumber).getName());
-                }
-            });
-            mediaPlayer.play();
-
-        } else {
-            songNumber = 0;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    songLabel.setText(songs.get(songNumber).getName());
-                }
-            });
-
-            mediaPlayer.play();
-        }
-
-         */
     }
 
     @FXML
@@ -260,36 +230,6 @@ public class Controlador_biblio1 implements Initializable {
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(file.getName());
         mediaPlayer.play();
-
-        /*
-        if (songNumber > 0) {
-            songNumber--;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    songLabel.setText(songs.get(songNumber).getName());
-                }
-            });
-            mediaPlayer.play();
-
-        } else {
-            songNumber = songs.size() - 1;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    songLabel.setText(songs.get(songNumber).getName());
-                }
-            });
-            mediaPlayer.play();
-        }
-
-         */
     }
 
     @FXML
@@ -319,8 +259,9 @@ public class Controlador_biblio1 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //obtenerCanciones();
-        //arduino();
+        arduino();
         insertBiblios();
+        label_usuario.setText(UsuarioSelec);
 
     }
 
@@ -334,7 +275,7 @@ public class Controlador_biblio1 implements Initializable {
                 double end = media.getDuration().toSeconds();
                 barraCancion.setProgress(current/end);
                 if(current/end == 1){
-                    if (modo_activado == true){
+                    if (modo_activado){
                         nextCancion();
                         songLabel.setText(file.getName());
                     }
@@ -462,8 +403,7 @@ public class Controlador_biblio1 implements Initializable {
 
    }
    public void verCanciones(){
-       songs = new ArrayList<File>();
-
+        ObservableList<String> list = FXCollections.observableArrayList();
         Cancion actual = new Cancion("","","","","","",null, null, "");
         actual = biblio_seleccionada.Primero;
         do {
@@ -471,14 +411,6 @@ public class Controlador_biblio1 implements Initializable {
             list.add("Nombre: "+actual.getNombre()+"       "+"Genero: "+actual.getGen()+"       "+"Artista: "+actual.getArtista()+"       "+"Album: " +actual.getAlbum()+"       "+"Año: "+actual.getAno());
             Lista_canciones.setItems(list);
             System.out.println(actual.getDireccion());
-            /*
-            File file = new File(actual.getDireccion());
-            songs.add(file);
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            songLabel.setText(songs.get(songNumber).getName());
-
-             */
             actual = actual.Sig;
 
         }while (actual != biblio_seleccionada.Primero);
@@ -486,20 +418,6 @@ public class Controlador_biblio1 implements Initializable {
 
    }
 
-    public void crearBiblioteca(ActionEvent actionEvent) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("Nueva_biblio.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setTitle("New Window");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-        }
-    }
     public String obtFecha(){
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
         return timeStamp;
@@ -523,9 +441,6 @@ public class Controlador_biblio1 implements Initializable {
                 verBiblio(biblioteca.getNombre());
             }
         });
-
-
-
     }
     @FXML
     void AgBohemian(ActionEvent event) {
