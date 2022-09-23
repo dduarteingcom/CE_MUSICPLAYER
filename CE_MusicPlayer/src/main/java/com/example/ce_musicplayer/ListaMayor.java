@@ -22,13 +22,13 @@ public class ListaMayor {
 
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "CE_MusicPlayer/BibliotecasMbappe.xml";
+            archivo = "D:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
         try {
             Biblioteca temporal = new Biblioteca("");
