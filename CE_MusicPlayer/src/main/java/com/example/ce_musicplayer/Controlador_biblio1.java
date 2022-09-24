@@ -28,43 +28,66 @@ import java.util.logging.Logger;
 
 import static com.example.ce_musicplayer.Controlador_inicio.*;
 
-
+/**
+ * Clase que contiene los atributos y necesarios para funcionar la ventana del reproductor de música.
+ */
 public class Controlador_biblio1 implements Initializable {
-
-    @FXML
-    private Pane pane;
-
+    /**
+     * barraCancion es una pequeña barra que muestra el progreso de la cancion que se está reproduciendo
+     */
     @FXML
     private ProgressBar barraCancion;
 
+    /**
+     * barra_menu va a guardar los diferentes opciones de menú para diferentes funciones
+     */
     @FXML
     private MenuBar barra_menu;
 
+    /**
+     * Opcion que permita al usuario realizar la funcion de cerrar sesión.
+     */
     @FXML
     private MenuItem cerrar_sesion;
+    /**
+     * Lista que muestra las canciones de una biblioteca
+     */
     @FXML
     private ListView<String> Lista_canciones;
-
+    /**
+     * Botón que permita al usuario activar el modo continuo
+     */
     @FXML
     private Button modoButton;
-
+    /**
+     * Botón que permite al usuario pasar a la siguiente cancion
+     */
     @FXML
     private Button nextButton;
+    /**
+     * Botón que permite al usuario pausar la cancion que se está reproduciendo.
+     */
 
     @FXML
     private Button pauseButton;
+    /**
+     * Botón que permite al usuario reproducir la cancion.
+     */
 
     @FXML
     private Button playButton;
+    /**
+     * Botón que permite al usuario pasar a la cancion anterior.
+     */
 
     @FXML
     private Button prevButton;
+    /**
+     * Label que muestra el nombre de la canción que se está reproduciendo.
+     */
 
     @FXML
     private Label songLabel;
-
-    @FXML
-    private Slider volumen;
 
     @FXML
     private Menu menuCancion;
@@ -73,12 +96,14 @@ public class Controlador_biblio1 implements Initializable {
     private Menu menuCuenta;
 
     @FXML
-    private Menu menuEdit;
-
-    @FXML
     private Menu menuSelec;
     @FXML
     private Button BotCrearBi;
+    @FXML
+    private Button editBiblioButton;
+
+    @FXML
+    private TextField nuevoNombre;
 
     @FXML
     private TextField EntryNomBi;
@@ -423,7 +448,7 @@ public class Controlador_biblio1 implements Initializable {
        Biblioteca actual= new Biblioteca("");
         actual= CurrentLista.listabibliotecas.Primero;
         while(actual!=null){
-            MenuItem biblio = new Menu(actual.getNombre()+"  "+actual.getFechaC());
+            MenuItem biblio = new Menu(actual.getNombre()+"  "+ "N° Canciones: "+actual.getTamano()+"  "+actual.getFechaC());
             Biblioteca finalActual = actual;
             biblio.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -509,6 +534,8 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
+
         CurrentLista.Guardar(UsuarioSelec);
     }
     @FXML
@@ -520,6 +547,8 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
+
 
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -532,6 +561,8 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
+
 
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -544,6 +575,8 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
+
 
         CurrentLista.Guardar(UsuarioSelec);
 
@@ -557,6 +590,7 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
 
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -569,6 +603,7 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
 
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -582,6 +617,7 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
 
         Lista_canciones.setItems(list);
+        insertBiblios();
         verCanciones();
 
         CurrentLista.Guardar(UsuarioSelec);
@@ -597,6 +633,8 @@ public class Controlador_biblio1 implements Initializable {
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
         verCanciones();
+        insertBiblios();
+
 
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -609,6 +647,7 @@ public class Controlador_biblio1 implements Initializable {
                 "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
+        insertBiblios();
         verCanciones();
 
         CurrentLista.Guardar(UsuarioSelec);
@@ -622,6 +661,7 @@ public class Controlador_biblio1 implements Initializable {
                 "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
                 +biblio_seleccionada.Ultimo.getAno());
         Lista_canciones.setItems(list);
+        insertBiblios();
         verCanciones();
 
         CurrentLista.Guardar(UsuarioSelec);
@@ -655,6 +695,7 @@ public class Controlador_biblio1 implements Initializable {
     @FXML
     private void borrarCancion(ActionEvent event) {
         biblio_seleccionada.eliminarCan(cancion_a_borrar.getValue());
+        insertBiblios();
         verCanciones();
         CurrentLista.Guardar(UsuarioSelec);
     }
@@ -688,11 +729,11 @@ public class Controlador_biblio1 implements Initializable {
             port.writeBytes("F".getBytes());
         }
     }
-
-
-
-
-
-
+    @FXML
+    void editarBiblioteca(ActionEvent event) {
+        biblio_seleccionada.setNombre(nuevoNombre.getText());
+        CurrentLista.Guardar(UsuarioSelec);
+        insertBiblios();
+    }
 
 }
