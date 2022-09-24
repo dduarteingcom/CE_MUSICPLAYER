@@ -13,31 +13,78 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Clase que corresponde a una lista circular doblemente enlazada, la cual contiene las canciones que serán reproducidas.
+ * Así como la gestión de estas canciones.Cabe aclarar que además de ser una lista esta clase también corresponde a un nodo,
+ *  ya que esta va dentro de la clase Lista_bibliotecas
+ */
 public class Biblioteca {
+    /**
+     * Atributo de tipo canción que corresponde a la primera canción de la biblioteca.
+     */
     public Cancion Primero;
+    /**
+     * Atributo de tipo canción que corresponde a la última canción de la biblioteca.
+     */
     public Cancion Ultimo;
+    /**
+     * Atributo de tipo string que corresponde al nombre de la biblioteca.
+     */
     public String Nombre;
-    public Biblioteca Sig;
-    public int Tamano;
+    /**
+     * Atributo de tipo string que corresponde a la fecha de creación de la biblioteca.
+     */
     public String FechaC;
+    /**
+     * Atributo de tipo Biblioteca que corresponde a la biblioteca que le sigue.
+     */
+    public Biblioteca Sig;
+    /**
+     * Atributo de tipo Integer que corresponde al tamaño de la biblioteca.
+     */
+    public int Tamano;
 
+    /**
+     * Método que retorna el string correspondiente al nombre de la biblioteca.
+     * @return Nombre de la biblioteca.
+     */
     public String getNombre() {
         return Nombre;
     }
+
+    /**
+     * Método que modifica el nombre de la biblioteca.
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
+    /**
+     * Método que retorna el string correspondiente a la fecha de creación de la biblioteca.
+     * @return Fecha de creación de la biblioteca.
+     */
     public String getFechaC() {
         return FechaC;
     }
+    /**
+     * Método que modifica la fecha de creación de la biblioteca.
+     * @param fecha
+     */
     public void setFechaC(String fecha) {
         FechaC = fecha;
     }
-
+    /**
+     * Método que retorna el int correspondiente al número de canciones de la biblioteca.
+     * @return Nombre de la biblioteca.
+     */
     public int getTamano() {
         return Tamano;
     }
 
+    /**
+     * Constructor que permite crear nuevas instancias de la clase biblioteca
+     * @param nombre
+     */
     public Biblioteca(String nombre) {
         this.Primero = null;
         this.Ultimo = null;
@@ -46,6 +93,11 @@ public class Biblioteca {
         this.Nombre = nombre;
         this.FechaC="";
     }
+
+    /**
+     * Método que permite añadir una nueva canción a la biblioteca.
+     * @param x
+     */
     public void InsertarCan(Cancion x) {
         //Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");
         if (Primero == null) {
@@ -63,6 +115,11 @@ public class Biblioteca {
             this.Tamano++;
         }
     }
+
+    /**
+     * Método que busca en la metadata original la canción que quiere ser añadida a la biblioteca.
+     * @param x
+     */
     public void InsertnewSong(String x) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Cancion cancionN = new Cancion("", "", "", "", "", "", null, null, "");
@@ -168,8 +225,12 @@ public class Biblioteca {
 
         }
 
-
-        public void eliminarCan (String x){
+    /**
+     * Método que elimina una canción de la biblioteca, busca la canción que debe ser elimina en toda la biblioteca, para esto
+     * compara el string recibido por el parámetro y los nombres de las canciones.
+     * @param x
+     */
+    public void eliminarCan (String x){
             Cancion actual = new Cancion("", "", "", "", "", "", null, null, "");
             Cancion prev = new Cancion("", "", "", "", "", "", null, null, "");
             actual = Primero;

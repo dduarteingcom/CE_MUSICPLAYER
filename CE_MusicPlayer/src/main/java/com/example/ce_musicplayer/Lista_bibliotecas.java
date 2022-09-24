@@ -1,21 +1,38 @@
 package com.example.ce_musicplayer;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
+/**
+ * Clase que corresponde a una lista simple enlazada, la cual contiene las bibliotecas que sean cargadas de alguno de los xml.
+ */
 public class Lista_bibliotecas {
+    /**
+     * Atributo de tipo Biblioteca que corresponde a la primera biblioteca de la lista.
+     */
     public Biblioteca Primero;
+
+    /**
+     * Constructor que permite crear nuevas instancias de la clase Lista-bibliotecas.
+     */
 
     public Lista_bibliotecas(){
         this.Primero=null;
 
     }
+
+    /**
+     * Método que inserta bibliotecas a la lista
+     * @param x
+     */
     public void insertBiblio(Biblioteca x){
         x.Sig=Primero;
         this.Primero= x;
 
 
     }
+
+    /**
+     * Método que se encarga de eliminar bibliotecas de la lista.
+     * @param x
+     */
     public void eliminarBiblio(Biblioteca x){
         Biblioteca actual= new Biblioteca("");
         actual= this.Primero;
@@ -40,11 +57,5 @@ public class Lista_bibliotecas {
             }
         }
     }
-    public void ObtFecha() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println(dtf.format(now));
-    }
-
 
 }
