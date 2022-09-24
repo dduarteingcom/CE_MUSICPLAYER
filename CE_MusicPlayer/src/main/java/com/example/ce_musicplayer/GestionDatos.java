@@ -14,12 +14,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ListaMayor {
+/**
+ * En esta Clase se hace el guardado y lectura de datos de los xml. La información presente guardada es necesaria para
+ * crear nuevas bibliotecas que contengan la información de los xml que luego serán añadidos a una nueva instancia de
+ * la clase Lista_bibliotecas.
+ */
+public class GestionDatos {
+    /**
+     * String que posee el nombre del xml con el que se está trabajando.
+     */
+    public String archivo;
     public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
 
-
-
-
+    /**
+     * Método para guardar la lista que contiene las bibliotecas en el xml que corresponda.
+     * @param nombre
+     */
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
             archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
@@ -100,8 +110,14 @@ public class ListaMayor {
             System.out.println(ex.getMessage());
         }
     }
-    public String archivo;
-    public void LectorBM(String nombre) {
+
+    /**
+     * Método que recorre el archivo xml creando nuevas bibliotecas y cambiando los nombres de las bibliotecas creadas
+     * por las que corresponden del xml. Además, llama a otro método que le va añadiendo las canciones pertenecientes
+     * al la bilioteca según el xml.
+     * @param nombre
+     */
+    public void Lector(String nombre) {
         if(nombre.equals("Mauricio")){
             archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
@@ -138,6 +154,12 @@ public class ListaMayor {
 
     }
 
+    /**
+     * Método que se encarga de añadir las canciones a la biblioteca creada en el método Lector(). Para esto recorre
+     * el xml y verifica las canciones que le pertenecen. Es importante mencionar que antes de añadir las canciones
+     * modifica sus atributos para que correspondan a los registrados en el xml.
+     * @param x
+     */
     public void LeerCanciones(Biblioteca x) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

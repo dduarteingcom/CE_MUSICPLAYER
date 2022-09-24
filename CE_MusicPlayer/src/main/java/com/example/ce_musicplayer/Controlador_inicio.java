@@ -51,7 +51,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
 
     @FXML
     private ChoiceBox<String> prov_lista;
-    public static ListaMayor CurrentLista = new ListaMayor();
+    public static GestionDatos CurrentLista = new GestionDatos();
     public static String UsuarioSelec;
     private String[] provincias = {"San Jose", "Cartago", "Alajuela", "Puntarenas",
             "Heredia", "Guanacaste"};
@@ -76,7 +76,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                     actual.getData().getProvincia().equals(usuario.getProvincia()) & actual.getData().getContrasena().equals(usuario.getContrasena())) {
 
                 if (usuario.getNombre().equals("Mauricio")){
-                    ListaMayor user = new ListaMayor();
+                    GestionDatos user = new GestionDatos();
                     user.LectorBM("Mauricio");
                     CurrentLista =user;
                     UsuarioSelec="Mauricio";
@@ -84,13 +84,13 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
 
                 }
                 if (usuario.getNombre().equals("Daniel")){
-                    ListaMayor user = new ListaMayor();
+                    GestionDatos user = new GestionDatos();
                     user.LectorBM("Daniel");
                     CurrentLista =user;
                     UsuarioSelec="Daniel";
                 }
                 if (usuario.getNombre().equals("Mbappe")){
-                    ListaMayor user = new ListaMayor();
+                    GestionDatos user = new GestionDatos();
                     user.LectorBM("Mbappe");
                     CurrentLista =user;
                     UsuarioSelec="Mbappe";
