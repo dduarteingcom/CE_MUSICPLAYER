@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+
 /**
  * En esta Clase se hace el guardado y lectura de datos de los xml. La información presente guardada es necesaria para
  * crear nuevas bibliotecas que contengan la información de los xml que luego serán añadidos a una nueva instancia de
@@ -30,6 +31,14 @@ public class GestionDatos {
      * Método para guardar la lista que contiene las bibliotecas en el xml que corresponda.
      * @param nombre
      */
+
+public class GestionDatos {
+    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
+
+
+
+
+
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
             archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
@@ -111,6 +120,7 @@ public class GestionDatos {
         }
     }
 
+
     /**
      * Método que recorre el archivo xml creando nuevas bibliotecas y cambiando los nombres de las bibliotecas creadas
      * por las que corresponden del xml. Además, llama a otro método que le va añadiendo las canciones pertenecientes
@@ -118,6 +128,10 @@ public class GestionDatos {
      * @param nombre
      */
     public void Lector(String nombre) {
+
+    public String archivo;
+    public void LectorBM(String nombre) {
+
         if(nombre.equals("Mauricio")){
             archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
@@ -141,6 +155,10 @@ public class GestionDatos {
                     Biblioteca bibliotecatmp = new Biblioteca(id);
 
                     this.LeerCanciones(bibliotecatmp);
+
+
+                    bibliotecatmp.Tamano/=2;
+
                     listabibliotecas.insertBiblio(bibliotecatmp);
 
 
@@ -154,12 +172,14 @@ public class GestionDatos {
 
     }
 
+
     /**
      * Método que se encarga de añadir las canciones a la biblioteca creada en el método Lector(). Para esto recorre
      * el xml y verifica las canciones que le pertenecen. Es importante mencionar que antes de añadir las canciones
      * modifica sus atributos para que correspondan a los registrados en el xml.
      * @param x
      */
+
     public void LeerCanciones(Biblioteca x) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

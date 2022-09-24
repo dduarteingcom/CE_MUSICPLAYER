@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="586.0" style="-fx-background-color: #919191;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_biblio1">
    <children>
-      <MenuBar fx:id="barra_menu" layoutX="129.0" layoutY="2.0" prefHeight="25.0" prefWidth="472.0">
+      <MenuBar fx:id="barra_menu" layoutX="1.0" layoutY="2.0" prefHeight="26.0" prefWidth="600.0">
         <menus>
           <Menu fx:id="menuCuenta" mnemonicParsing="false" text="Cuenta">
             <items>
@@ -24,7 +24,6 @@
             </items>
           </Menu>
           <Menu fx:id="menuSelec" mnemonicParsing="false" text="Seleccionar Biblioteca" />
-          <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edicion Biblioteca" />
             <Menu fx:id="menuCancion" mnemonicParsing="false" text="Canciones Disponibles">
                <items>
                   <MenuItem fx:id="LBohemian" mnemonicParsing="false" text="Bohemian Rhapsody">
@@ -92,7 +91,7 @@
       </Label>
       <Button fx:id="modoButton" layoutX="165.0" layoutY="493.0" mnemonicParsing="false" onAction="#modoContinuo" text="Modo continuo" />
       <ListView fx:id="Lista_canciones" layoutY="27.0" prefHeight="457.0" prefWidth="472.0" />
-      <Label fx:id="label_usuario" layoutX="27.0" layoutY="4.0" text="Usuario" textFill="RED">
+      <Label fx:id="label_usuario" layoutX="402.0" layoutY="4.0" text="Usuario" textFill="RED">
          <font>
             <Font name="Webdings" size="18.0" />
          </font>
@@ -116,6 +115,17 @@
                      <children>
                         <ChoiceBox fx:id="biblio_a_borrar" layoutX="4.0" layoutY="14.0" prefHeight="25.0" prefWidth="120.0" />
                         <Button fx:id="borrar_biblioButton" layoutX="38.0" layoutY="45.0" mnemonicParsing="false" onAction="#borrarBiblioteca" text="Borrar" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" text="Editar Biblioteca">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="114.0">
+                     <children>
+                        <TextField fx:id="nuevoNombre" layoutX="9.0" layoutY="36.0" prefHeight="26.0" prefWidth="110.0" />
+                        <Label layoutX="24.0" layoutY="14.0" text="Nuevo nombre" />
+                        <Button fx:id="editBiblioButton" layoutX="35.0" layoutY="71.0" mnemonicParsing="false" onAction="#editarBiblioteca" text="Aceptar" />
                      </children>
                   </AnchorPane>
               </content>
