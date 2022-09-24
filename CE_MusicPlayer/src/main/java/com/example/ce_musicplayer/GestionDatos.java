@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ListaMayor {
+public class GestionDatos {
     public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
 
 
@@ -125,6 +125,7 @@ public class ListaMayor {
                     Biblioteca bibliotecatmp = new Biblioteca(id);
 
                     this.LeerCanciones(bibliotecatmp);
+                    bibliotecatmp.Tamano/=2;
                     listabibliotecas.insertBiblio(bibliotecatmp);
 
 

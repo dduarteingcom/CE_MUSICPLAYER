@@ -15,8 +15,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-
         stg = stage;
         Parent root = FXMLLoader.load(getClass().getResource("Ventana_sesion.fxml"));
         stage.setScene(new Scene(root));
@@ -25,9 +23,6 @@ public class Main extends Application {
         Biblioteca b1= new Biblioteca("");
         b1.InsertnewSong("Bones");
         System.out.println(b1.Primero.getGen());
-
-
-
     }
 
     public void cambioEscena(String fxml) throws IOException {
@@ -59,15 +54,15 @@ public class Main extends Application {
         System.out.println(b1.Primero.getGen());
         System.out.println(b1.Primero.getAlbum());
 
-        ListaMayor listaMayor = new ListaMayor();
-        listaMayor.listabibliotecas.insertBiblio(b1);
-        listaMayor.listabibliotecas.Primero.Primero.getNombre();
+        GestionDatos gestionDatos = new GestionDatos();
+        gestionDatos.listabibliotecas.insertBiblio(b1);
+        gestionDatos.listabibliotecas.Primero.Primero.getNombre();
 
-        listaMayor.Guardar("Daniel");
+        gestionDatos.Guardar("Daniel");
 
-        listaMayor.LectorBM("Daniel");
-        System.out.println(listaMayor.listabibliotecas.Primero.Primero.getNombre());
-        System.out.println(listaMayor.listabibliotecas.Primero.Primero.Sig.getNombre());
+        gestionDatos.LectorBM("Daniel");
+        System.out.println(gestionDatos.listabibliotecas.Primero.Primero.getNombre());
+        System.out.println(gestionDatos.listabibliotecas.Primero.Primero.Sig.getNombre());
 
 
 
