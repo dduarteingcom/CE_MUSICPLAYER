@@ -6,14 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
@@ -22,11 +19,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Calendar;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static com.example.ce_musicplayer.Controlador_inicio.*;
+import static com.example.ce_musicplayer.Controlador_inicio.CurrentLista;
+import static com.example.ce_musicplayer.Controlador_inicio.UsuarioSelec;
 
 
 public class Controlador_biblio1 implements Initializable {
@@ -319,7 +318,7 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        arduino();
+        //arduino();
         insertBiblios();
         label_usuario.setText(UsuarioSelec);
 
@@ -673,9 +672,7 @@ public class Controlador_biblio1 implements Initializable {
                 actual = actual.Sig;
             }
         }
-
     }
-
     private void marcarFavorita() throws SerialPortException {
         if (cancion_actual.isFavorita()){
             cancion_actual.setFavorita(false);
@@ -688,11 +685,4 @@ public class Controlador_biblio1 implements Initializable {
             port.writeBytes("F".getBytes());
         }
     }
-
-
-
-
-
-
-
 }
