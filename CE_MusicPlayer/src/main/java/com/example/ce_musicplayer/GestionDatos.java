@@ -1,19 +1,13 @@
 package com.example.ce_musicplayer;
-
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
+import java.io.*;
 /**
  * En esta Clase se hace el guardado y lectura de datos de los xml. La información presente guardada es necesaria para
  * crear nuevas bibliotecas que contengan la información de los xml que luego serán añadidos a una nueva instancia de
@@ -32,13 +26,13 @@ public class GestionDatos {
      */
     public void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
-            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
         else if(nombre.equals("Daniel")){
-            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
         }
         else{
-            archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
+            archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
         try {
             //Se crea una instancia para recorrer la biblioteca
@@ -139,21 +133,17 @@ public class GestionDatos {
             System.out.println(ex.getMessage());
         }
     }
-
     /**
      * Método que recorre el archivo xml creando nuevas bibliotecas y cambiando los nombres de las bibliotecas creadas
-     * por las que corresponden del xml. Además, llama a otro método que le va añadiendo las canciones pertenecientes
-     * al la bilioteca según el xml.
+     * por las que corresponden del xml. Además, las canciones de las bibliotecas también son añadidas.
      * @param nombre
      */
     public void Lector(String nombre) {
-        if(nombre.equals("Mauricio")){
+        if (nombre.equals("Mauricio")) {
             archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
-        }
-        else if(nombre.equals("Daniel")){
+        } else if (nombre.equals("Daniel")) {
             archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasDaniel.xml";
-        }
-        else{
+        } else {
             archivo = "C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMbappe.xml";
         }
         //Se crea una instancia de DocumentBuilderFactory.
@@ -178,24 +168,19 @@ public class GestionDatos {
                     Biblioteca bibliotecatmp = new Biblioteca(id);
                     if (bibliotecatmp.getNombre().equals(id.trim())) {
                         NodeList childBibliotecas = Biblioteca.getChildNodes();
-
                         for (int j = 0; j < childBibliotecas.getLength(); j++) {
                             Node item = childBibliotecas.item(j);
-                            if (item.getNodeName().equals("Fecha")){
+                            if (item.getNodeName().equals("Fecha")) {
                                 bibliotecatmp.setFechaC(item.getTextContent());
                             }
-                            if (item.getNodeType() == Node.ELEMENT_NODE&&bibliotecatmp.getNombre().equals(id.trim())) {
+                            if (item.getNodeType() == Node.ELEMENT_NODE && bibliotecatmp.getNombre().equals(id.trim())) {
                                 NodeList childNodes2 = item.getChildNodes();
-
                                 Cancion cancion = new Cancion("A", "B", "C", "D", "E", "F", null, null, "G");
                                 for (int z = 0; z < childNodes2.getLength(); z++) {
                                     Node item2 = childNodes2.item(z);
-
-                                    if("Nombre".equalsIgnoreCase(item2.getNodeName())){
+                                    if ("Nombre".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setNombre(item2.getTextContent());
-
-                                    }
-                                    else if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
+                                    } else if ("Genero".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setGen(item2.getTextContent());
                                     } else if ("Artista".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setArtista(item2.getTextContent());
@@ -207,24 +192,22 @@ public class GestionDatos {
                                         cancion.setLetra(item2.getTextContent());
                                     } else if ("Direccion".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setDireccion(item2.getTextContent());
-                                    }
-                                    else if ("Favorita".equalsIgnoreCase(item2.getNodeName())) {
+                                    } else if ("Favorita".equalsIgnoreCase(item2.getNodeName())) {
                                         cancion.setFavorita(Boolean.valueOf(item2.getTextContent()));
                                     }
-
                                 }
-                                if(!cancion.getNombre().equals("A")){
+                                if (!cancion.getNombre().equals("A")) {
                                     bibliotecatmp.InsertarCan(cancion);
                                     bibliotecatmp.Tamano++;
                                 }
                             }
                         }
+                        bibliotecatmp.Tamano /= 2;
+                        listabibliotecas.insertBiblio(bibliotecatmp);
                     }
-                    //Se inserta a listaBibliotecas la instancia de la biblioteca creada.
-                    listabibliotecas.insertBiblio(bibliotecatmp);
                 }
             }
-        } catch (SAXException | ParserConfigurationException | IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             throw new RuntimeException(e);
         }
     }
