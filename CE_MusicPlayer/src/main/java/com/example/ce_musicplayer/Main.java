@@ -35,29 +35,28 @@ public class Main extends Application {
         Lista_usuarios.lista_usuarios.insertarUsuario(new Usuario("Mbappe", "mfrappe@gmail.com", "Alajuela", "Mfrappe88"));
 
 
-
+        /*
         Cancion cancion1= new Cancion("Sea necio","a","a","a","a","a",null,null,"a");
         Cancion cancion2= new Cancion("a","a","a","a","a","a",null,null,"a");
         Cancion cancion3= new Cancion("a","a","a","a","a","a",null,null,"a");
-        Biblioteca b1= new Biblioteca("Mfrappe");
-        b1.setFechaC("Hoy");
-        //b1.InsertnewSong("Livin On A Prayer");
-        b1.InsertarCan(cancion1);
-        b1.InsertarCan(cancion2);
-        b1.InsertarCan(cancion3);
-        System.out.println(b1.Primero.getNombre());
-        System.out.println(b1.Primero.getGen());
-        System.out.println(b1.Primero.getAlbum());
-
         GestionDatos gestionDatos = new GestionDatos();
         gestionDatos.listabibliotecas.insertBiblio(b1);
         gestionDatos.listabibliotecas.Primero.Primero.getNombre();
 
         gestionDatos.Guardar("Daniel");
 
-        gestionDatos.LectorBM("Daniel");
+        gestionDatos.Lector("Daniel");
         System.out.println(gestionDatos.listabibliotecas.Primero.Primero.getNombre());
         System.out.println(gestionDatos.listabibliotecas.Primero.Primero.Sig.getNombre());
+         */
+        Biblioteca b1= new Biblioteca("Mfrappe");
+        b1.setFechaC("Hoy");
+        //b1.InsertnewSong("Livin On A Prayer");
+        //b1.InsertnewSong("Eye Of The Tiger");
+
+        System.out.println(b1.getTamano());
+
+
 
 
 

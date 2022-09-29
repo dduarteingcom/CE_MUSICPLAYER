@@ -6,14 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
@@ -22,11 +19,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Calendar;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static com.example.ce_musicplayer.Controlador_inicio.*;
+import static com.example.ce_musicplayer.Controlador_inicio.CurrentLista;
+import static com.example.ce_musicplayer.Controlador_inicio.UsuarioSelec;
 
 /**
  * Clase que contiene los atributos y necesarios para funcionar la ventana del reproductor de música.
@@ -344,7 +343,7 @@ public class Controlador_biblio1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        arduino();
+        //arduino();
         insertBiblios();
         label_usuario.setText(UsuarioSelec);
 
@@ -509,6 +508,7 @@ public class Controlador_biblio1 implements Initializable {
         Biblioteca biblioteca = new Biblioteca(EntryNomBi.getText());
         biblioteca.setFechaC(obtFecha());
 
+
         CurrentLista.listabibliotecas.insertBiblio(biblioteca);
         MenuItem biblio = new Menu(biblioteca.getNombre());
 
@@ -517,6 +517,7 @@ public class Controlador_biblio1 implements Initializable {
         biblio_seleccionada=biblioteca;
         CurrentLista.Guardar(UsuarioSelec);
         insertBiblios();
+        System.out.println(biblioteca.getTamano());
 
         biblio.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -527,144 +528,148 @@ public class Controlador_biblio1 implements Initializable {
     }
     @FXML
     private void AgBohemian(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Bohemian Rhapsody");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Bohemian Rhapsody")){
+            biblio_seleccionada.InsertnewSong("Bohemian Rhapsody");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgBones(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Bones");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Bones")){
+            biblio_seleccionada.InsertnewSong("Bones");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgEnemy(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Enemy");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Enemy")){
+            biblio_seleccionada.InsertnewSong("Enemy");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgEye(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Eye Of The Tiger");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-
-        CurrentLista.Guardar(UsuarioSelec);
-
+        if (!biblio_seleccionada.CompRep("Eye Of The Tiger")){
+            biblio_seleccionada.InsertnewSong("Eye Of The Tiger");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgLivin(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Livin On A Prayer");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Livin On A Prayer")){
+            biblio_seleccionada.InsertnewSong("Livin On A Prayer");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgNeverita(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Neverita");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Neverita")){
+            biblio_seleccionada.InsertnewSong("Neverita");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
     @FXML
     private void AgNothing(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Nothing Else Matters");
-
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-
-        Lista_canciones.setItems(list);
-        insertBiblios();
-        verCanciones();
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Nothing Else Matters")){
+            biblio_seleccionada.InsertnewSong("Nothing Else Matters");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
 
     }
 
     @FXML
     private void AgStolen(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Stolen Dance");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        verCanciones();
-        insertBiblios();
-
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Stolen Dance")){
+            biblio_seleccionada.InsertnewSong("Stolen Dance");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
 
     @FXML
     private void AgTacones(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Tacones Rojos");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        insertBiblios();
-        verCanciones();
-
-        CurrentLista.Guardar(UsuarioSelec);
+        if (!biblio_seleccionada.CompRep("Tacones Rojos")){
+            biblio_seleccionada.InsertnewSong("Tacones Rojos");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
     }
 
     @FXML
     private void AgTom(ActionEvent event) {
-        biblio_seleccionada.InsertnewSong("Tom's Diner");
-        list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
-                +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
-                "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
-                +biblio_seleccionada.Ultimo.getAno());
-        Lista_canciones.setItems(list);
-        insertBiblios();
-        verCanciones();
+        if (!biblio_seleccionada.CompRep("Tom's Diner")){
+            biblio_seleccionada.InsertnewSong("Tom's Diner");
+            list.add("Nombre: "+biblio_seleccionada.Ultimo.getNombre()+"       "+"Genero: "
+                    +biblio_seleccionada.Ultimo.getGen()+"       "+"Artista: "+biblio_seleccionada.Ultimo.getArtista()+
+                    "       "+"Album: " +biblio_seleccionada.Ultimo.getAlbum()+"       "+"Año: "
+                    +biblio_seleccionada.Ultimo.getAno());
+            Lista_canciones.setItems(list);
+            verCanciones();
+            insertBiblios();
+            CurrentLista.Guardar(UsuarioSelec);
+        }
 
-        CurrentLista.Guardar(UsuarioSelec);
     }
 
 
@@ -714,9 +719,7 @@ public class Controlador_biblio1 implements Initializable {
                 actual = actual.Sig;
             }
         }
-
     }
-
     private void marcarFavorita() throws SerialPortException {
         if (cancion_actual.isFavorita()){
             cancion_actual.setFavorita(false);
@@ -729,6 +732,8 @@ public class Controlador_biblio1 implements Initializable {
             port.writeBytes("F".getBytes());
         }
     }
+
+
     @FXML
     void editarBiblioteca(ActionEvent event) {
         biblio_seleccionada.setNombre(nuevoNombre.getText());

@@ -77,7 +77,7 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
 
                 if (usuario.getNombre().equals("Mauricio")){
                     GestionDatos user = new GestionDatos();
-                    user.LectorBM("Mauricio");
+                    user.Lector("Mauricio");
                     CurrentLista =user;
                     UsuarioSelec="Mauricio";
 
@@ -85,13 +85,13 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
                 }
                 if (usuario.getNombre().equals("Daniel")){
                     GestionDatos user = new GestionDatos();
-                    user.LectorBM("Daniel");
+                    user.Lector("Daniel");
                     CurrentLista =user;
                     UsuarioSelec="Daniel";
                 }
                 if (usuario.getNombre().equals("Mbappe")){
                     GestionDatos user = new GestionDatos();
-                    user.LectorBM("Mbappe");
+                    user.Lector("Mbappe");
                     CurrentLista =user;
                     UsuarioSelec="Mbappe";
                 }
@@ -109,8 +109,6 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
         }
 
     }
-
-
 
 
 
