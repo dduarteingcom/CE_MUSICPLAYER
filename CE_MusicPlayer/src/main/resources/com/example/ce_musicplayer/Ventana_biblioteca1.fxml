@@ -84,13 +84,13 @@
       <Button fx:id="pauseButton" layoutX="38.0" layoutY="493.0" mnemonicParsing="false" onAction="#pausar" text="Pausa" />
       <Button fx:id="prevButton" layoutX="85.0" layoutY="493.0" mnemonicParsing="false" onAction="#prevCancion" text="Prev" />
       <Button fx:id="nextButton" layoutX="124.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextCancion" text="Next" />
-      <Label fx:id="songLabel" layoutX="390.0" layoutY="496.0" text="Canción" textFill="RED">
+      <Label fx:id="songLabel" layoutX="462.0" layoutY="496.0" text="Canción" textFill="RED">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </Label>
       <Button fx:id="modoButton" layoutX="165.0" layoutY="493.0" mnemonicParsing="false" onAction="#modoContinuo" text="Modo continuo" />
-      <ListView fx:id="Lista_canciones" layoutY="27.0" prefHeight="457.0" prefWidth="472.0" />
+      <ListView fx:id="Lista_canciones" layoutY="27.0" prefHeight="454.0" prefWidth="472.0" />
       <Label fx:id="label_usuario" layoutX="402.0" layoutY="4.0" text="Usuario" textFill="RED">
          <font>
             <Font name="Webdings" size="18.0" />
@@ -104,7 +104,7 @@
                      <children>
                         <TextField fx:id="EntryNomBi" layoutX="6.0" layoutY="23.0" prefHeight="25.0" prefWidth="116.0" />
                         <Button fx:id="BotCrearBi" layoutX="40.0" layoutY="57.0" mnemonicParsing="false" onAction="#CrearNBiblioteca" text="Crear " />
-                        <Label layoutX="93.0" layoutY="6.0" text=" " />
+                        <Label fx:id="errorBiblio" layoutX="14.0" layoutY="5.0" textFill="RED" />
                      </children>
                   </AnchorPane>
               </content>
@@ -126,6 +126,7 @@
                         <TextField fx:id="nuevoNombre" layoutX="9.0" layoutY="36.0" prefHeight="26.0" prefWidth="110.0" />
                         <Label layoutX="24.0" layoutY="14.0" text="Nuevo nombre" />
                         <Button fx:id="editBiblioButton" layoutX="35.0" layoutY="71.0" mnemonicParsing="false" onAction="#editarBiblioteca" text="Aceptar" />
+                        <Label fx:id="errorEditBiblio" layoutX="16.0" layoutY="3.0" textFill="RED" />
                      </children>
                   </AnchorPane>
               </content>
@@ -143,9 +144,10 @@
                         <TextField fx:id="album_editar" layoutX="7.0" layoutY="142.0" prefHeight="25.0" prefWidth="113.0" />
                         <Label layoutX="53.0" layoutY="167.0" text="Año" />
                         <TextField fx:id="año_editar" layoutX="7.0" layoutY="184.0" prefHeight="25.0" prefWidth="113.0" />
-                        <Button fx:id="editarButton" layoutX="39.0" layoutY="268.0" mnemonicParsing="false" onAction="#EditarCancion" text="Editar" />
+                        <Button fx:id="editarButton" layoutX="40.0" layoutY="274.0" mnemonicParsing="false" onAction="#EditarCancion" text="Editar" />
                         <Label layoutX="51.0" layoutY="210.0" text="Letra" />
                         <TextField fx:id="letra_editar" layoutX="7.0" layoutY="228.0" prefHeight="25.0" prefWidth="113.0" />
+                        <Label fx:id="errorEditCancion" layoutX="1.0" layoutY="255.0" textFill="RED" />
                      </children>
                   </AnchorPane>
               </content>
@@ -162,5 +164,6 @@
             </TitledPane>
          </panes>
       </Accordion>
+      <Button fx:id="buttonFav" layoutX="263.0" layoutY="493.0" mnemonicParsing="false" onAction="#marcarFav" text="Marcar Favorita" />
    </children>
 </AnchorPane>

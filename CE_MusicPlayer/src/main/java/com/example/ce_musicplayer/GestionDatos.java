@@ -24,22 +24,16 @@ public class GestionDatos {
     /**
      * String que posee el nombre del xml con el que se está trabajando.
      */
-    public String archivo;
-    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
+    public static String archivo;
+    public static Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
 
     /**
      * Método para guardar la lista que contiene las bibliotecas en el xml que corresponda.
      * @param nombre
      */
 
-public class GestionDatos {
-    public Lista_bibliotecas listabibliotecas =new Lista_bibliotecas();
 
-
-
-
-
-    public void Guardar(String nombre) {
+    public static void Guardar(String nombre) {
         if(nombre.equals("Mauricio")){
             archivo = "C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\BibliotecasMauricio.xml";
         }
@@ -127,9 +121,6 @@ public class GestionDatos {
      * al la bilioteca según el xml.
      * @param nombre
      */
-    public void Lector(String nombre) {
-
-    public String archivo;
     public void LectorBM(String nombre) {
 
         if(nombre.equals("Mauricio")){
