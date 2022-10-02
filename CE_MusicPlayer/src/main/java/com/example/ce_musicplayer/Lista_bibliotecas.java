@@ -12,50 +12,36 @@ public class Lista_bibliotecas {
     /**
      * Constructor que permite crear nuevas instancias de la clase Lista-bibliotecas.
      */
-
-    public Lista_bibliotecas(){
-        this.Primero=null;
-
+    public Lista_bibliotecas() {
+        this.Primero = null;
     }
 
     /**
      * Método que inserta bibliotecas a la lista
-     * @param x
+     * @param x Nombre de la biblioteca a insertar
      */
-    public void insertBiblio(Biblioteca x){
-        x.Sig=Primero;
-        this.Primero= x;
-
-
+    public void insertBiblio(Biblioteca x) {
+        x.Sig = Primero;
+        this.Primero = x;
     }
 
     /**
      * Método que se encarga de eliminar bibliotecas de la lista.
-     * @param x
+     * @param x Nombre de la biblioteca a borrar
      */
-    public void eliminarBiblio(Biblioteca x){
-        Biblioteca actual= new Biblioteca("");
-        actual= this.Primero;
+    public void eliminarBiblio(Biblioteca x) {
+        Biblioteca actual = this.Primero;
         Biblioteca anterior = null;
-        while(actual!=null){
-            if(x.getNombre().equals(this.Primero.getNombre())){
-                Primero=Primero.Sig;
-            }
-            else if (actual.Sig == null){
+        while (actual != null)
+            if (x.getNombre().equals(this.Primero.getNombre())) Primero = Primero.Sig;
+            else if (actual.Sig == null)
                 break;
-
-            }
-
-            else if(actual.Sig.getNombre().equals(x.getNombre())){
-                actual.Sig=actual.Sig.Sig;
+            else if (actual.Sig.getNombre().equals(x.getNombre())) {
+                actual.Sig = actual.Sig.Sig;
                 break;
-            }
-
-            else{
+            } else {
                 anterior = actual;
-                actual=actual.Sig;
+                actual = actual.Sig;
             }
-        }
     }
-
 }
