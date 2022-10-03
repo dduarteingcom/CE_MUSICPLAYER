@@ -50,7 +50,7 @@ public class Biblioteca {
 
     /**
      * Método que modifica el nombre de la biblioteca.
-     * @param nombre
+     * @param nombre String del nombre a cambiar
      */
     public void setNombre(String nombre) {
         Nombre = nombre;
@@ -65,7 +65,7 @@ public class Biblioteca {
 
     /**
      * Método que modifica la fecha de creación de la biblioteca.
-     * @param fecha
+     * @param fecha String de nueva fecha
      */
     public void setFechaC(String fecha) {
         FechaC = fecha;
@@ -80,7 +80,7 @@ public class Biblioteca {
 
     /**
      * Constructor que permite crear nuevas instancias de la clase biblioteca
-     * @param nombre
+     * @param nombre Nombre de la biblioteca.
      */
     public Biblioteca(String nombre) {
         this.Primero = null;
@@ -93,7 +93,7 @@ public class Biblioteca {
 
     /**
      * Método que permite añadir una nueva canción a la biblioteca.
-     * @param x
+     * @param x Nombre de la cancion
      */
     public void InsertarCan(Cancion x) {        /*Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");*/
         if (Primero == null) {
@@ -114,7 +114,7 @@ public class Biblioteca {
 
     /**
      * Método que busca en la metadata original la canción que quiere ser añadida a la biblioteca.
-     * @param x
+     * @param x Nombre de la cancion
      */
     public void InsertnewSong(String x) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -207,7 +207,7 @@ public class Biblioteca {
 
     /**
      * Método que elimina una canción de la biblioteca, busca la canción que debe ser elimina en toda la biblioteca, para esto compara el string recibido por el parámetro y los nombres de las canciones.
-     * @param x
+     * @param x Nombre de la cancion
      */
     public void eliminarCan(String x) {
         Cancion actual = new Cancion("", "", "", "", "", "", null, null, "");

@@ -228,21 +228,29 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void nextCancion() throws SerialPortException {
+        //Se pasa a la siguiente cancion de la lista circular
         cancion_actual = cancion_actual.Sig;
+        //Paramos la cancion que está sonando actualmente
         mediaPlayer.stop();
+        //Iniciamos el tiempo
         beginTimer();
+        //Cargamos el archivo de la siguiente cancion para posteriormente reproducirla
         File file = new File(cancion_actual.getDireccion());
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
+        //Verifica si la cancion es favorita o no para posteriormente enviar un mensaje al arduino
         if (cancion_actual.isFavorita()) port.writeBytes("F".getBytes());
         else port.writeBytes("N".getBytes());
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                //Mostramos el nombre de la nueva cancion a reproducir
                 songLabel.setText(file.getName());
+                //Mostramos la letra de la nueva cancion
                 labelLyrics.setText(cancion_actual.getLetra() + "\n");
             }
         });
+        //Reproducimos la cancion
         mediaPlayer.play();
     }
 
@@ -251,7 +259,9 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void pausar() {
+        //Paramos el tiempo
         cancelTimer();
+        //Pausamos la reproduccion
         mediaPlayer.pause();
     }
 
@@ -260,7 +270,9 @@ public class Controlador_biblio1 implements Initializable {
      * @param volumen numero que modifica el modifica el volumen
      */
     private void volumen(int volumen) {
-        if (this.mediaPlayer == null) return;
+        //Verifica que la reproduccion esté vacía
+        if (this.mediaPlayer == null) return; //No retorna nada
+        //Modificamos el volumen
         else mediaPlayer.setVolume(volumen * 0.01);
     }
 
@@ -269,18 +281,25 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void prevCancion() throws SerialPortException {
+        //Se pasa a la cancion anterior de la lista circular
         cancion_actual = cancion_actual.Ant;
+        //Paramos la cancion que está sonando actualmente
         mediaPlayer.stop();
+        //Iniciamos el tiempo
         beginTimer();
+        //Cargamos el archivo de la cancion anterior para posteriormente reproducirla
         File file = new File(cancion_actual.getDireccion());
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
+        //Verifica si la cancion es favorita o no para posteriormente enviar un mensaje al arduino
         if (cancion_actual.isFavorita()) port.writeBytes("F".getBytes());
         else port.writeBytes("N".getBytes());
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                //Mostramos el nombre de la nueva cancion a reproducir
                 songLabel.setText(file.getName());
+                //Mostramos la letra de la nueva cancion
                 labelLyrics.setText(cancion_actual.getLetra() + "\n");
             }
         });
@@ -292,24 +311,35 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void reproducir() throws SerialPortException {
+        //Verifica si es la primera cancion a reproducir
         if (x == false) {
+            //Cargamos el archivo para reproducir
             File file = new File(cancion_actual.getDireccion());
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
+            //Verifica si la cancion es favorita o no para posteriormente enviar un mensaje al arduino
             if (cancion_actual.isFavorita()) port.writeBytes("F".getBytes());
             else port.writeBytes("N".getBytes());
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
+                    //Mostramos el nombre de la nueva cancion a reproducir
                     songLabel.setText(file.getName());
+                    //Mostramos la letra de la nueva cancion
+
                     labelLyrics.setText(cancion_actual.getLetra());
                     labelLyrics.setTextAlignment(TextAlignment.LEFT);
                 }
             });
+            //Iniciamos el tiempo
             beginTimer();
+            //Reproducimos la cancion
             mediaPlayer.play();
+            //Cambiamos la variable para indicar que ya no es la primera vez que se reproduce una cancion
             x = true;
-        } else {
+        }
+        //Si no es la primera vez que se reproduce la cancion, solo reaunudaremos la cancion
+        else {
             if (cancion_actual.isFavorita()) port.writeBytes("F".getBytes());
             else port.writeBytes("N".getBytes());
             mediaPlayer.play();
@@ -337,17 +367,23 @@ public class Controlador_biblio1 implements Initializable {
         task = new TimerTask() {
             @Override
             public void run() {
+                //Iniciamos la variable que permite correr el tiempo
                 running = true;
+                //Obtenemos el tiempo actual
                 double current = mediaPlayer.getCurrentTime().toSeconds(), end = media.getDuration().toSeconds();
                 barraCancion.setProgress(current / end);
+                //Cuando el tiempo llegue a su fin
                 if (current / end == 1) if (modo_activado) try {
+                    //Si el modo continuo está activado, se pasará a la siguiente canción
                     nextCancion();
                 } catch (SerialPortException e) {
                     throw new RuntimeException(e);
                 }
+                //Si el modo continuo está desactivado, se detendrá el tiempo
                 else cancelTimer();
             }
         };
+        //Definimos que el tiempo avance por segundos
         timer.scheduleAtFixedRate(task, 1000, 1000);
     }
 
@@ -358,7 +394,7 @@ public class Controlador_biblio1 implements Initializable {
         running = false;
         timer.cancel();
     }
-
+    //Abrimos el puerto correspondiente al arduino
     SerialPort port = new SerialPort("COM3");
 
     /**
@@ -366,12 +402,15 @@ public class Controlador_biblio1 implements Initializable {
      */
     private void arduino() {
         try {
+            //Abrimos el puerto
             port.openPort();
+            //Definimos los parametros
             port.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             port.addEventListener((SerialPortEvent event) -> {
                 if (event.isRXCHAR()) try {
+                    //Leemos las líneas que envia arduino
                     String msg = port.readString();
-                    System.out.println(msg);
+                    //Según el mensaje leído, se llamará a una función
                     if (msg.equals("1")) reproducir();
                     if (msg.equals("2")) pausar();
                     if (msg.equals("3")) nextCancion();
@@ -397,20 +436,28 @@ public class Controlador_biblio1 implements Initializable {
      * Método que inserta las bibliotecas del usuario como items para el menú de "Seleccionae biblioteca"
      */
     private void insertBiblios() {
+        //Vaciamos el menu con las bibliotecas para ser actualizada
         menuSelec.getItems().clear();
+        //Lista que se utilizara para agregar el nombre de las bibliotecas en la pestaña para borrar una biblioteca
         ObservableList<String> lista_biblios = FXCollections.observableArrayList();
         Biblioteca actual = CurrentLista.listabibliotecas.Primero;
+        //Recorremos la lista de bibliotecas
         while (actual != null) {
+            //Creamos items de menu por cada biblioteca del usuario
             MenuItem biblio = new Menu(actual.getNombre() + "  " + "N° Canciones: " + actual.getTamano() + "  " + actual.getFechaC());
             Biblioteca finalActual = actual;
             biblio.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
+                //Asignamos a cada item de menu de bibliotecas una funcion
                 public void handle(ActionEvent actionEvent) {
                     verBiblio(finalActual.getNombre());
                 }
             });
+            //Añadimos el nombre de la biblioteca a la lista
             lista_biblios.add(actual.getNombre());
+            //Añadimos el nombre de las bibliotecas
             biblio_a_borrar.setItems(lista_biblios);
+            //Añadimos las bibliotecas al menú
             menuSelec.getItems().add(biblio);
             actual = actual.Sig;
         }
@@ -425,6 +472,7 @@ public class Controlador_biblio1 implements Initializable {
         while (actual != null) {
             if (actual.getNombre().equals(x)) {
                 biblio_seleccionada = actual;
+                //Una vez la biblioteca seleccionada fue encontrada, se procede a ver sus canciones
                 verCanciones();
                 break;
             }
@@ -436,14 +484,17 @@ public class Controlador_biblio1 implements Initializable {
      * Metodo que lee las canciones de una biblioteca previamente seleccionada y las muestra en una lista
      */
     private void verCanciones() {
+        //Lista que mostrará los datos de las canciones
         ObservableList<String> list = FXCollections.observableArrayList(), lista_edicion = FXCollections.observableArrayList();
         Cancion actual = biblio_seleccionada.Primero;
         do {
+            //En caso de que la biblioteca esté vacía
             if (actual == null) {
                 list.add("AGREGA UNA CANCION");
                 Lista_canciones.setItems(list);
                 break;
             }
+            //Agregamos las canciones en las listas para mostrarlas, editarlas o borrarlas.
             list.add("Nombre: " + actual.getNombre() + "       " + "Genero: " + actual.getGen() + "       " + "Artista: " + actual.getArtista() + "       " + "Album: " + actual.getAlbum() + "       " + "Año: " + actual.getAno());
             lista_edicion.add(actual.getNombre());
             Lista_canciones.setItems(list);
@@ -469,8 +520,10 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void CrearNBiblioteca(ActionEvent event) {
+        //Obligamos al usuario llenar la entrada de texto.
         if (EntryNomBi.getText().isEmpty()) errorBiblio.setText("Escribe un nombre");
         else {
+            //Creamos la biblioteca
             Biblioteca biblioteca = new Biblioteca(EntryNomBi.getText());
             biblioteca.setFechaC(obtFecha());
             CurrentLista.listabibliotecas.insertBiblio(biblioteca);
@@ -478,6 +531,7 @@ public class Controlador_biblio1 implements Initializable {
             menuSelec.getItems().add(biblio);
             biblio_seleccionada = biblioteca;
             CurrentLista.Guardar(UsuarioSelec);
+            //Actualizamos la lista de bibliotecas para que la nueva biblioteca creada salga en pantalla.
             insertBiblios();
             biblio.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -634,12 +688,15 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void EditarCancion(ActionEvent event) {
+        //Obligamos al usuario a no dejar las entries vacias.
         if (genero_editar.getText().isEmpty() || artista_editar.getText().isEmpty() || album_editar.getText().isEmpty() || año_editar.getText().isEmpty() || letra_editar.getText().isEmpty())
             errorEditCancion.setText("Llena todos los espacios");
         else {
             String cancion = cancion_a_editar.getValue();
             Cancion actual = biblio_seleccionada.Primero;
+            //Buscamos la cancion que se quiera editar
             do if (actual.getNombre().equals(cancion)) {
+                //Modificamos los atributos
                 actual.setGen(genero_editar.getText());
                 actual.setArtista(artista_editar.getText());
                 actual.setAlbum(album_editar.getText());
@@ -658,7 +715,9 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     private void borrarCancion(ActionEvent event) {
+        //Borramos la cancion
         biblio_seleccionada.eliminarCan(cancion_a_borrar.getValue());
+        //Actualizamos las bibliotecas y la lista de cancion para que ya no aparezca la cancion recientemente eliminada.
         insertBiblios();
         verCanciones();
         CurrentLista.Guardar(UsuarioSelec);
@@ -672,8 +731,10 @@ public class Controlador_biblio1 implements Initializable {
     private void borrarBiblioteca(ActionEvent event) {
         Biblioteca actual = CurrentLista.listabibliotecas.Primero;
         while (actual != null) if (actual.getNombre().equals(biblio_a_borrar.getValue())) {
+            //Eliminamos la biblioteca
             CurrentLista.listabibliotecas.eliminarBiblio(actual);
             CurrentLista.Guardar(UsuarioSelec);
+            //Actualizamos las bibliotecas para que no aparezca la biblioteca recientemente eliminada
             insertBiblios();
         } else actual = actual.Sig;
     }
@@ -683,13 +744,20 @@ public class Controlador_biblio1 implements Initializable {
      * @throws SerialPortException
      */
     private void marcarFavorita() throws SerialPortException {
+        //En caso de que la canción ya se encuentra como favorita
         if (cancion_actual.isFavorita()) {
+            //La desmarcamos como favorita
             cancion_actual.setFavorita(false);
             CurrentLista.Guardar(UsuarioSelec);
+            //Enviamos un mensaje al arduino para que reconozca que la cancion ya no es favorita
             port.writeBytes("N".getBytes());
-        } else {
+        }
+        //En caso de que la cancion no esté marcada como favorita
+        else {
+            //Marcamos la cancion como favorita
             cancion_actual.setFavorita(true);
             CurrentLista.Guardar(UsuarioSelec);
+            //Enviamos un mensaje al arduino para que reconozca que la cancion es favorita
             port.writeBytes("F".getBytes());
         }
     }
@@ -700,6 +768,7 @@ public class Controlador_biblio1 implements Initializable {
      */
     @FXML
     void editarBiblioteca(ActionEvent event) {
+        //Obligamos al usuario a no dejar la entrada de texto vacía
         if (nuevoNombre.getText().isEmpty()) errorEditBiblio.setText("Escribe un nombre");
         else {
             errorEditBiblio.setText("");
