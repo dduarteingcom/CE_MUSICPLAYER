@@ -1,42 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Bibliotecas><Biblioteca Nombre="A"><Fecha>2022/09/27 21:18:40</Fecha><Cancion><Nombre>Eye Of The Tiger</Nombre><Genero>Hard Rock</Genero><Artista>Survivor</Artista><Album>Eye Of the Tiger</Album><Ano>1982</Ano><Letra>Rising up, back on the street
-                Did my time, took my chances
-                Went the distance, now I'm back on my feet
-                Just a man and his will to survive
-                So many times it happens too fast
-                You change your passion for glory
-                Don't lose your grip on the dreams of the past
-                You must fight just to keep them alive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                Face to face, out in the heat
-                Hanging tough, staying hungry
-                They stack the odds 'til we take to the street
-                For the kill with the skill to survive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                Rising up straight to the top
-                Had the guts, got the glory
-                Went the distance, now I'm not going to stop
-                Just a man and his will to survive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca><Biblioteca Nombre="Frenesí"><Fecha>2022/09/27 21:03:46</Fecha><Cancion><Nombre>Tom's Diner</Nombre><Genero>Rock</Genero><Artista>Suzanne Vega,DNA</Artista><Album>Single</Album><Ano>2019</Ano><Letra>Tata, tada, tata, tada
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Bibliotecas><Biblioteca Nombre="Punk"><Fecha>2022/09/18 13:36:39</Fecha><Cancion><Nombre>Bohemian Rhapsody</Nombre><Genero>Hard Rock</Genero><Artista>Queen</Artista><Album>A_Night_at_the_Opera</Album><Ano>1975</Ano><Letra>Is this the real life?
+                Is this just fantasy?
+                Caught in a landside,
+                No escape from reality
+                Open your eyes,
+                Look up to the skies and see,
+                I'm just a poor boy, I need no sympathy,
+                Because I'm easy come, easy go,
+                Little high, little low,
+                Any way the wind blows doesn't really matter to
+                Me, to me
+                Mamaaa,
+                Just killed a man,
+                Put a gun against his head, pulled my trigger,
+                Now he's dead
+                Mamaaa, life had just begun,
+                But now I've gone and thrown it all away
+                Mama, oooh,
+                Didn't mean to make you cry,
+                If I'm not back again this time tomorrow,
+                Carry on, carry on as if nothing really matters
+                Too late, my time has come,
+                Sends shivers down my spine, body's aching all
+                The time
+                Goodbye, everybody, I've got to go,
+                Gotta leave you all behind and face the truth
+                Mama, oooh
+                I don't want to die,
+                I sometimes wish I'd never been born at all.
+                I see a little silhouetto of a man,
+                Scaramouch, Scaramouch, will you do the Fandango!
+                Thunderbolts and lightning, very, very frightening me
+                Galileo, Galileo
+                Galileo, Galileo
+                Galileo, Figaro - magnificoo
+                I'm just a poor boy nobody loves me
+                He's just a poor boy from a poor family,
+                Spare him his life from this monstrosity
+                Easy come, easy go, will you let me go
+                Bismillah! No, we will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let him go!) Bismillah! We will not let you go
+                (Let me go) Will not let you go
+                (Let me go)(Never) Never let you go
+                (Let me go) (Never) let you go (Let me go) Ah
+                No, no, no, no, no, no, no
+                Oh mama mia, mama mia, mama mia, let me go
+                Beelzebub has a devil put aside for me, for me,
+                For meee
+                So you think you can stop me and spit in my eye
+                So you think you can love me and leave me to die
+                Oh, baby, can't do this to me, baby,
+                Just gotta get out, just gotta get right outta here
+                Nothing really matters, Anyone can see,
+                Nothing really matters,
+                Nothing really matters to me
+                Any way the wind blows...
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bohemian_Rhapsody.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Tom's Diner</Nombre><Genero>Rock</Genero><Artista>Suzanne Vega,DNA</Artista><Album>Single</Album><Ano>2019</Ano><Letra>Tata, tada, tata, tada
                 Tata, tada, tata, tada
                 Tata, tada, tata, tada
                 Tata, tada, tata, tada
@@ -139,45 +158,153 @@
                 (Tata, tada, tata, tada)
                 (Tata, tada, tata, tada)
                 (Tata, tada, tata, tada)
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Toms_Diner_Cover.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Eye Of The Tiger</Nombre><Genero>Hard Rock</Genero><Artista>Survivor</Artista><Album>Eye Of the Tiger</Album><Ano>1982</Ano><Letra>Rising up, back on the street
-                Did my time, took my chances
-                Went the distance, now I'm back on my feet
-                Just a man and his will to survive
-                So many times it happens too fast
-                You change your passion for glory
-                Don't lose your grip on the dreams of the past
-                You must fight just to keep them alive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                Face to face, out in the heat
-                Hanging tough, staying hungry
-                They stack the odds 'til we take to the street
-                For the kill with the skill to survive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                Rising up straight to the top
-                Had the guts, got the glory
-                Went the distance, now I'm not going to stop
-                Just a man and his will to survive
-                It's the eye of the tiger
-                It's the thrill of the fight
-                Rising up to the challenge of our rival
-                And the last known survivor
-                Stalks his prey in the night
-                And he's watching us all with the eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-                The eye of the tiger
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Eye_Of_The_Tiger.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Bohemian Rhapsody</Nombre><Genero>Hard Rock</Genero><Artista>Queen</Artista><Album>A_Night_at_the_Opera</Album><Ano>1975</Ano><Letra>Is this the real life?
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Toms_Diner_Cover.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca><Biblioteca Nombre="Rock"><Fecha>2022/09/23 14:19:47</Fecha><Cancion><Nombre>Neverita</Nombre><Genero>Urbano latino</Genero><Artista>Bad Bunny</Artista><Album>Un verano sin ti</Album><Ano>2022</Ano><Letra>Yo estoy puesto pa' ti y tú te me quita'
+            Diablo, qué piquete la chamaquita
+            El corazón lo puso en la neverita
+            Dice que este verano se queda solita
+            Yo estoy puesto pa' ti y tú te me quita'
+            Diablo', qué piquete la chamaquita
+            El corazón lo puso en la neverita
+            Dice que este verano se queda solita
+            Pero nunca sola, sola
+            Amores vienen y van, como las ola'
+            El DM explotao, tos le escriben: "hola"
+            Una fila'e cabrone' y yo quiero la cola, yeah, yeah, yeah
+            Déjame untarte el sunblock pa' que no te queme
+            Aquí hay mucha' nenas linda', pero tú la tiene'
+            Jugar conmigo, eso te entretiene
+            No sea' mala, me tienes de meme
+            Me siento como el sol, ey, cuando te pones sunblock
+            Baby, déjame entrar, dale, quítame el lock, ey
+            Yo me la pasaría contigo viendo TikTok, je
+            Déjame sorprenderte, ey
+            Déjame untarte el sunblock pa' que no te queme
+            Aquí hay muchas nenas linda', pero tú la tiene'
+            Jugar conmigo, eso te entretiene
+            No sea' mala', me tienes de meme
+            Yo estoy puesto pa ti y tú te me quita'
+            Diablo', qué piquete la chamaquita
+            El corazón lo puso en la neverita
+            Dice que este verano se queda solita
+            Pero nunca sola, sola
+            Amores vienen y van, como las ola'
+            Tú lo que ere' e' una abusadora
+            Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
+        </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Bones</Nombre><Genero>Pop Rock</Genero><Artista>Imagine Dragons</Artista><Album>Mercury – Act 2</Album><Ano>2022</Ano><Letra>Gimme, gimme, gimme some time to think
+            I'm in the bathroom, looking at me
+            Face in the mirror is all I need (ooh)
+            Wait until the reaper takes my life
+            Never gonna get me out alive
+            I will live a thousand million lives (ooh)
+            My patience is waning
+            Is this entertaining?
+            Our patience is waning
+            Is this entertaining?
+            I-I-I got this feeling, yeah, you know
+            Where I'm losing all control
+            'Cause there's magic in my bones
+            I-I-I got this feeling in my soul
+            Go ahead and throw your stones
+            'Cause there's magic in my bones
+            Playing with a stick of dynamite
+            There was never gray in black and white
+            There was never wrong 'til there was right (ooh, oh)
+            Feeling like a boulder hurtling
+            Seeing all the vultures circling
+            Burning in the flames I'm working in
+            Turning in a bed that's darkening
+            My patience is waning
+            Is this entertaining?
+            Our patience is waning
+            Is this entertaining?
+            I-I-I got this feeling, yeah, you know
+            Where I'm losing all control
+            'Cause there's magic in my bones (in my bones)
+            I-I-I got this feeling in my soul
+            Go ahead and throw your stones
+            'Cause there's magic in my bones
+            'Cause there's magic in my bones
+            Look in the mirror of my mind
+            Turning the pages of my life
+            Walking the path so many paced a million times
+            Drown out the voices in the air
+            Leaving the ones that never cared
+            Picking the pieces up and building to the sky
+            My patience is waning
+            Is this entertaining?
+            My patience is waning
+            Is this entertaining?
+            I-I-I got this feeling, yeah, you know
+            Where I'm losing all control
+            'Cause there's magic in my bones (magic in my bones)
+            I-I-I got this feeling in my soul (soul)
+            Go ahead and throw your stones
+            'Cause there's magic in
+            There goes my mind (I-I-I)
+            Don't mind
+            There goes my mind (there it goes, there it goes)
+            There goes my mind (I-I-I)
+            Don't mind (there it goes)
+            There goes my mind
+            'Cause there's magic in my bones
+        </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bones.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Enemy</Nombre><Genero>Pop Rock</Genero><Artista>Imagine Dragons</Artista><Album>Arcane League of Legends</Album><Ano>2021</Ano><Letra>Look out for yourself
+                I wake up to the sounds of the silence that allows
+                For my mind to run around with my ear up to the ground
+                I'm searching to behold the stories that are told
+                When my back is to the world that was smiling when I turned
+                Tell you, you're the greatest
+                But once you turn, they hate us
+                Oh, the misery
+                Everybody wants to be my enemy
+                Spare the sympathy
+                Everybody wants to be my enemy
+                Look out for yourself
+                My enemy
+                Look out for yourself
+                But I'm ready
+                Your words up on the wall as you're praying for my fall
+                And the laughter in the halls
+                And the names that I've been called
+                I stack it in my mind and I'm waiting for the time
+                When I show you what it's like to be words spit in a mic
+                Tell you, you're the greatest
+                But once you turn, they hate us (ha)
+                Oh, the misery
+                Everybody wants to be my enemy
+                Spare the sympathy
+                Everybody wants to be my enemy
+                Look out for yourself
+                My enemy (yeah)
+                Look out for yourself
+                Uh, look, okay
+                I'm hoping that somebody pray for me
+                I'm praying that somebody hope for me
+                I'm staying where nobody 'posed to be
+                Posted, being a wreck of emotions
+                Ready to go whenever, just let me know
+                The road is long, so put the pedal into the floor
+                The enemy on my trail, my energy unavailable
+                I'ma tell 'em, "Hasta luego"
+                They wanna plot on my trot to the top
+                I've been outta shape, thinkin' out the box
+                I'm an astronaut, I blasted off the planet rock
+                To cause catastrophe and it matters more because I had it
+                And I had a thought about wreaking havoc on an opposition, kinda shockin'
+                They want a static with precision, I'm automatic quarterback
+                I ain't talking sacking pack it, pack it up, I don't panic, batter-batter up
+                Who the baddest? It don't matter 'cause we at ya throat
+                Everybody wants to be my enemy
+                Spare the sympathy
+                Everybody wants to be my enemy
+                Oh, the misery
+                Everybody wants to be my enemy
+                Spare the sympathy
+                Everybody wants to be my enemy (I swear)
+                Pray it away, I swear, I never be a saint, no way
+                My enemy
+                Pray it away, I swear, I never be a saint
+                Look out for yourself
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Enemy.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Bohemian Rhapsody</Nombre><Genero>Hard Rock</Genero><Artista>Queen</Artista><Album>A_Night_at_the_Opera</Album><Ano>1975</Ano><Letra>Is this the real life?
                 Is this just fantasy?
                 Caught in a landside,
                 No escape from reality
@@ -273,142 +400,85 @@
                 Couldn't be much more from the heart
                 Forever trusting who we are
                 No, nothing else matters
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca><Biblioteca Nombre="Helloo"><Fecha>2022/09/27 20:51:10</Fecha><Cancion><Nombre>Nothing Else Matters</Nombre><Genero>Heavy Metal</Genero><Artista>Metallica</Artista><Album>Metallica</Album><Ano>1991</Ano><Letra>So close, no matter how far
-                Couldn't be much more from the heart
-                Forever trusting who we are
-                And nothing else matters
-                Never opened myself this way
-                Life is ours, we live it our way
-                All these words, I don't just say
-                And nothing else matters
-                Trust I seek and I find in you
-                Every day for us something new
-                Open mind for a different view
-                And nothing else matters
-                Never cared for what they do
-                Never cared for what they know
-                But I know
-                So close, no matter how far
-                It couldn't be much more from the heart
-                Forever trusting who we are
-                And nothing else matters
-                Never cared for what they do
-                Never cared for what they know
-                But I know
-                I never opened myself this way
-                Life is ours, we live it our way
-                All these words, I don't just say
-                And nothing else matters
-                Trust I seek and I find in you
-                Every day for us something new
-                Open mind for a different view
-                And nothing else matters
-                Never cared for what they say
-                Never cared for games they play
-                Never cared for what they do
-                Never cared for what they know
-                And I know, yeah, yeah
-                So close, no matter how far
-                Couldn't be much more from the heart
-                Forever trusting who we are
-                No, nothing else matters
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Bohemian Rhapsody</Nombre><Genero>Hard Rock</Genero><Artista>Queen</Artista><Album>A_Night_at_the_Opera</Album><Ano>1975</Ano><Letra>Is this the real life?
-                Is this just fantasy?
-                Caught in a landside,
-                No escape from reality
-                Open your eyes,
-                Look up to the skies and see,
-                I'm just a poor boy, I need no sympathy,
-                Because I'm easy come, easy go,
-                Little high, little low,
-                Any way the wind blows doesn't really matter to
-                Me, to me
-                Mamaaa,
-                Just killed a man,
-                Put a gun against his head, pulled my trigger,
-                Now he's dead
-                Mamaaa, life had just begun,
-                But now I've gone and thrown it all away
-                Mama, oooh,
-                Didn't mean to make you cry,
-                If I'm not back again this time tomorrow,
-                Carry on, carry on as if nothing really matters
-                Too late, my time has come,
-                Sends shivers down my spine, body's aching all
-                The time
-                Goodbye, everybody, I've got to go,
-                Gotta leave you all behind and face the truth
-                Mama, oooh
-                I don't want to die,
-                I sometimes wish I'd never been born at all.
-                I see a little silhouetto of a man,
-                Scaramouch, Scaramouch, will you do the Fandango!
-                Thunderbolts and lightning, very, very frightening me
-                Galileo, Galileo
-                Galileo, Galileo
-                Galileo, Figaro - magnificoo
-                I'm just a poor boy nobody loves me
-                He's just a poor boy from a poor family,
-                Spare him his life from this monstrosity
-                Easy come, easy go, will you let me go
-                Bismillah! No, we will not let you go
-                (Let him go!) Bismillah! We will not let you go
-                (Let him go!) Bismillah! We will not let you go
-                (Let me go) Will not let you go
-                (Let me go)(Never) Never let you go
-                (Let me go) (Never) let you go (Let me go) Ah
-                No, no, no, no, no, no, no
-                Oh mama mia, mama mia, mama mia, let me go
-                Beelzebub has a devil put aside for me, for me,
-                For meee
-                So you think you can stop me and spit in my eye
-                So you think you can love me and leave me to die
-                Oh, baby, can't do this to me, baby,
-                Just gotta get out, just gotta get right outta here
-                Nothing really matters, Anyone can see,
-                Nothing really matters,
-                Nothing really matters to me
-                Any way the wind blows...
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Bohemian_Rhapsody.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Livin On A Prayer</Nombre><Genero>Glam metal</Genero><Artista>Bon Jovi</Artista><Album>Slippery When Wet</Album><Ano>1986</Ano><Letra>Once upon a time not so long ago
-                Tommy used to work on the docks, union's been on strike
-                He's down on his luck, it's tough, so tough
-                Gina works the diner all day working for her man
-                She brings home her pay, for love, for love
-                She says, we've got to hold on to what we've got
-                It doesn't make a difference if we make it or not
-                We've got each other and that's a lot for love
-                We'll give it a shot
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Tommy's got his six-string in hock
-                Now he's holding in what he used to make it talk
-                So tough, it's tough
-                Gina dreams of running away
-                When she cries in the night, Tommy whispers
-                Baby, it's okay, someday
-                We've got to hold on to what we've got
-                It doesn't make a difference if we make it or not
-                We've got each other and that's a lot for love
-                We'll give it a shot
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Livin' on a prayer
-                Oh, we've got to hold on, ready or not
-                You live for the fight when it's all that you've got
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-                Woah, we're half way there
-                Woah, livin' on a prayer
-                Take my hand, we'll make it I swear
-                Woah, livin' on a prayer
-            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Livin_On_A_Prayer.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca></Bibliotecas>
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Nothing_Else_Matters.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca><Biblioteca Nombre="Frenesi"><Fecha>2022/09/23 14:21:57</Fecha><Cancion><Nombre>Neverita</Nombre><Genero>Urbano latino</Genero><Artista>Bad Bunny</Artista><Album>Un verano sin ti</Album><Ano>2022</Ano><Letra>Yo estoy puesto pa' ti y tú te me quita'
+                Diablo, qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Yo estoy puesto pa' ti y tú te me quita'
+                Diablo', qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Pero nunca sola, sola
+                Amores vienen y van, como las ola'
+                El DM explotao, tos le escriben: "hola"
+                Una fila'e cabrone' y yo quiero la cola, yeah, yeah, yeah
+                Déjame untarte el sunblock pa' que no te queme
+                Aquí hay mucha' nenas linda', pero tú la tiene'
+                Jugar conmigo, eso te entretiene
+                No sea' mala, me tienes de meme
+                Me siento como el sol, ey, cuando te pones sunblock
+                Baby, déjame entrar, dale, quítame el lock, ey
+                Yo me la pasaría contigo viendo TikTok, je
+                Déjame sorprenderte, ey
+                Déjame untarte el sunblock pa' que no te queme
+                Aquí hay muchas nenas linda', pero tú la tiene'
+                Jugar conmigo, eso te entretiene
+                No sea' mala', me tienes de meme
+                Yo estoy puesto pa ti y tú te me quita'
+                Diablo', qué piquete la chamaquita
+                El corazón lo puso en la neverita
+                Dice que este verano se queda solita
+                Pero nunca sola, sola
+                Amores vienen y van, como las ola'
+                Tú lo que ere' e' una abusadora
+                Vo'a buscarte una cerveza y bebe' el cora', yeah, yeah, yeah
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Neverita.mp3</Direccion><Favorita>false</Favorita></Cancion><Cancion><Nombre>Stolen Dance</Nombre><Genero>Indie pop</Genero><Artista>Milky Chance</Artista><Album>Sadnecessary</Album><Ano>2013</Ano><Letra>I want you by my side
+                So that I never feel alone again
+                They've always been so kind
+                But now they've brought you away from here
+                I hope they didn't get your mind
+                Your heart is too strong anyway
+                We need to fetch back the time
+                They have stolen from us
+                And I want you
+                We can bring it on the floor
+                You've never danced like this before
+                We don't talk about it
+                Dancin' on do the boogie all night long
+                Stoned in paradise, shouldn't talk about it
+                And I want you
+                We can bring it on the floor
+                You've never danced like this before
+                We don't talk about it
+                Dancin' on do the boogie all night long
+                Stoned in paradise, shouldn't talk about it
+                Shouldn't talk about it
+                Coldest winter for me
+                No sun is shining anymore
+                The only thing I feel is pain
+                Caused by absence of you
+                Suspense is controlling my mind
+                I cannot find the way out of here
+                I want you by my side
+                So that I never feel alone again
+                And I want you
+                We can bring it on the floor
+                You've never danced like this before
+                We don't talk about it
+                Dancin' on do the boogie all night long
+                Stoned in paradise, shouldn't talk about it
+                And I want you
+                We can bring it on the floor
+                You've never danced like this before
+                We don't talk about it
+                Dancin' on do the boogie all night long
+                Stoned in paradise, shouldn't talk about it
+                Shouldn't talk about it
+                And I want you
+                We can bring it on the floor
+                You've never danced like this before
+                We don't talk about it
+                Dancin' on do the boogie all night long
+                Stoned in paradise, shouldn't talk about it
+                Shouldn't talk about it
+            </Letra><Direccion>C:\JavaProjects\CE_MUSICPLAYER\CE_MusicPlayer\Canciones\Stolen Dance.mp3</Direccion><Favorita>false</Favorita></Cancion></Biblioteca></Bibliotecas>

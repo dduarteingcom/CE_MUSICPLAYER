@@ -1,18 +1,19 @@
 package com.example.ce_musicplayer;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 /**
- * Clase que corresponde a una lista circular doblemente enlazada, la cual contiene las canciones que serán reproducidas.
- * Así como la gestión de estas canciones.Cabe aclarar que además de ser una lista esta clase también corresponde a un nodo,
- * ya que esta va dentro de la clase Lista_bibliotecas
+ * Clase que corresponde a una lista circular doblemente enlazada, la cual contiene las canciones que serán reproducidas. Así como la gestión de estas canciones. Cabe aclarar que además de ser una lista esta clase también corresponde a un nodo, ya que esta va dentro de la clase Lista_bibliotecas
  */
 public class Biblioteca {
     /**
@@ -41,9 +42,7 @@ public class Biblioteca {
     public int Tamano;
 
     /**
-     * Método que retorna el string correspondiente al nombre de la biblioteca.
-     *
-     * @return Nombre de la biblioteca.
+     * Método que retorna el string correspondiente al nombre de la biblioteca. @return Nombre de la biblioteca.
      */
     public String getNombre() {
         return Nombre;
@@ -51,17 +50,14 @@ public class Biblioteca {
 
     /**
      * Método que modifica el nombre de la biblioteca.
-     *
-     * @param nombre
+     * @param nombre String del nombre a cambiar
      */
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
 
     /**
-     * Método que retorna el string correspondiente a la fecha de creación de la biblioteca.
-     *
-     * @return Fecha de creación de la biblioteca.
+     * Método que retorna el string correspondiente a la fecha de creación de la biblioteca. @return Fecha de creación de la biblioteca.
      */
     public String getFechaC() {
         return FechaC;
@@ -69,17 +65,14 @@ public class Biblioteca {
 
     /**
      * Método que modifica la fecha de creación de la biblioteca.
-     *
-     * @param fecha
+     * @param fecha String de nueva fecha
      */
     public void setFechaC(String fecha) {
         FechaC = fecha;
     }
 
     /**
-     * Método que retorna el int correspondiente al número de canciones de la biblioteca.
-     *
-     * @return Nombre de la biblioteca.
+     * Método que retorna el int correspondiente al número de canciones de la biblioteca. @return Nombre de la biblioteca.
      */
     public int getTamano() {
         return Tamano;
@@ -87,8 +80,7 @@ public class Biblioteca {
 
     /**
      * Constructor que permite crear nuevas instancias de la clase biblioteca
-     *
-     * @param nombre
+     * @param nombre Nombre de la biblioteca.
      */
     public Biblioteca(String nombre) {
         this.Primero = null;
@@ -101,11 +93,9 @@ public class Biblioteca {
 
     /**
      * Método que permite añadir una nueva canción a la biblioteca.
-     *
-     * @param x
+     * @param x Nombre de la cancion
      */
-    public void InsertarCan(Cancion x) {
-        //Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");
+    public void InsertarCan(Cancion x) {        /*Cancion cancionN = new Cancion("", "", "", "", "", null, null, "");*/
         if (Primero == null) {
             Primero = x;
             Ultimo = x;
@@ -124,15 +114,13 @@ public class Biblioteca {
 
     /**
      * Método que busca en la metadata original la canción que quiere ser añadida a la biblioteca.
-     *
-     * @param x
+     * @param x Nombre de la cancion
      */
     public void InsertnewSong(String x) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Cancion cancionN = new Cancion("", "", "", "", "", "", null, null, "");
-
         if (Primero == null) {
-            try (InputStream is = new FileInputStream("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
+            try (InputStream is = new FileInputStream("C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(is);
                 NodeList ListaCanciones = document.getElementsByTagName("Cancion");
@@ -140,17 +128,12 @@ public class Biblioteca {
                     Node Cancion = ListaCanciones.item(i);
                     if (Cancion.getNodeType() == Node.ELEMENT_NODE) {
                         String id = Cancion.getAttributes().getNamedItem("Nombre").getTextContent();
-
-
                         if (x.equals(id.trim())) {
                             NodeList childNodes = Cancion.getChildNodes();
                             cancionN.setNombre(id);
                             for (int j = 0; j < childNodes.getLength(); j++) {
                                 Node item = childNodes.item(j);
-
                                 if (item.getNodeType() == Node.ELEMENT_NODE) {
-
-
                                     if ("Genero".equalsIgnoreCase(item.getNodeName())) {
                                         cancionN.setGen(item.getTextContent());
                                     } else if ("Artista".equalsIgnoreCase(item.getNodeName())) {
@@ -165,8 +148,6 @@ public class Biblioteca {
                                         cancionN.setDireccion(item.getTextContent());
                                     }
                                 }
-
-
                             }
                         }
                     }
@@ -180,7 +161,7 @@ public class Biblioteca {
             Ultimo.Ant = Ultimo;
             this.Tamano++;
         } else {
-            try (InputStream is = new FileInputStream("C:\\Users\\Alvaro Duarte\\Documents\\GitHub\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
+            try (InputStream is = new FileInputStream("C:\\JavaProjects\\CE_MUSICPLAYER\\CE_MusicPlayer\\MetadataOriginal.xml")) {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(is);
                 NodeList ListaCanciones = document.getElementsByTagName("Cancion");
@@ -188,16 +169,12 @@ public class Biblioteca {
                     Node Cancion = ListaCanciones.item(i);
                     if (Cancion.getNodeType() == Node.ELEMENT_NODE) {
                         String id = Cancion.getAttributes().getNamedItem("Nombre").getTextContent();
-
                         if (x.equals(id.trim())) {
                             NodeList childNodes = Cancion.getChildNodes();
                             cancionN.setNombre(id);
                             for (int j = 0; j < childNodes.getLength(); j++) {
                                 Node item = childNodes.item(j);
-
                                 if (item.getNodeType() == Node.ELEMENT_NODE) {
-
-
                                     if ("Genero".equalsIgnoreCase(item.getNodeName())) {
                                         cancionN.setGen(item.getTextContent());
                                     } else if ("Artista".equalsIgnoreCase(item.getNodeName())) {
@@ -212,8 +189,6 @@ public class Biblioteca {
                                         cancionN.setDireccion(item.getTextContent());
                                     }
                                 }
-
-
                             }
                         }
                     }
@@ -223,7 +198,6 @@ public class Biblioteca {
             }
             this.Tamano++;
         }
-
         Ultimo.Sig = cancionN;
         cancionN.Sig = Primero;
         cancionN.Ant = Ultimo;
@@ -232,10 +206,8 @@ public class Biblioteca {
     }
 
     /**
-     * Método que elimina una canción de la biblioteca, busca la canción que debe ser elimina en toda la biblioteca, para esto
-     * compara el string recibido por el parámetro y los nombres de las canciones.
-     *
-     * @param x
+     * Método que elimina una canción de la biblioteca, busca la canción que debe ser elimina en toda la biblioteca, para esto compara el string recibido por el parámetro y los nombres de las canciones.
+     * @param x Nombre de la cancion
      */
     public void eliminarCan(String x) {
         Cancion actual = new Cancion("", "", "", "", "", "", null, null, "");
@@ -262,9 +234,9 @@ public class Biblioteca {
             }
             prev = actual;
             actual = actual.Sig;
-
         } while (actual != Primero);
     }
+
     /**
      * Método que se encarga de recorrer la biblioteca para determinar si esta posee la canción proveniente del parámetro.
      * @param x
@@ -272,27 +244,16 @@ public class Biblioteca {
      */
     public boolean CompRep(String x) {
         boolean result = false;
-        Cancion actual = new Cancion("", "", "", "", "", "", null, null, "");
-        Cancion prev = new Cancion("", "", "", "", "", "", null, null, "");
+        Cancion actual = new Cancion("", "", "", "", "", "", null, null, ""), prev = new Cancion("", "", "", "", "", "", null, null, "");
         actual = this.Primero;
         prev = this.Ultimo;
-        do {
-            if (actual.getNombre().equals(x)) {
-                result = true;
-                break;
-            } else {
-                prev = actual;
-                actual = actual.Sig;
-            }
+        do if (actual.getNombre().equals(x)) {
+            result = true;
+            break;
+        } else {
+            prev = actual;
+            actual = actual.Sig;
         } while (actual != Primero);
         return result;
     }
 }
-
-
-
-
-
-
-
-
