@@ -31,18 +31,15 @@ public class Controlador_inicio extends Lista_usuarios implements Initializable 
     @FXML
     private Label correo_label;
     @FXML
-    private TextField biblioEntry;
-    @FXML
-    private Button insertButton;
-    @FXML
-    private Label errorLabel;
-    @FXML
     private TextField nom_entry;
     /**
      * Label para indicar en cuál entrada de texto se escribe el nombre
      */
     @FXML
     private Label nom_label;
+    /**
+     * Entrada utilizada para escribir la contraseña del usuario.
+     */
     @FXML
     private PasswordField pass_entry;
     /**
