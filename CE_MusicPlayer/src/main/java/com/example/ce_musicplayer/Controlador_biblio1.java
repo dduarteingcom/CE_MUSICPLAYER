@@ -394,7 +394,10 @@ public class Controlador_biblio1 implements Initializable {
         running = false;
         timer.cancel();
     }
-    //Abrimos el puerto correspondiente al arduino
+
+    /**
+     * Variable utilizada para manejar el puerto serial del arduino
+     */
     SerialPort port = new SerialPort("COM3");
 
     /**
