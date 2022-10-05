@@ -5,19 +5,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_inicio">
+<AnchorPane prefHeight="513.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce_musicplayer.Controlador_inicio">
    <children>
-      <ChoiceBox fx:id="prov_lista" layoutX="227.0" layoutY="212.0" prefWidth="150.0" />
-      <TextField fx:id="nom_entry" layoutX="226.0" layoutY="99.0" />
-      <TextField fx:id="correo_entry" layoutX="227.0" layoutY="136.0" />
-      <Button fx:id="boton_iniciar" layoutX="276.0" layoutY="299.0" mnemonicParsing="false" onAction="#boton_iniciar" text="Iniciar" />
-      <Label fx:id="nom_label" layoutX="170.0" layoutY="103.0" text="Nombre" />
-      <Label fx:id="pass_label" layoutX="162.0" layoutY="179.0" text="Contraseña" />
-      <Label fx:id="correo_label" layoutX="174.0" layoutY="140.0" text="Correo" />
-      <Label fx:id="prov_label" layoutX="166.0" layoutY="215.0" prefHeight="18.0" prefWidth="52.0" text="Provincia" />
-      <PasswordField fx:id="pass_entry" layoutX="228.0" layoutY="175.0" />
-      <Label fx:id="error_inicio" layoutX="242.0" layoutY="61.0" textFill="RED" />
+      <BorderPane prefHeight="513.0" prefWidth="774.0">
+         <right>
+            <AnchorPane prefHeight="514.0" prefWidth="402.0" style="-fx-background-color: #FF1700;" BorderPane.alignment="CENTER">
+               <children>
+                  <ChoiceBox fx:id="prov_lista" layoutX="130.0" layoutY="354.0" prefWidth="151.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2px 2px 2px 2px; -fx-background-color: transparent;" />
+                  <TextField fx:id="nom_entry" layoutX="131.0" layoutY="142.0" promptText="Nombre" style="-fx-border-color: #FFFFFF; -fx-background-color: Transparent; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextField fx:id="correo_entry" layoutX="131.0" layoutY="213.0" promptText="Correo" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Button fx:id="boton_iniciar" layoutX="166.0" layoutY="418.0" mnemonicParsing="false" onAction="#boton_iniciar" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #FFFFFF;" text="Iniciar" textFill="RED">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <PasswordField fx:id="pass_entry" layoutX="131.0" layoutY="279.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #FFFFFF; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Label fx:id="error_inicio" layoutX="113.0" layoutY="81.0" prefHeight="22.0" prefWidth="246.0" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="514.0" prefWidth="377.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="154.0" fitWidth="358.0" layoutX="10.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Users/maulu/Downloads/logo.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>
